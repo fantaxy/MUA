@@ -1,0 +1,19 @@
+//
+//  kmoj-precompile.pch
+//  Kmoji-objc
+//
+//  Created by yangx2 on 10/4/14.
+//  Copyright (c) 2014 yang. All rights reserved.
+//
+
+#ifndef Kmoji_objc_kmoj_precompile_pch
+#define Kmoji_objc_kmoj_precompile_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <UIKit/UIKit.h>
+
+#define UIColorWithRGB(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+
+#endif
