@@ -1,0 +1,1 @@
+PODS_KMOJI_OBJC_AFNETWORKING_OTHER_LDFLAGS = -framework "CoreGraphics" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"

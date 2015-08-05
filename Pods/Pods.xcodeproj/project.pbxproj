@@ -1,0 +1,1184 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0261F0C09DDB342A7C2700D9 /* OpenShare+Weixin.h in Headers */ = {isa = PBXBuildFile; fileRef = 964F525C4FAB25869DB12234 /* OpenShare+Weixin.h */; };
+		02A9EA1A26F894014C8141E9 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C58D7B2A3C0E6FA6BB0869 /* UIImageView+AFNetworking.m */; };
+		02DE0CBD2AECC366493420B6 /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E0186958031F9C19A476F94 /* UIWebView+AFNetworking.h */; };
+		0374D63FADB09782AD96B8E2 /* OpenShare.h in Headers */ = {isa = PBXBuildFile; fileRef = ED86A995E8D0ECFEA2AEC5ED /* OpenShare.h */; };
+		040F09D5E43CA5595AB8E723 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB53AB2801CCFDC98FFB472 /* UIActivityIndicatorView+AFNetworking.m */; };
+		07BE2D54B6EBE50CA477093C /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8589F689BED1690BF9349374 /* AFSecurityPolicy.m */; };
+		0CD48511FDD1A27A8FBF1354 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 31A6E2E927D00E776FD4B8AB /* AFURLConnectionOperation.m */; };
+		0DE6F204EE0F2D3E6F28FFDA /* OpenShare+Weibo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE95E8AC82BFCA174F19811A /* OpenShare+Weibo.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		101CB397A5F884FEB137D74F /* OpenShare+Renren.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E2522BC77D4E4BF63971E0 /* OpenShare+Renren.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		13D8801C7A7573D3128A3E0B /* Pods-Kmoji-keyboard-OpenShare-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B29682E8994E35374BE2955 /* Pods-Kmoji-keyboard-OpenShare-dummy.m */; };
+		1788019AA0742AA233817EF9 /* OpenShare+QQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 6953AA5727E1D9A58D26FF09 /* OpenShare+QQ.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1B4A100F65F46CFC16C69765 /* OpenShareHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BC2A52F59A10D4C10DAA827 /* OpenShareHeader.h */; };
+		1C06993975610B169EA1FAA1 /* OpenShareHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BC2A52F59A10D4C10DAA827 /* OpenShareHeader.h */; };
+		1C392E046228ABB5F59A8A1A /* OpenShare.h in Headers */ = {isa = PBXBuildFile; fileRef = ED86A995E8D0ECFEA2AEC5ED /* OpenShare.h */; };
+		1D2039E274B70CDF281F53D1 /* OpenShare+Renren.h in Headers */ = {isa = PBXBuildFile; fileRef = 0960F235FAA210E9EF81009F /* OpenShare+Renren.h */; };
+		1DFD29F6653A1719E12613B0 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D603ACF620BC9565F457E07 /* AFNetworkActivityIndicatorManager.h */; };
+		1E866E5750C750956686CD33 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD648D2D27DD8C7B685DAFE /* Foundation.framework */; };
+		25A65D55903EBE0AB8C08692 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 64A3616CFF3040FE7514177F /* AFURLSessionManager.h */; };
+		26D0C7274ACB6603DACB7A05 /* OpenShare+QQ.m in Sources */ = {isa = PBXBuildFile; fileRef = 6953AA5727E1D9A58D26FF09 /* OpenShare+QQ.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2BA351077F27292D7662618D /* OpenShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCD20E17B1659AD0CE9B9C2 /* OpenShare.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		32A9833C703CA169013BF351 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 416BE5FA716ECA539CEE15F6 /* UIImageView+AFNetworking.h */; };
+		33245909211C4B049B7C24A5 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D822AF5B60D3FABF730EF5 /* UIButton+AFNetworking.m */; };
+		34E000DDDD91D36E3F64E219 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D144E90074EC6C4E352D4F3F /* AFNetworkActivityIndicatorManager.m */; };
+		3594479CD09A04973109E889 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A19CE2ED4C608FD03A0BAC5C /* JSONKit.h */; };
+		3B1A8C539062748C38E6FE96 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F0B3855B93CD0E16DEA2EEE9 /* AFHTTPRequestOperation.h */; };
+		3B8DE9363039E389F3F4FA49 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CC54CC5A2677D3AB6A6C85 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		43C2FB50B04C82CD959DAB3C /* OpenShare+QQ.h in Headers */ = {isa = PBXBuildFile; fileRef = C806F39DFB6C38BD4EFD1136 /* OpenShare+QQ.h */; };
+		44384E6CCE87525A3CBB5A6E /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 35407A6E7712D3A3CECDB54C /* AFURLConnectionOperation.h */; };
+		45A6EF2173CC7E04598C35DE /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE53982E6D43EEC1643D5064 /* AFHTTPSessionManager.m */; };
+		4AC5B70B28C026B3675A114C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECD2FF69161D59F3EBE0DB38 /* SystemConfiguration.framework */; };
+		4F5DE2EC6C01219F7BD97B74 /* OpenShare+Renren.h in Headers */ = {isa = PBXBuildFile; fileRef = 0960F235FAA210E9EF81009F /* OpenShare+Renren.h */; };
+		4FE56AADB9BC3812EFD3CFCA /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = C6623AEB4B453861E5526532 /* UIRefreshControl+AFNetworking.h */; };
+		537B4A4672F05C1A371DFBDC /* UIAlertView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F426DF8BCC4D06D91AA0C16F /* UIAlertView+AFNetworking.h */; };
+		5605C6EB41982CEC56C6EDCD /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EB0D5FDCDF1987F39DDB261 /* UIProgressView+AFNetworking.h */; };
+		58B1B6FBDE7EFF9CB992F852 /* OpenShare+Alipay.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C15B4E3F8116466E78D5EC /* OpenShare+Alipay.h */; };
+		62988AE14DB2593F242D9C60 /* Pods-Kmoji-objc-AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8344AD7F9294226FBD69C232 /* Pods-Kmoji-objc-AFNetworking-dummy.m */; };
+		6EE43173B1633AD0A2F5ADB7 /* OpenShare+Renren.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E2522BC77D4E4BF63971E0 /* OpenShare+Renren.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		71B9EA95E41977E4C438F615 /* AFHTTPRequestOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DCF60E9B7EAB2B1A5768D487 /* AFHTTPRequestOperationManager.h */; };
+		7A9964305A3E08DBEA7D34FF /* OpenShare+Weixin.m in Sources */ = {isa = PBXBuildFile; fileRef = 230B32FABCA26996E4E7E43B /* OpenShare+Weixin.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7BF070F25A99AD77BF307309 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044BBE131BA8094C9D79EE6 /* MobileCoreServices.framework */; };
+		7D14B0B329CF1FEF7332E672 /* OpenShare+Weibo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE95E8AC82BFCA174F19811A /* OpenShare+Weibo.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7D2F48BD60F0D539A10D57ED /* OpenShare+Weixin.m in Sources */ = {isa = PBXBuildFile; fileRef = 230B32FABCA26996E4E7E43B /* OpenShare+Weixin.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8585BE06D3CC8BD44AF29CA4 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D0E36AD37B68F217C4C825 /* AFNetworkReachabilityManager.m */; };
+		8CD5729C440548BABF4E5CED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD648D2D27DD8C7B685DAFE /* Foundation.framework */; };
+		8EE927C253E826F439C28C8B /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = D2529653B14E87343DFF0347 /* UIButton+AFNetworking.h */; };
+		91133B495BD52B0DE33CB0AB /* OpenShare+QQ.h in Headers */ = {isa = PBXBuildFile; fileRef = C806F39DFB6C38BD4EFD1136 /* OpenShare+QQ.h */; };
+		97F67E285B2D9CF5456BF81C /* OpenShare+Alipay.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE18606AAED36D9070F0021 /* OpenShare+Alipay.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9B8E19A7401B4774FF8479B6 /* Pods-Kmoji-objc-JSONKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7157B9DE5AB98FB762B93E46 /* Pods-Kmoji-objc-JSONKit-dummy.m */; };
+		9C671BB341267C024009EB1B /* OpenShare+Weibo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D3676D9B16B26F2B508E617 /* OpenShare+Weibo.h */; };
+		9FE8138067B65D0E3CA5BE7A /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CBADCBE7F1E5A700FB38A93 /* AFSecurityPolicy.h */; };
+		A913D317CB2455BC919CCFA7 /* OpenShare+Alipay.h in Headers */ = {isa = PBXBuildFile; fileRef = F4C15B4E3F8116466E78D5EC /* OpenShare+Alipay.h */; };
+		AA3E47F3EB0D20E8CCF9BEDB /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA09DA28582CFA038FA22E1 /* UIProgressView+AFNetworking.m */; };
+		ABBF85A5F973738DC839BF97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD648D2D27DD8C7B685DAFE /* Foundation.framework */; };
+		AF1BAB43E6892F1D42B66904 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD648D2D27DD8C7B685DAFE /* Foundation.framework */; };
+		AF9E5E26F3C87DC44C22F71A /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5418C006B9389E67F459505 /* AFURLSessionManager.m */; };
+		B1618A80703B908DB0584011 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = F4573068E73AB181FBDF484A /* AFURLResponseSerialization.h */; };
+		B1D7805641C2AB6427F81F03 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52FCDC16E4EFD8B86F68CD0 /* CoreGraphics.framework */; };
+		B6EE45B4418053873ABED95F /* Pods-Kmoji-objc-OpenShare-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C304ADD80B6BF5380A440B3 /* Pods-Kmoji-objc-OpenShare-dummy.m */; };
+		BAA1456530D9125D0AE1A784 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = DCA865B92F6B64A8455EC7FB /* UIKit+AFNetworking.h */; };
+		BB11B77017B9B04670CB27E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD648D2D27DD8C7B685DAFE /* Foundation.framework */; };
+		BE01992D440F7452C848FB56 /* Pods-Kmoji-keyboard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC04FDC93134C5B625741BF3 /* Pods-Kmoji-keyboard-dummy.m */; };
+		BE71F0F0FD3120140C982B72 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B4834E459E95186C8AE64F /* AFHTTPRequestOperationManager.m */; };
+		C354E46B51BFC5E3B1AE007A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7A05A12DBE7F1C845E4F87 /* AFHTTPRequestOperation.m */; };
+		C4F97EEB7BB1CA265EF9C3E4 /* OpenShare+Weixin.h in Headers */ = {isa = PBXBuildFile; fileRef = 964F525C4FAB25869DB12234 /* OpenShare+Weixin.h */; };
+		C82D607C227BE26DEDE3B19C /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 97D7E95C6871311B93D36823 /* UIWebView+AFNetworking.m */; };
+		C8EA41D3D3BF8A2664DF7644 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CB76A478D0A0861D95DAA006 /* AFURLResponseSerialization.m */; };
+		CA84B49B5C2BFBF30F2117C0 /* OpenShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCD20E17B1659AD0CE9B9C2 /* OpenShare.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CF60A1A2A2D4E56171588E66 /* OpenShare+Alipay.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE18606AAED36D9070F0021 /* OpenShare+Alipay.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CF78E33682C9D664F495AAE7 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D1F521733FF7C555BCFD3E2 /* AFURLRequestSerialization.h */; };
+		E05ADFD3F12579E8E311478B /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E12F8D780469B1B655702E1 /* AFNetworking.h */; };
+		E4AAB1CCB4568F85FFE86E8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD648D2D27DD8C7B685DAFE /* Foundation.framework */; };
+		E4FA4D6604EE21FD447DB5B5 /* Pods-Kmoji-objc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5B49A4FE096649B523F4 /* Pods-Kmoji-objc-dummy.m */; };
+		E7509E8FF0934B1F357FC859 /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B0D612BE9B7F11CA5A173D /* UIAlertView+AFNetworking.m */; };
+		F073F2E423BA8CD5661ABC21 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 963DEF216446C1CC9366C015 /* Security.framework */; };
+		F54AE4EFF3FFBC073A72227A /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADFF5FB0678392BFD5675E7 /* AFURLRequestSerialization.m */; };
+		FA236CB8BFBCBCF60F332265 /* OpenShare+Weibo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D3676D9B16B26F2B508E617 /* OpenShare+Weibo.h */; };
+		FD70234E0858BA92A4BC9EFA /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A560E4ADC456CEF38DECAAB /* UIRefreshControl+AFNetworking.m */; };
+		FE13963BE1CA6F0DD02A1D45 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = EEA8D8A799E6755BF61D2EA9 /* AFNetworkReachabilityManager.h */; };
+		FF68CDA3A630E0C40EA2384E /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4249C5772CE5CA2988DADD05 /* UIActivityIndicatorView+AFNetworking.h */; };
+		FFD4AC69F59201FA4E445D32 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AA3DBBF6E89BD83EACE30DBC /* AFHTTPSessionManager.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12876D218F4908E3DF4F72E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BA9002C64439FC6894CA394 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD04699AE39A976DEA93B641;
+			remoteInfo = "Pods-Kmoji-objc-JSONKit";
+		};
+		6C4C7AABB0CCADF18E5228F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BA9002C64439FC6894CA394 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29D1D5151B2BFEEBEA85E4C8;
+			remoteInfo = "Pods-Kmoji-objc-OpenShare";
+		};
+		AE2D37B3936F665D7007FF95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BA9002C64439FC6894CA394 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A00EC589BCBBAA043F931FFC;
+			remoteInfo = "Pods-Kmoji-objc-AFNetworking";
+		};
+		F9C2A67550D893E9AA6BB802 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7BA9002C64439FC6894CA394 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F9A59A9B23179CC81EDE77E;
+			remoteInfo = "Pods-Kmoji-keyboard-OpenShare";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00CC54CC5A2677D3AB6A6C85 /* JSONKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		033E224DF73CC144338EF83E /* Pods-Kmoji-objc-OpenShare-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kmoji-objc-OpenShare-Private.xcconfig"; path = "../Pods-Kmoji-objc-OpenShare/Pods-Kmoji-objc-OpenShare-Private.xcconfig"; sourceTree = "<group>"; };
+		0960F235FAA210E9EF81009F /* OpenShare+Renren.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OpenShare+Renren.h"; path = "openshare/OpenShare+Renren.h"; sourceTree = "<group>"; };
+		0AE18606AAED36D9070F0021 /* OpenShare+Alipay.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OpenShare+Alipay.m"; path = "openshare/OpenShare+Alipay.m"; sourceTree = "<group>"; };
+		0C7B5B49A4FE096649B523F4 /* Pods-Kmoji-objc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Kmoji-objc-dummy.m"; sourceTree = "<group>"; };
+		0D7A05A12DBE7F1C845E4F87 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		0F7E34B80DDA7D9093DBB1F7 /* libPods-Kmoji-keyboard-OpenShare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kmoji-keyboard-OpenShare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1085B9BCEE57C5CDB10C9072 /* Pods-Kmoji-objc-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Kmoji-objc-acknowledgements.plist"; sourceTree = "<group>"; };
+		11B4834E459E95186C8AE64F /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperationManager.m; path = AFNetworking/AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		19391A6B4AD5FECAB4EC1522 /* Pods-Kmoji-objc-AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Kmoji-objc-AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		1BC2A52F59A10D4C10DAA827 /* OpenShareHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OpenShareHeader.h; path = openshare/OpenShareHeader.h; sourceTree = "<group>"; };
+		1D517D8989E8BA169E089AB4 /* Pods-Kmoji-objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-objc.debug.xcconfig"; sourceTree = "<group>"; };
+		230B32FABCA26996E4E7E43B /* OpenShare+Weixin.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OpenShare+Weixin.m"; path = "openshare/OpenShare+Weixin.m"; sourceTree = "<group>"; };
+		28A89CA83CDB726CE6DE7B57 /* Pods-Kmoji-keyboard-OpenShare-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Kmoji-keyboard-OpenShare-prefix.pch"; sourceTree = "<group>"; };
+		3193CC32896E07DA7FF1EF5D /* Pods-Kmoji-objc-JSONKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Kmoji-objc-JSONKit-prefix.pch"; sourceTree = "<group>"; };
+		31A6E2E927D00E776FD4B8AB /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		331B46E6E03CE057885B1E92 /* Pods-Kmoji-keyboard-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Kmoji-keyboard-resources.sh"; sourceTree = "<group>"; };
+		35407A6E7712D3A3CECDB54C /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		3C304ADD80B6BF5380A440B3 /* Pods-Kmoji-objc-OpenShare-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Pods-Kmoji-objc-OpenShare-dummy.m"; path = "../Pods-Kmoji-objc-OpenShare/Pods-Kmoji-objc-OpenShare-dummy.m"; sourceTree = "<group>"; };
+		3D3676D9B16B26F2B508E617 /* OpenShare+Weibo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OpenShare+Weibo.h"; path = "openshare/OpenShare+Weibo.h"; sourceTree = "<group>"; };
+		3E46611357F929B00AB36AAC /* libPods-Kmoji-objc-OpenShare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kmoji-objc-OpenShare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		416BE5FA716ECA539CEE15F6 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		4249C5772CE5CA2988DADD05 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		46BE7F7BF2F6E2DF9864ED1E /* Pods-Kmoji-objc-AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-objc-AFNetworking.xcconfig"; sourceTree = "<group>"; };
+		4A560E4ADC456CEF38DECAAB /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
+		4ADFF5FB0678392BFD5675E7 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		4B3AB2F9E3CFC30ACD384862 /* libPods-Kmoji-objc-JSONKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kmoji-objc-JSONKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EB0D5FDCDF1987F39DDB261 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		55ADD17EB7F308134337B581 /* Pods-Kmoji-keyboard-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Kmoji-keyboard-acknowledgements.markdown"; sourceTree = "<group>"; };
+		57959A3F290BD62F5914E8AE /* Pods-Kmoji-objc-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Kmoji-objc-acknowledgements.markdown"; sourceTree = "<group>"; };
+		58D0E36AD37B68F217C4C825 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		5AD648D2D27DD8C7B685DAFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5C6875FDDB4B437F063626F6 /* Pods-Kmoji-objc-OpenShare-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-Kmoji-objc-OpenShare-prefix.pch"; path = "../Pods-Kmoji-objc-OpenShare/Pods-Kmoji-objc-OpenShare-prefix.pch"; sourceTree = "<group>"; };
+		5E0186958031F9C19A476F94 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
+		616ED5D625F902AF5E4550A8 /* Pods-Kmoji-objc-OpenShare.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kmoji-objc-OpenShare.xcconfig"; path = "../Pods-Kmoji-objc-OpenShare/Pods-Kmoji-objc-OpenShare.xcconfig"; sourceTree = "<group>"; };
+		64A3616CFF3040FE7514177F /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
+		6953AA5727E1D9A58D26FF09 /* OpenShare+QQ.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OpenShare+QQ.m"; path = "openshare/OpenShare+QQ.m"; sourceTree = "<group>"; };
+		6B29682E8994E35374BE2955 /* Pods-Kmoji-keyboard-OpenShare-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Kmoji-keyboard-OpenShare-dummy.m"; sourceTree = "<group>"; };
+		6DB53AB2801CCFDC98FFB472 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		70536AB8B3D020B72D5F7129 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		70E27BCB6B96F65BF69E115E /* Pods-Kmoji-objc-JSONKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-objc-JSONKit.xcconfig"; sourceTree = "<group>"; };
+		7157B9DE5AB98FB762B93E46 /* Pods-Kmoji-objc-JSONKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Kmoji-objc-JSONKit-dummy.m"; sourceTree = "<group>"; };
+		78D822AF5B60D3FABF730EF5 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
+		7CA09DA28582CFA038FA22E1 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		7D081FA879329D642A803151 /* Pods-Kmoji-keyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-keyboard.debug.xcconfig"; sourceTree = "<group>"; };
+		8044BBE131BA8094C9D79EE6 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		8344AD7F9294226FBD69C232 /* Pods-Kmoji-objc-AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Kmoji-objc-AFNetworking-dummy.m"; sourceTree = "<group>"; };
+		8589F689BED1690BF9349374 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
+		89C58D7B2A3C0E6FA6BB0869 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		8CBADCBE7F1E5A700FB38A93 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
+		8D1F521733FF7C555BCFD3E2 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		8D603ACF620BC9565F457E07 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
+		8E627505B9D46A93BE096644 /* Pods-Kmoji-objc-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Kmoji-objc-resources.sh"; sourceTree = "<group>"; };
+		92270D5AADC0AA91B21C1C51 /* Pods-Kmoji-objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-objc.release.xcconfig"; sourceTree = "<group>"; };
+		94011786F848A70D2B61ACC3 /* Pods-Kmoji-objc-JSONKit-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-objc-JSONKit-Private.xcconfig"; sourceTree = "<group>"; };
+		963DEF216446C1CC9366C015 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		964F525C4FAB25869DB12234 /* OpenShare+Weixin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OpenShare+Weixin.h"; path = "openshare/OpenShare+Weixin.h"; sourceTree = "<group>"; };
+		97D7E95C6871311B93D36823 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		9DCD20E17B1659AD0CE9B9C2 /* OpenShare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OpenShare.m; path = openshare/OpenShare.m; sourceTree = "<group>"; };
+		9E12F8D780469B1B655702E1 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		9EFDF1C38CE954A99D7DDAE9 /* Pods-Kmoji-keyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-keyboard.release.xcconfig"; sourceTree = "<group>"; };
+		A19CE2ED4C608FD03A0BAC5C /* JSONKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		A3E8326D3333BADA3EE16F52 /* Pods-Kmoji-keyboard-OpenShare.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-keyboard-OpenShare.xcconfig"; sourceTree = "<group>"; };
+		AA3DBBF6E89BD83EACE30DBC /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		AC04FDC93134C5B625741BF3 /* Pods-Kmoji-keyboard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Kmoji-keyboard-dummy.m"; sourceTree = "<group>"; };
+		B067CBF5838095073C942DA6 /* Pods-Kmoji-keyboard-OpenShare-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-keyboard-OpenShare-Private.xcconfig"; sourceTree = "<group>"; };
+		B4F31911C4020898CEA2B753 /* libPods-Kmoji-keyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kmoji-keyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B52FCDC16E4EFD8B86F68CD0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		B5418C006B9389E67F459505 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		B743706E10CDAD17547AC9A3 /* Pods-Kmoji-keyboard-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Kmoji-keyboard-acknowledgements.plist"; sourceTree = "<group>"; };
+		C1B0D612BE9B7F11CA5A173D /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+AFNetworking.m"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
+		C33EE9F823B52E6DFC90394F /* libPods-Kmoji-objc-AFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kmoji-objc-AFNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4CC2AAFFE66D52AE7D3680B /* libPods-Kmoji-objc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kmoji-objc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6623AEB4B453861E5526532 /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
+		C806F39DFB6C38BD4EFD1136 /* OpenShare+QQ.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OpenShare+QQ.h"; path = "openshare/OpenShare+QQ.h"; sourceTree = "<group>"; };
+		CB76A478D0A0861D95DAA006 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		D144E90074EC6C4E352D4F3F /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
+		D2529653B14E87343DFF0347 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		DCA865B92F6B64A8455EC7FB /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
+		DCF60E9B7EAB2B1A5768D487 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = AFNetworking/AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		DFDBB7E3EFEF031DBCDF605B /* Pods-Kmoji-objc-AFNetworking-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kmoji-objc-AFNetworking-Private.xcconfig"; sourceTree = "<group>"; };
+		E534AE04B6A5D586FDD7F128 /* Pods-Kmoji-objc-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Kmoji-objc-environment.h"; sourceTree = "<group>"; };
+		E5E2522BC77D4E4BF63971E0 /* OpenShare+Renren.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OpenShare+Renren.m"; path = "openshare/OpenShare+Renren.m"; sourceTree = "<group>"; };
+		ECD2FF69161D59F3EBE0DB38 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		ED86A995E8D0ECFEA2AEC5ED /* OpenShare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OpenShare.h; path = openshare/OpenShare.h; sourceTree = "<group>"; };
+		EE53982E6D43EEC1643D5064 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		EEA8D8A799E6755BF61D2EA9 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		F0B3855B93CD0E16DEA2EEE9 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		F426DF8BCC4D06D91AA0C16F /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+AFNetworking.h"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
+		F4573068E73AB181FBDF484A /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		F4C15B4E3F8116466E78D5EC /* OpenShare+Alipay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OpenShare+Alipay.h"; path = "openshare/OpenShare+Alipay.h"; sourceTree = "<group>"; };
+		F93495740C2C60FD2BCC7975 /* Pods-Kmoji-keyboard-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Kmoji-keyboard-environment.h"; sourceTree = "<group>"; };
+		FE95E8AC82BFCA174F19811A /* OpenShare+Weibo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OpenShare+Weibo.m"; path = "openshare/OpenShare+Weibo.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		129913F274B4698EE63B9D19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1D7805641C2AB6427F81F03 /* CoreGraphics.framework in Frameworks */,
+				E4AAB1CCB4568F85FFE86E8F /* Foundation.framework in Frameworks */,
+				7BF070F25A99AD77BF307309 /* MobileCoreServices.framework in Frameworks */,
+				F073F2E423BA8CD5661ABC21 /* Security.framework in Frameworks */,
+				4AC5B70B28C026B3675A114C /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1566CAB80F45203CAC12F7DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB11B77017B9B04670CB27E8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		346977787D9DAC626B4F4D20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF1BAB43E6892F1D42B66904 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C550979AA59F4215BDC032F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E866E5750C750956686CD33 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A1A71482A40FB81240746BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABBF85A5F973738DC839BF97 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8278816BE2D6E9E10DEE8A5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CD5729C440548BABF4E5CED /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0332B08596405C85B1CD0681 /* OpenShare */ = {
+			isa = PBXGroup;
+			children = (
+				ED86A995E8D0ECFEA2AEC5ED /* OpenShare.h */,
+				9DCD20E17B1659AD0CE9B9C2 /* OpenShare.m */,
+				F4C15B4E3F8116466E78D5EC /* OpenShare+Alipay.h */,
+				0AE18606AAED36D9070F0021 /* OpenShare+Alipay.m */,
+				C806F39DFB6C38BD4EFD1136 /* OpenShare+QQ.h */,
+				6953AA5727E1D9A58D26FF09 /* OpenShare+QQ.m */,
+				0960F235FAA210E9EF81009F /* OpenShare+Renren.h */,
+				E5E2522BC77D4E4BF63971E0 /* OpenShare+Renren.m */,
+				3D3676D9B16B26F2B508E617 /* OpenShare+Weibo.h */,
+				FE95E8AC82BFCA174F19811A /* OpenShare+Weibo.m */,
+				964F525C4FAB25869DB12234 /* OpenShare+Weixin.h */,
+				230B32FABCA26996E4E7E43B /* OpenShare+Weixin.m */,
+				1BC2A52F59A10D4C10DAA827 /* OpenShareHeader.h */,
+				E972AAC4BB91A9CACFA644F0 /* Support Files */,
+			);
+			path = OpenShare;
+			sourceTree = "<group>";
+		};
+		0BFC5FBA7175CD48F0CD8DFC /* Pods-Kmoji-keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				55ADD17EB7F308134337B581 /* Pods-Kmoji-keyboard-acknowledgements.markdown */,
+				B743706E10CDAD17547AC9A3 /* Pods-Kmoji-keyboard-acknowledgements.plist */,
+				AC04FDC93134C5B625741BF3 /* Pods-Kmoji-keyboard-dummy.m */,
+				F93495740C2C60FD2BCC7975 /* Pods-Kmoji-keyboard-environment.h */,
+				331B46E6E03CE057885B1E92 /* Pods-Kmoji-keyboard-resources.sh */,
+				7D081FA879329D642A803151 /* Pods-Kmoji-keyboard.debug.xcconfig */,
+				9EFDF1C38CE954A99D7DDAE9 /* Pods-Kmoji-keyboard.release.xcconfig */,
+			);
+			name = "Pods-Kmoji-keyboard";
+			path = "Target Support Files/Pods-Kmoji-keyboard";
+			sourceTree = "<group>";
+		};
+		0EB70C4F97902B6BE77D819B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				150BDC5F55C8FD281E1E0A04 /* AFNetworking */,
+				E12EA8484F5A5990C732638D /* JSONKit */,
+				0332B08596405C85B1CD0681 /* OpenShare */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		150BDC5F55C8FD281E1E0A04 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				9E12F8D780469B1B655702E1 /* AFNetworking.h */,
+				26139E51DD8D78CB386FB8BF /* NSURLConnection */,
+				485955BDC466496D8369330B /* NSURLSession */,
+				5F507F237869A8E4FC05BBC2 /* Reachability */,
+				240B2DB810CDC3C7910A29F6 /* Security */,
+				861A552E6A1848931CA8AB8E /* Serialization */,
+				81729DC2D7B0036D9D7E8403 /* Support Files */,
+				898C4B2CF3F1928B937692B2 /* UIKit */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		240B2DB810CDC3C7910A29F6 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				8CBADCBE7F1E5A700FB38A93 /* AFSecurityPolicy.h */,
+				8589F689BED1690BF9349374 /* AFSecurityPolicy.m */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
+		26139E51DD8D78CB386FB8BF /* NSURLConnection */ = {
+			isa = PBXGroup;
+			children = (
+				F0B3855B93CD0E16DEA2EEE9 /* AFHTTPRequestOperation.h */,
+				0D7A05A12DBE7F1C845E4F87 /* AFHTTPRequestOperation.m */,
+				DCF60E9B7EAB2B1A5768D487 /* AFHTTPRequestOperationManager.h */,
+				11B4834E459E95186C8AE64F /* AFHTTPRequestOperationManager.m */,
+				35407A6E7712D3A3CECDB54C /* AFURLConnectionOperation.h */,
+				31A6E2E927D00E776FD4B8AB /* AFURLConnectionOperation.m */,
+			);
+			name = NSURLConnection;
+			sourceTree = "<group>";
+		};
+		3476815FED9A0226C8E48FB6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B4F31911C4020898CEA2B753 /* libPods-Kmoji-keyboard.a */,
+				0F7E34B80DDA7D9093DBB1F7 /* libPods-Kmoji-keyboard-OpenShare.a */,
+				C4CC2AAFFE66D52AE7D3680B /* libPods-Kmoji-objc.a */,
+				C33EE9F823B52E6DFC90394F /* libPods-Kmoji-objc-AFNetworking.a */,
+				4B3AB2F9E3CFC30ACD384862 /* libPods-Kmoji-objc-JSONKit.a */,
+				3E46611357F929B00AB36AAC /* libPods-Kmoji-objc-OpenShare.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		485955BDC466496D8369330B /* NSURLSession */ = {
+			isa = PBXGroup;
+			children = (
+				AA3DBBF6E89BD83EACE30DBC /* AFHTTPSessionManager.h */,
+				EE53982E6D43EEC1643D5064 /* AFHTTPSessionManager.m */,
+				64A3616CFF3040FE7514177F /* AFURLSessionManager.h */,
+				B5418C006B9389E67F459505 /* AFURLSessionManager.m */,
+			);
+			name = NSURLSession;
+			sourceTree = "<group>";
+		};
+		5EFF94F3E9DB3FA3071A8D3B /* Pods-Kmoji-objc */ = {
+			isa = PBXGroup;
+			children = (
+				57959A3F290BD62F5914E8AE /* Pods-Kmoji-objc-acknowledgements.markdown */,
+				1085B9BCEE57C5CDB10C9072 /* Pods-Kmoji-objc-acknowledgements.plist */,
+				0C7B5B49A4FE096649B523F4 /* Pods-Kmoji-objc-dummy.m */,
+				E534AE04B6A5D586FDD7F128 /* Pods-Kmoji-objc-environment.h */,
+				8E627505B9D46A93BE096644 /* Pods-Kmoji-objc-resources.sh */,
+				1D517D8989E8BA169E089AB4 /* Pods-Kmoji-objc.debug.xcconfig */,
+				92270D5AADC0AA91B21C1C51 /* Pods-Kmoji-objc.release.xcconfig */,
+			);
+			name = "Pods-Kmoji-objc";
+			path = "Target Support Files/Pods-Kmoji-objc";
+			sourceTree = "<group>";
+		};
+		5F507F237869A8E4FC05BBC2 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				EEA8D8A799E6755BF61D2EA9 /* AFNetworkReachabilityManager.h */,
+				58D0E36AD37B68F217C4C825 /* AFNetworkReachabilityManager.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		668E47F9B6E83B9DE3F7B654 = {
+			isa = PBXGroup;
+			children = (
+				70536AB8B3D020B72D5F7129 /* Podfile */,
+				DCAE562671505533704358FE /* Frameworks */,
+				0EB70C4F97902B6BE77D819B /* Pods */,
+				3476815FED9A0226C8E48FB6 /* Products */,
+				D4F8345586A25283D6E1C850 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		81729DC2D7B0036D9D7E8403 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				46BE7F7BF2F6E2DF9864ED1E /* Pods-Kmoji-objc-AFNetworking.xcconfig */,
+				DFDBB7E3EFEF031DBCDF605B /* Pods-Kmoji-objc-AFNetworking-Private.xcconfig */,
+				8344AD7F9294226FBD69C232 /* Pods-Kmoji-objc-AFNetworking-dummy.m */,
+				19391A6B4AD5FECAB4EC1522 /* Pods-Kmoji-objc-AFNetworking-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Kmoji-objc-AFNetworking";
+			sourceTree = "<group>";
+		};
+		861A552E6A1848931CA8AB8E /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				8D1F521733FF7C555BCFD3E2 /* AFURLRequestSerialization.h */,
+				4ADFF5FB0678392BFD5675E7 /* AFURLRequestSerialization.m */,
+				F4573068E73AB181FBDF484A /* AFURLResponseSerialization.h */,
+				CB76A478D0A0861D95DAA006 /* AFURLResponseSerialization.m */,
+			);
+			name = Serialization;
+			sourceTree = "<group>";
+		};
+		898C4B2CF3F1928B937692B2 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				8D603ACF620BC9565F457E07 /* AFNetworkActivityIndicatorManager.h */,
+				D144E90074EC6C4E352D4F3F /* AFNetworkActivityIndicatorManager.m */,
+				4249C5772CE5CA2988DADD05 /* UIActivityIndicatorView+AFNetworking.h */,
+				6DB53AB2801CCFDC98FFB472 /* UIActivityIndicatorView+AFNetworking.m */,
+				F426DF8BCC4D06D91AA0C16F /* UIAlertView+AFNetworking.h */,
+				C1B0D612BE9B7F11CA5A173D /* UIAlertView+AFNetworking.m */,
+				D2529653B14E87343DFF0347 /* UIButton+AFNetworking.h */,
+				78D822AF5B60D3FABF730EF5 /* UIButton+AFNetworking.m */,
+				416BE5FA716ECA539CEE15F6 /* UIImageView+AFNetworking.h */,
+				89C58D7B2A3C0E6FA6BB0869 /* UIImageView+AFNetworking.m */,
+				DCA865B92F6B64A8455EC7FB /* UIKit+AFNetworking.h */,
+				4EB0D5FDCDF1987F39DDB261 /* UIProgressView+AFNetworking.h */,
+				7CA09DA28582CFA038FA22E1 /* UIProgressView+AFNetworking.m */,
+				C6623AEB4B453861E5526532 /* UIRefreshControl+AFNetworking.h */,
+				4A560E4ADC456CEF38DECAAB /* UIRefreshControl+AFNetworking.m */,
+				5E0186958031F9C19A476F94 /* UIWebView+AFNetworking.h */,
+				97D7E95C6871311B93D36823 /* UIWebView+AFNetworking.m */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		9D6F5A27A18FC926ECA07EF1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B52FCDC16E4EFD8B86F68CD0 /* CoreGraphics.framework */,
+				5AD648D2D27DD8C7B685DAFE /* Foundation.framework */,
+				8044BBE131BA8094C9D79EE6 /* MobileCoreServices.framework */,
+				963DEF216446C1CC9366C015 /* Security.framework */,
+				ECD2FF69161D59F3EBE0DB38 /* SystemConfiguration.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D0E00925F869829A602D0268 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				70E27BCB6B96F65BF69E115E /* Pods-Kmoji-objc-JSONKit.xcconfig */,
+				94011786F848A70D2B61ACC3 /* Pods-Kmoji-objc-JSONKit-Private.xcconfig */,
+				7157B9DE5AB98FB762B93E46 /* Pods-Kmoji-objc-JSONKit-dummy.m */,
+				3193CC32896E07DA7FF1EF5D /* Pods-Kmoji-objc-JSONKit-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Kmoji-objc-JSONKit";
+			sourceTree = "<group>";
+		};
+		D4F8345586A25283D6E1C850 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0BFC5FBA7175CD48F0CD8DFC /* Pods-Kmoji-keyboard */,
+				5EFF94F3E9DB3FA3071A8D3B /* Pods-Kmoji-objc */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		DCAE562671505533704358FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D6F5A27A18FC926ECA07EF1 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E12EA8484F5A5990C732638D /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				A19CE2ED4C608FD03A0BAC5C /* JSONKit.h */,
+				00CC54CC5A2677D3AB6A6C85 /* JSONKit.m */,
+				D0E00925F869829A602D0268 /* Support Files */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		E972AAC4BB91A9CACFA644F0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A3E8326D3333BADA3EE16F52 /* Pods-Kmoji-keyboard-OpenShare.xcconfig */,
+				B067CBF5838095073C942DA6 /* Pods-Kmoji-keyboard-OpenShare-Private.xcconfig */,
+				6B29682E8994E35374BE2955 /* Pods-Kmoji-keyboard-OpenShare-dummy.m */,
+				28A89CA83CDB726CE6DE7B57 /* Pods-Kmoji-keyboard-OpenShare-prefix.pch */,
+				616ED5D625F902AF5E4550A8 /* Pods-Kmoji-objc-OpenShare.xcconfig */,
+				033E224DF73CC144338EF83E /* Pods-Kmoji-objc-OpenShare-Private.xcconfig */,
+				3C304ADD80B6BF5380A440B3 /* Pods-Kmoji-objc-OpenShare-dummy.m */,
+				5C6875FDDB4B437F063626F6 /* Pods-Kmoji-objc-OpenShare-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Kmoji-keyboard-OpenShare";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3035568023F2CE312E80991B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A913D317CB2455BC919CCFA7 /* OpenShare+Alipay.h in Headers */,
+				91133B495BD52B0DE33CB0AB /* OpenShare+QQ.h in Headers */,
+				4F5DE2EC6C01219F7BD97B74 /* OpenShare+Renren.h in Headers */,
+				FA236CB8BFBCBCF60F332265 /* OpenShare+Weibo.h in Headers */,
+				0261F0C09DDB342A7C2700D9 /* OpenShare+Weixin.h in Headers */,
+				1C392E046228ABB5F59A8A1A /* OpenShare.h in Headers */,
+				1C06993975610B169EA1FAA1 /* OpenShareHeader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97EFFB469AA07485EC66E901 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58B1B6FBDE7EFF9CB992F852 /* OpenShare+Alipay.h in Headers */,
+				43C2FB50B04C82CD959DAB3C /* OpenShare+QQ.h in Headers */,
+				1D2039E274B70CDF281F53D1 /* OpenShare+Renren.h in Headers */,
+				9C671BB341267C024009EB1B /* OpenShare+Weibo.h in Headers */,
+				C4F97EEB7BB1CA265EF9C3E4 /* OpenShare+Weixin.h in Headers */,
+				0374D63FADB09782AD96B8E2 /* OpenShare.h in Headers */,
+				1B4A100F65F46CFC16C69765 /* OpenShareHeader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9E5BD2552274393CBB4F01B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3594479CD09A04973109E889 /* JSONKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F31D2DC790F0BEB1029C7855 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B1A8C539062748C38E6FE96 /* AFHTTPRequestOperation.h in Headers */,
+				71B9EA95E41977E4C438F615 /* AFHTTPRequestOperationManager.h in Headers */,
+				FFD4AC69F59201FA4E445D32 /* AFHTTPSessionManager.h in Headers */,
+				1DFD29F6653A1719E12613B0 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				FE13963BE1CA6F0DD02A1D45 /* AFNetworkReachabilityManager.h in Headers */,
+				E05ADFD3F12579E8E311478B /* AFNetworking.h in Headers */,
+				9FE8138067B65D0E3CA5BE7A /* AFSecurityPolicy.h in Headers */,
+				44384E6CCE87525A3CBB5A6E /* AFURLConnectionOperation.h in Headers */,
+				CF78E33682C9D664F495AAE7 /* AFURLRequestSerialization.h in Headers */,
+				B1618A80703B908DB0584011 /* AFURLResponseSerialization.h in Headers */,
+				25A65D55903EBE0AB8C08692 /* AFURLSessionManager.h in Headers */,
+				FF68CDA3A630E0C40EA2384E /* UIActivityIndicatorView+AFNetworking.h in Headers */,
+				537B4A4672F05C1A371DFBDC /* UIAlertView+AFNetworking.h in Headers */,
+				8EE927C253E826F439C28C8B /* UIButton+AFNetworking.h in Headers */,
+				32A9833C703CA169013BF351 /* UIImageView+AFNetworking.h in Headers */,
+				BAA1456530D9125D0AE1A784 /* UIKit+AFNetworking.h in Headers */,
+				5605C6EB41982CEC56C6EDCD /* UIProgressView+AFNetworking.h in Headers */,
+				4FE56AADB9BC3812EFD3CFCA /* UIRefreshControl+AFNetworking.h in Headers */,
+				02DE0CBD2AECC366493420B6 /* UIWebView+AFNetworking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		29D1D5151B2BFEEBEA85E4C8 /* Pods-Kmoji-objc-OpenShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23FA83FD229608CFD542EEB4 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-objc-OpenShare" */;
+			buildPhases = (
+				5631EB0AA8BE2F9105AC9B2A /* Sources */,
+				4A1A71482A40FB81240746BF /* Frameworks */,
+				3035568023F2CE312E80991B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Kmoji-objc-OpenShare";
+			productName = "Pods-Kmoji-objc-OpenShare";
+			productReference = 3E46611357F929B00AB36AAC /* libPods-Kmoji-objc-OpenShare.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		381CB77EBD25222E4BB32159 /* Pods-Kmoji-objc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D1971281E1D85A8DDC3D964 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-objc" */;
+			buildPhases = (
+				6AF73389813B073EF0C8DFF6 /* Sources */,
+				8278816BE2D6E9E10DEE8A5E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4892E4F0EA38E10A90A8ABD /* PBXTargetDependency */,
+				62C60B389B63A4B56083FCBB /* PBXTargetDependency */,
+				796F51D546FB99FC6576ED4F /* PBXTargetDependency */,
+			);
+			name = "Pods-Kmoji-objc";
+			productName = "Pods-Kmoji-objc";
+			productReference = C4CC2AAFFE66D52AE7D3680B /* libPods-Kmoji-objc.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3F9A59A9B23179CC81EDE77E /* Pods-Kmoji-keyboard-OpenShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA37A3C6A11D87DE71537168 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-keyboard-OpenShare" */;
+			buildPhases = (
+				EC201A1B853FD6AE086410AC /* Sources */,
+				346977787D9DAC626B4F4D20 /* Frameworks */,
+				97EFFB469AA07485EC66E901 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Kmoji-keyboard-OpenShare";
+			productName = "Pods-Kmoji-keyboard-OpenShare";
+			productReference = 0F7E34B80DDA7D9093DBB1F7 /* libPods-Kmoji-keyboard-OpenShare.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A00EC589BCBBAA043F931FFC /* Pods-Kmoji-objc-AFNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCE62562996D884491EEDCA3 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-objc-AFNetworking" */;
+			buildPhases = (
+				7802E8699C2B66F23430F866 /* Sources */,
+				129913F274B4698EE63B9D19 /* Frameworks */,
+				F31D2DC790F0BEB1029C7855 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Kmoji-objc-AFNetworking";
+			productName = "Pods-Kmoji-objc-AFNetworking";
+			productReference = C33EE9F823B52E6DFC90394F /* libPods-Kmoji-objc-AFNetworking.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BD04699AE39A976DEA93B641 /* Pods-Kmoji-objc-JSONKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D31F18CB948EA5EC46CE2033 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-objc-JSONKit" */;
+			buildPhases = (
+				97F8FA88527712A074FE6E70 /* Sources */,
+				3C550979AA59F4215BDC032F /* Frameworks */,
+				D9E5BD2552274393CBB4F01B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Kmoji-objc-JSONKit";
+			productName = "Pods-Kmoji-objc-JSONKit";
+			productReference = 4B3AB2F9E3CFC30ACD384862 /* libPods-Kmoji-objc-JSONKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F11B918C31456A70A502B9DB /* Pods-Kmoji-keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAA693072A4B14112B6CAF93 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-keyboard" */;
+			buildPhases = (
+				E8FBEA3B3A3ADB060249FEEC /* Sources */,
+				1566CAB80F45203CAC12F7DC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FA0034C43ABCBAE4DEB18FD /* PBXTargetDependency */,
+			);
+			name = "Pods-Kmoji-keyboard";
+			productName = "Pods-Kmoji-keyboard";
+			productReference = B4F31911C4020898CEA2B753 /* libPods-Kmoji-keyboard.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7BA9002C64439FC6894CA394 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = 4FAD9AB4E48EAAC2AEDFDC88 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 668E47F9B6E83B9DE3F7B654;
+			productRefGroup = 3476815FED9A0226C8E48FB6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F11B918C31456A70A502B9DB /* Pods-Kmoji-keyboard */,
+				3F9A59A9B23179CC81EDE77E /* Pods-Kmoji-keyboard-OpenShare */,
+				381CB77EBD25222E4BB32159 /* Pods-Kmoji-objc */,
+				A00EC589BCBBAA043F931FFC /* Pods-Kmoji-objc-AFNetworking */,
+				BD04699AE39A976DEA93B641 /* Pods-Kmoji-objc-JSONKit */,
+				29D1D5151B2BFEEBEA85E4C8 /* Pods-Kmoji-objc-OpenShare */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5631EB0AA8BE2F9105AC9B2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF60A1A2A2D4E56171588E66 /* OpenShare+Alipay.m in Sources */,
+				1788019AA0742AA233817EF9 /* OpenShare+QQ.m in Sources */,
+				6EE43173B1633AD0A2F5ADB7 /* OpenShare+Renren.m in Sources */,
+				0DE6F204EE0F2D3E6F28FFDA /* OpenShare+Weibo.m in Sources */,
+				7D2F48BD60F0D539A10D57ED /* OpenShare+Weixin.m in Sources */,
+				CA84B49B5C2BFBF30F2117C0 /* OpenShare.m in Sources */,
+				B6EE45B4418053873ABED95F /* Pods-Kmoji-objc-OpenShare-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AF73389813B073EF0C8DFF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4FA4D6604EE21FD447DB5B5 /* Pods-Kmoji-objc-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7802E8699C2B66F23430F866 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C354E46B51BFC5E3B1AE007A /* AFHTTPRequestOperation.m in Sources */,
+				BE71F0F0FD3120140C982B72 /* AFHTTPRequestOperationManager.m in Sources */,
+				45A6EF2173CC7E04598C35DE /* AFHTTPSessionManager.m in Sources */,
+				34E000DDDD91D36E3F64E219 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				8585BE06D3CC8BD44AF29CA4 /* AFNetworkReachabilityManager.m in Sources */,
+				07BE2D54B6EBE50CA477093C /* AFSecurityPolicy.m in Sources */,
+				0CD48511FDD1A27A8FBF1354 /* AFURLConnectionOperation.m in Sources */,
+				F54AE4EFF3FFBC073A72227A /* AFURLRequestSerialization.m in Sources */,
+				C8EA41D3D3BF8A2664DF7644 /* AFURLResponseSerialization.m in Sources */,
+				AF9E5E26F3C87DC44C22F71A /* AFURLSessionManager.m in Sources */,
+				62988AE14DB2593F242D9C60 /* Pods-Kmoji-objc-AFNetworking-dummy.m in Sources */,
+				040F09D5E43CA5595AB8E723 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				E7509E8FF0934B1F357FC859 /* UIAlertView+AFNetworking.m in Sources */,
+				33245909211C4B049B7C24A5 /* UIButton+AFNetworking.m in Sources */,
+				02A9EA1A26F894014C8141E9 /* UIImageView+AFNetworking.m in Sources */,
+				AA3E47F3EB0D20E8CCF9BEDB /* UIProgressView+AFNetworking.m in Sources */,
+				FD70234E0858BA92A4BC9EFA /* UIRefreshControl+AFNetworking.m in Sources */,
+				C82D607C227BE26DEDE3B19C /* UIWebView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97F8FA88527712A074FE6E70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B8DE9363039E389F3F4FA49 /* JSONKit.m in Sources */,
+				9B8E19A7401B4774FF8479B6 /* Pods-Kmoji-objc-JSONKit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8FBEA3B3A3ADB060249FEEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE01992D440F7452C848FB56 /* Pods-Kmoji-keyboard-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC201A1B853FD6AE086410AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97F67E285B2D9CF5456BF81C /* OpenShare+Alipay.m in Sources */,
+				26D0C7274ACB6603DACB7A05 /* OpenShare+QQ.m in Sources */,
+				101CB397A5F884FEB137D74F /* OpenShare+Renren.m in Sources */,
+				7D14B0B329CF1FEF7332E672 /* OpenShare+Weibo.m in Sources */,
+				7A9964305A3E08DBEA7D34FF /* OpenShare+Weixin.m in Sources */,
+				2BA351077F27292D7662618D /* OpenShare.m in Sources */,
+				13D8801C7A7573D3128A3E0B /* Pods-Kmoji-keyboard-OpenShare-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62C60B389B63A4B56083FCBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Kmoji-objc-JSONKit";
+			target = BD04699AE39A976DEA93B641 /* Pods-Kmoji-objc-JSONKit */;
+			targetProxy = 12876D218F4908E3DF4F72E1 /* PBXContainerItemProxy */;
+		};
+		796F51D546FB99FC6576ED4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Kmoji-objc-OpenShare";
+			target = 29D1D5151B2BFEEBEA85E4C8 /* Pods-Kmoji-objc-OpenShare */;
+			targetProxy = 6C4C7AABB0CCADF18E5228F3 /* PBXContainerItemProxy */;
+		};
+		7FA0034C43ABCBAE4DEB18FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Kmoji-keyboard-OpenShare";
+			target = 3F9A59A9B23179CC81EDE77E /* Pods-Kmoji-keyboard-OpenShare */;
+			targetProxy = F9C2A67550D893E9AA6BB802 /* PBXContainerItemProxy */;
+		};
+		D4892E4F0EA38E10A90A8ABD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Kmoji-objc-AFNetworking";
+			target = A00EC589BCBBAA043F931FFC /* Pods-Kmoji-objc-AFNetworking */;
+			targetProxy = AE2D37B3936F665D7007FF95 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04C4505D9A5C4879EFDEA334 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 033E224DF73CC144338EF83E /* Pods-Kmoji-objc-OpenShare-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Kmoji-objc-OpenShare/Pods-Kmoji-objc-OpenShare-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		0CB5BB82CA9AEB0857B5957B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B067CBF5838095073C942DA6 /* Pods-Kmoji-keyboard-OpenShare-Private.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Kmoji-keyboard-OpenShare/Pods-Kmoji-keyboard-OpenShare-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "-DKEYBOARD_EXTENSION";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		250F3609E970068E08D1F77C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 033E224DF73CC144338EF83E /* Pods-Kmoji-objc-OpenShare-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Kmoji-objc-OpenShare/Pods-Kmoji-objc-OpenShare-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		28D76D0920D7A03CE5CA9516 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFDBB7E3EFEF031DBCDF605B /* Pods-Kmoji-objc-AFNetworking-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Kmoji-objc-AFNetworking/Pods-Kmoji-objc-AFNetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		494FC5C340B85CE88FB6D87A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFDBB7E3EFEF031DBCDF605B /* Pods-Kmoji-objc-AFNetworking-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Kmoji-objc-AFNetworking/Pods-Kmoji-objc-AFNetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		4F719D5693BD8A826B837D4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		583319237C2A302159D50339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D517D8989E8BA169E089AB4 /* Pods-Kmoji-objc.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		689EF6739147B8982A77CC81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6DAAF7E4A7C5087179E545F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92270D5AADC0AA91B21C1C51 /* Pods-Kmoji-objc.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A0A51B65FE5DCC7134FCEC2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94011786F848A70D2B61ACC3 /* Pods-Kmoji-objc-JSONKit-Private.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Kmoji-objc-JSONKit/Pods-Kmoji-objc-JSONKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A1E63AC9C9863AA43D4F1898 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D081FA879329D642A803151 /* Pods-Kmoji-keyboard.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AF294F1C359887407909B5D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EFDF1C38CE954A99D7DDAE9 /* Pods-Kmoji-keyboard.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		CFDB3C95EEB74C705EFAD52C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94011786F848A70D2B61ACC3 /* Pods-Kmoji-objc-JSONKit-Private.xcconfig */;
+			buildSettings = {
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Kmoji-objc-JSONKit/Pods-Kmoji-objc-JSONKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E80C06DF3F506CFB9C7A145C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B067CBF5838095073C942DA6 /* Pods-Kmoji-keyboard-OpenShare-Private.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Kmoji-keyboard-OpenShare/Pods-Kmoji-keyboard-OpenShare-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_CFLAGS = "-DKEYBOARD_EXTENSION";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		23FA83FD229608CFD542EEB4 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-objc-OpenShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				250F3609E970068E08D1F77C /* Debug */,
+				04C4505D9A5C4879EFDEA334 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FAD9AB4E48EAAC2AEDFDC88 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F719D5693BD8A826B837D4F /* Debug */,
+				689EF6739147B8982A77CC81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D1971281E1D85A8DDC3D964 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-objc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				583319237C2A302159D50339 /* Debug */,
+				6DAAF7E4A7C5087179E545F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA37A3C6A11D87DE71537168 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-keyboard-OpenShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E80C06DF3F506CFB9C7A145C /* Debug */,
+				0CB5BB82CA9AEB0857B5957B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAA693072A4B14112B6CAF93 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1E63AC9C9863AA43D4F1898 /* Debug */,
+				AF294F1C359887407909B5D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D31F18CB948EA5EC46CE2033 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-objc-JSONKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0A51B65FE5DCC7134FCEC2E /* Debug */,
+				CFDB3C95EEB74C705EFAD52C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCE62562996D884491EEDCA3 /* Build configuration list for PBXNativeTarget "Pods-Kmoji-objc-AFNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28D76D0920D7A03CE5CA9516 /* Debug */,
+				494FC5C340B85CE88FB6D87A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7BA9002C64439FC6894CA394 /* Project object */;
+}
