@@ -27,7 +27,13 @@
 			<string>com.fantaxy.kmoji</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx689fb6eef31dc0b2</string>
+                <string>mua</string>
+                <!--       微信        -->
+                <string>wx689fb6eef31dc0b2</string>
+                <!--       QQ         -->
+                <string>tencent1104799738</string>
+                <string>tencent1104799738.content</string>
+                <string>QQ41D9E7FA</string>
 			</array>
 		</dict>
 	</array>

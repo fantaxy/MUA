@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class KMEmotionTag;
+
 @protocol GroupSelectViewDelegate <UIScrollViewDelegate>
 
-- (void)didSelectGroupWithName:(NSString *)groupName;
+- (void)didSelectGroup:(KMEmotionTag *)tag;
 
 @end
 
 @interface GroupSelectView : UIScrollView
 
-@property (nonatomic, weak) id<GroupSelectViewDelegate> delegate;
+@property (nonatomic, weak) id<GroupSelectViewDelegate> groupSelectViewDelegate;
 
 - (void)setupWithGroups:(NSArray *)groupArray;
 - (void)selectPreviousGroup;

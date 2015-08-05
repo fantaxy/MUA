@@ -8,28 +8,33 @@
 
 #import "KMEmotionGridView.h"
 #import "GlobalConfig.h"
-#import "FWTPopoverView.h"
 #import "UIImage+animatedGIF.h"
 #import "AppDelegate.h"
 #import "KMEmotionManager.h"
+#import "KMEmotionItem.h"
+#import "FPPopoverController.h"
+#import "KMURLHelper.h"
+
+#import "UIActivityIndicatorView+AFNetworking.h"
 
 @interface KMEmotionGridView ()
 {
     int hInterval;
     int vInterval;
-    int buttonWidth;
-    int buttonHeight;
+    int tileWidth;
+    int tileHeight;
     int numberInRow;
 }
 
-@property (nonatomic, weak) UIButton *currentFocusButton;
-@property (nonatomic, weak) UIButton *previousSelectedButton;
-@property (nonatomic, strong) UIImageView *imageTipView;
-@property (nonatomic, strong) FWTPopoverView *popoverView;
+@property (nonatomic, weak) UIImageView *currentFocusTile;
+@property (nonatomic, weak) UIImageView *currentSelectedTile;
+@property (nonatomic, strong) FPPopoverController *popoverView;
 @property (nonatomic, weak) UIScrollView *parentScroolView;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
 @property (nonatomic, strong) UIButton *deleteItemButton;
 @property (nonatomic, weak) UITabBar *tabBar;
+@property (nonatomic, strong) UIButton *sendButton;
+@property (nonatomic, strong) NSArray *itemArray;
 
 @end
 
@@ -40,7 +45,6 @@
     self = [super init];
     if (self)
     {
-        _imageTipView = [UIImageView new];
         UITabBarController *tabBarController = (UITabBarController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
         _tabBar = tabBarController.tabBar;
         
@@ -51,91 +55,78 @@
     return self;
 }
 
-- (void)setUpEmotionsWithGroupName:(NSString *)groupName
+- (void)awakeFromNib
 {
-    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    self.parentScroolView = (UIScrollView *)self.superview;
-    NSString *emotionsDirPath = [NSString stringWithFormat:@"%@/%@", emotionsDirURL.path, groupName];
-    
-    NSError *error;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *emotionArray = [fileManager contentsOfDirectoryAtPath:emotionsDirPath error:&error];
-    for (NSString *name in emotionArray)
-    {
-        if (![name isEqualToString:CoverImageName])
-        {
-            NSString *emotionName = [NSString stringWithFormat:@"%@/%@", groupName, name];
-            UIButton *button = [self createEmotionButtonWithName:emotionName];
-            [self addSubview:button];
-        }
-    }
+    _sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_sendButton setBackgroundColor:UIColorWithRGBA(0, 0, 0, 0.4)];
+    [_sendButton setImage:[UIImage imageNamed:@"sendBtn"] forState:UIControlStateNormal];
+    [_sendButton setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    _sendButton.layer.cornerRadius = 6.0f;
+    [_sendButton addTarget:self action:@selector(sendButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setUpEmotionsWithArray:(NSArray *)emotionArray
 {
+    self.itemArray = emotionArray;
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     self.parentScroolView = (UIScrollView *)self.superview;
     
-    for (NSString *name in emotionArray)
+    for (id item in emotionArray)
     {
-        if (![name containsString:CoverImageName])
-        {
-            UIButton *button = [self createEmotionButtonWithName:name];
-            [self addSubview:button];
+        NSString *name = nil;
+        if ([item isKindOfClass:[KMEmotionItem class]]) {
+            KMEmotionItem *eItem = (KMEmotionItem *)item;
+            name = eItem.imageName;
         }
+        else {
+            name = item;
+        }
+        UIImageView *tile = [self createEmotionTileWithName:name];
+        [self addSubview:tile];
     }
-    [self layoutEmotionButtons];
+    [self layoutEmotionTiles];
 }
 
-- (UIButton *)createEmotionButtonWithName:(NSString *)name
+- (UIImageView *)createEmotionTileWithName:(NSString *)name
 {
-    UIButton *button = [[UIButton alloc] init];
-    [button setUserInteractionEnabled:NO];
-    [button setBackgroundColor:[UIColor whiteColor]];
-    [button setTitle:name forState:UIControlStateNormal];
-    [button.layer setBorderColor:UIColorWithRGB(198, 198, 198).CGColor];
-    [button.layer setCornerRadius:6.0];
-    [button setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
-    NSString *imagePath;
-    if (self.displayType == GridViewType_Normal)
-    {
-        imagePath = [NSString stringWithFormat:@"%@/%@", emotionsDirURL.path, name];
-    }
-    else
-    {
-        imagePath = [NSString stringWithFormat:@"%@/%@", sharedEmotionsDirURL.path, name];
-    }
-    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    [button setImage:image forState:UIControlStateNormal];
-    return button;
+    UIImageView *imageView = [[UIImageView alloc] init];
+    [imageView.layer setCornerRadius:4.0];
+    [imageView setClipsToBounds:YES];
+    
+    [[KMEmotionManager sharedManager] getImageWithName:name completionBlock:^(NSString *imagePath, NSError *error) {
+        if (!error) {
+            UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+            [imageView setImage:image];
+        }
+    }];
+    return imageView;
 }
 
-- (void)layoutEmotionButtons
+- (void)layoutEmotionTiles
 {
     int totalWidth = self.frame.size.width;
     
     vInterval = 10;
     numberInRow = 4;
-    hInterval = 10;
-    buttonWidth = (totalWidth - hInterval*(numberInRow-1))/4;
-    buttonHeight = buttonWidth;
+    hInterval = 12;
+    tileWidth = (totalWidth - hInterval*(numberInRow-1))/4;
+    tileHeight = tileWidth;
     
     int rowIndex = 0, columnIndex;
     NSUInteger count = self.subviews.count;
     for (int index = 0; index < count; index++)
     {
-        UIButton *button = self.subviews[index];
+        UIImageView *tile = self.subviews[index];
         rowIndex  = index/numberInRow;
         columnIndex = index%numberInRow;
-        CGRect frame = button.frame;
-        frame.size = CGSizeMake(buttonWidth, buttonHeight);
-        frame.origin.x = (buttonWidth + hInterval) * columnIndex;
-        frame.origin.y = (buttonHeight + vInterval) * rowIndex;
-        button.frame = frame;
+        CGRect frame = tile.frame;
+        frame.size = CGSizeMake(tileWidth, tileHeight);
+        frame.origin.x = (tileWidth + hInterval) * columnIndex;
+        frame.origin.y = (tileHeight + vInterval) * rowIndex;
+        tile.frame = frame;
     }
-    int totalHeight = (buttonHeight + vInterval) * (rowIndex + 1);
+    int totalHeight = (tileHeight + vInterval) * (rowIndex + 1);
     CGRect frame = self.frame;
     frame.size.height = totalHeight;
     self.frame = frame;
@@ -153,7 +144,7 @@
     {
         _isEditing = isEditing;
         _selectedItems = [NSMutableArray new];
-        [self updateButtonBorderWithWidth:1.0f];
+        [self updateTileBorderWithWidth:1.0f];
         self.deleteItemButton.frame = self.tabBar.frame;
         [self.tabBar.superview addSubview:self.deleteItemButton];
         [self updateDeleteButton];
@@ -161,8 +152,8 @@
     else
     {
         _isEditing = isEditing;
-        [self removeButtonMask];
-        [self updateButtonBorderWithWidth:0.0f];
+        [self removeTileMask];
+        [self updateTileBorderWithWidth:0.0f];
         [self.deleteItemButton removeFromSuperview];
     }
 }
@@ -170,48 +161,68 @@
 - (void)selectItemAtIndex:(int)index
 {
     NSLog(@"%s", __func__);
-    if (index <= self.subviews.count)
+    if (index < self.subviews.count)
     {
-        UIButton *button = [self.subviews objectAtIndex:index];
-        [self selectItem:button];
+        UIImageView *tile = [self.subviews objectAtIndex:index];
+        [self selectItem:tile];
     }
 }
 
-- (void)selectItem:(UIButton *)button
+- (void)selectItem:(UIImageView *)tile
 {
+    NSUInteger index = [self.subviews indexOfObject:tile];
+    if (index == NSNotFound || index >= self.itemArray.count) {
+        return;
+    }
+    KMEmotionItem *item = self.itemArray[index];
     if (self.isEditing)
     {
-        NSLog(@"%s - Mark selected %@.", __func__, button.titleLabel.text);
-        if (![self.selectedItems containsObject:button.titleLabel.text])
+        //收藏页
+        NSLog(@"%s - Mark selected %@.", __func__, item.imageName);
+        if (![self.selectedItems containsObject:item.imageName])
         {
-            UIImageView *maskView = [[UIImageView alloc] initWithFrame:button.bounds];
+            UIImageView *maskView = [[UIImageView alloc] initWithFrame:tile.bounds];
             [maskView setImage:[UIImage imageNamed:@"mask_select"]];
-            [button addSubview:maskView];
-            [self.selectedItems addObject:button.titleLabel.text];
+            [tile addSubview:maskView];
+            [self.selectedItems addObject:item.imageName];
         }
         else
         {
-            for (UIView *view in button.subviews)
+            for (UIView *view in tile.subviews)
             {
-                if (CGSizeEqualToSize(view.frame.size, button.frame.size))
+                if (CGSizeEqualToSize(view.frame.size, tile.frame.size))
                 {
                     [view removeFromSuperview];
                 }
             }
-            [self.selectedItems removeObject:button.titleLabel.text];
+            [self.selectedItems removeObject:item.imageName];
         }
         [self updateDeleteButton];
     }
     else
     {
-        if ([self.delegate respondsToSelector:@selector(didSelectEmotion:)])
+        //发送页
+        if (tile == self.currentSelectedTile) {
+            //已经选中得再点一遍
+            if ([self.delegate respondsToSelector:@selector(sendSelectedEmotion)]) {
+                [self.delegate sendSelectedEmotion];
+            }
+        }
+        else if ([self.delegate respondsToSelector:@selector(didSelectEmotion:)])
         {
-            [self.previousSelectedButton.layer setBorderWidth:0.0f];
-            [button.layer setBorderWidth:1.0f];
-            [self.delegate didSelectEmotion:button.titleLabel.text];
-            self.previousSelectedButton = button;
+            self.currentSelectedTile = tile;
+            self.sendButton.frame = tile.bounds;
+            CGFloat insetX = CGRectGetWidth(self.sendButton.frame)/4;
+            CGFloat insetY = CGRectGetHeight(self.sendButton.frame)/4;
+            [self.sendButton setImageEdgeInsets:UIEdgeInsetsMake(insetY, insetX, insetY, insetX)];
+            [tile addSubview:self.sendButton];
+            [self.delegate didSelectEmotion:item.imageName];
         }
     }
+}
+
+- (void)sendButtonClicked:(id)sender
+{
 }
 
 - (void)didDeleteItems
@@ -244,21 +255,21 @@
     }
 }
 
-- (void)updateButtonBorderWithWidth:(CGFloat)borderWidth
+- (void)updateTileBorderWithWidth:(CGFloat)borderWidth
 {
-    for (UIButton *button in self.subviews)
+    for (UIImageView *tile in self.subviews)
     {
-        [button.layer setBorderWidth:borderWidth];
+        [tile.layer setBorderWidth:borderWidth];
     }
 }
 
-- (void)removeButtonMask
+- (void)removeTileMask
 {
-    for (UIButton *button in self.subviews)
+    for (UIImageView *tile in self.subviews)
     {
-        for (UIView *view in button.subviews)
+        for (UIView *view in tile.subviews)
         {
-            if (CGSizeEqualToSize(view.frame.size, button.frame.size))
+            if (CGSizeEqualToSize(view.frame.size, tile.frame.size))
             {
                 [view removeFromSuperview];
             }
@@ -268,20 +279,20 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.currentFocusButton = [self getTargetButtonFromTouches:touches];
+    self.currentFocusTile = [self getTargetTileFromTouches:touches];
     [self performSelector:@selector(longTap) withObject:nil afterDelay:0.3f];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UIButton *targetBtn = [self getTargetButtonFromTouches:touches];
-    if (targetBtn && targetBtn != self.currentFocusButton)
+    UIImageView *targetTile = [self getTargetTileFromTouches:touches];
+    if (targetTile && targetTile != self.currentFocusTile)
     {
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longTap) object:nil];
         if (self.parentScroolView.scrollEnabled == NO)
         {
-            self.currentFocusButton = targetBtn;
-            [self didFocusOnEmotionButton:targetBtn];
+            self.currentFocusTile = targetTile;
+            [self didFocusOnEmotionTile:targetTile];
         }
     }
 }
@@ -291,17 +302,17 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longTap) object:nil];
     if (self.parentScroolView.scrollEnabled == NO)
     {
-        [self didFocusOnEmotionButton:nil];
+        [self didFocusOnEmotionTile:nil];
     }
     else
     {
         CGPoint touchPoint;
         UITouch * touchObj = [touches anyObject];
         touchPoint = [touchObj locationInView:self];
-        UIButton *targetBtn = [self getTargetButtonFromTouches:touches];
-        if (targetBtn)
+        UIImageView *targetTile = [self getTargetTileFromTouches:touches];
+        if (targetTile)
         {
-            [self selectItem:targetBtn];
+            [self selectItem:targetTile];
         }
     }
     self.parentScroolView.scrollEnabled = YES;
@@ -311,83 +322,111 @@
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longTap) object:nil];
     self.parentScroolView.scrollEnabled = YES;
-    [self didFocusOnEmotionButton:nil];
+    [self didFocusOnEmotionTile:nil];
 }
 
 - (void)longTap
 {
     self.parentScroolView.scrollEnabled = NO;
-    [self didFocusOnEmotionButton:self.currentFocusButton];
+    [self didFocusOnEmotionTile:self.currentFocusTile];
 }
 
-- (UIButton *)getTargetButtonFromTouches:(NSSet *)touches
+- (UIImageView *)getTargetTileFromTouches:(NSSet *)touches
 {
     CGPoint point = [[touches anyObject] locationInView:self];
     
     CGFloat x = point.x;
     CGFloat y = point.y;
-    int rowIndex = y/(buttonHeight+vInterval);
-    int columnIndex = x/(buttonWidth+hInterval);
-    int buttonIndex = numberInRow * rowIndex  + columnIndex;
-    if (buttonIndex < self.subviews.count)
+    int rowIndex = y/(tileHeight+vInterval);
+    int columnIndex = x/(tileWidth+hInterval);
+    int tileIndex = numberInRow * rowIndex  + columnIndex;
+    if (tileIndex < self.subviews.count)
     {
-        return self.subviews[buttonIndex];
+        id target = self.subviews[tileIndex];
+        if ([target isKindOfClass:[UIImageView class]]) {
+            return target;
+        }
     }
     return nil;
 }
 
-- (void)didFocusOnEmotionButton:(UIButton *)button
+- (void)didFocusOnEmotionTile:(UIImageView *)tile
 {
     if (self.popoverView)
     {
         [self.popoverView dismissPopoverAnimated:NO];
     }
     
-    if (!button || self.displayType == GridViewType_Downloaded)
+    if (!tile || self.displayType == GridViewType_Downloaded)
     {
         return;
     }
     
-    [self previewItem:button];
+    [self previewItem:tile];
 }
 
-- (void)previewItem:(UIButton *)button
+- (void)previewItem:(UIImageView *)tile
 {
-    self.popoverView = [[FWTPopoverView alloc] init];
+    NSUInteger index = [self.subviews indexOfObject:tile];
+    if (index == NSNotFound || index >= self.itemArray.count) {
+        return;
+    }
+    id item = self.itemArray[index];
+    NSString *imageName = nil;
+    if ([item isKindOfClass:[KMEmotionItem class]]) {
+        KMEmotionItem *eItem = (KMEmotionItem *)item;
+        imageName = eItem.imageName;
+    }
+    else if ([item isKindOfClass:[NSString class]]) {
+        imageName = (NSString *)item;
+    }
     
-    CGPoint arrowPoint;
-    if (self.displayType == GridViewType_Favorite && 20 + CGRectGetMinY(button.frame) < 162)
+    UIImageView *imageTipView = [UIImageView new];
+    UIViewController *vc = [[UIViewController alloc] init];
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [vc.view addSubview:indicatorView];
+    
+    
+    //    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    
+    self.popoverView = [[FPPopoverController alloc] initWithViewController:vc contentSize:CGSizeMake(120, 120)];
+    self.popoverView.border = NO;
+    self.popoverView.tint = FPPopoverWhiteTint;
+    
+    if (self.displayType == GridViewType_Favorite && 20 + CGRectGetMinY(tile.frame) < 162)
     {
-        arrowPoint.x = button.frame.origin.x + button.frame.size.width/2;
-        arrowPoint.y = CGRectGetMaxY(button.frame);
-        arrowPoint = [self convertPoint:arrowPoint toView:self.superview];
         //show preview view below
-        [self.popoverView presentFromRect:CGRectMake(arrowPoint.x, arrowPoint.y, 1.0f, 1.0f)
-                                   inView:self.superview
-                  permittedArrowDirection:FWTPopoverArrowDirectionUp
-                                 animated:NO];
+        self.popoverView.arrowDirection = FPPopoverArrowDirectionUp;
+//        [self.popoverView presentFromRect:CGRectMake(arrowPoint.x, arrowPoint.y, 1.0f, 1.0f)
+//                                   inView:self.superview
+//                  permittedArrowDirection:FWTPopoverArrowDirectionUp
+//                                 animated:NO];
     }
     else
     {
-        arrowPoint.x = button.frame.origin.x + button.frame.size.width/2;
-        arrowPoint.y = button.frame.origin.y;
-        arrowPoint = [self convertPoint:arrowPoint toView:self.superview];
         //show preview view above
-        [self.popoverView presentFromRect:CGRectMake(arrowPoint.x, arrowPoint.y, 1.0f, 1.0f)
-                                   inView:self.superview
-                  permittedArrowDirection:FWTPopoverArrowDirectionDown
-                                 animated:NO];
+        self.popoverView.arrowDirection = FPPopoverArrowDirectionDown;
+//        [self.popoverView presentFromRect:CGRectMake(arrowPoint.x, arrowPoint.y, 1.0f, 1.0f)
+//                                   inView:self.superview
+//                  permittedArrowDirection:FWTPopoverArrowDirectionDown
+//                                 animated:NO];
     }
+    [self.popoverView presentPopoverFromView:tile inView:self.superview];
+    indicatorView.frame = vc.view.bounds;
     
-    NSString *imagePath = [NSString stringWithFormat:@"%@/%@", emotionsDirURL.path, button.titleLabel.text];
-    //    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    NSData *gifData = [[NSData alloc] initWithContentsOfFile:imagePath];
-    self.imageTipView.image = [UIImage animatedImageWithAnimatedGIFData:gifData];
-    [self.imageTipView sizeToFit];
-    [self.popoverView layoutSubviews];
-    CGRect displayArea = UIEdgeInsetsInsetRect(self.popoverView.contentView.bounds, UIEdgeInsetsMake(10, 10, 10, 10));
-    self.imageTipView.frame = [self calculateCenterFrameWithSize:self.imageTipView.frame.size inFrame:displayArea];
-    [self.popoverView.contentView addSubview:self.imageTipView];
+    AFURLConnectionOperation *operation = [[KMEmotionManager sharedManager] getImageWithName:imageName completionBlock:^(NSString *imagePath, NSError *error) {
+        if (!error) {
+            [indicatorView removeFromSuperview];
+            NSData *gifData = [[NSData alloc] initWithContentsOfFile:imagePath];
+            [imageTipView setImage:[UIImage animatedImageWithAnimatedGIFData:gifData]];
+            [imageTipView sizeToFit];
+            [vc.view addSubview:imageTipView];
+            
+            CGRect displayArea = vc.view.bounds;
+            imageTipView.frame = [self calculateCenterFrameWithSize:imageTipView.frame.size inFrame:displayArea];
+        }
+    }];
+    [indicatorView setAnimatingWithStateOfOperation:operation];
 }
 
 - (CGRect)calculateCenterFrameWithSize:(CGSize)size inFrame:(CGRect)frame

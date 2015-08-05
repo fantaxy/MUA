@@ -13,6 +13,7 @@
 @optional
 - (void)didFinishEditing;
 - (void)didSelectEmotion:(NSString *)name;
+- (void)sendSelectedEmotion;
 
 @end
 
@@ -28,9 +29,8 @@ typedef NS_ENUM(NSUInteger, KMEmotionGridViewType) {
 @property (nonatomic, assign) id<KMEmotionGridViewDelegate> delegate;
 @property (nonatomic, assign) KMEmotionGridViewType displayType;
 
-- (void)setUpEmotionsWithGroupName:(NSString *)groupName;
 - (void)setUpEmotionsWithArray:(NSArray *)emotionArray;
-- (void)layoutEmotionButtons;
+- (void)layoutEmotionTiles;
 - (void)selectItemAtIndex:(int)index;
 
 @end

@@ -10,8 +10,10 @@
 #import "GlobalConfig.h"
 #import "YLCToastManager.h"
 #import "UIImage+animatedGIF.h"
-#import "FWTPopoverView.h"
-#import "WXApi.h"
+#import "KMEmotionItem.h"
+#import "KMEmotionTag.h"
+#import "FPPopoverController.h"
+#import "KMEmotionManager.h"
 
 @protocol KMEmotionScrollViewDelegate <UIScrollViewDelegate>
 
@@ -22,7 +24,7 @@
 
 @interface KMEmotionScrollView : UIScrollView
 
-@property (nonatomic, weak) id<KMEmotionScrollViewDelegate> delegate;
+@property (nonatomic, weak) id<KMEmotionScrollViewDelegate> emotionScrollViewDelegate;
 @property (nonatomic, strong) UIButton *currentFocusButton;
 @property (nonatomic) int pageCount;
 
@@ -48,7 +50,7 @@
 - (BOOL)layoutEmotionButtons
 {
     int leftMargin;
-    int topMargin = 18;
+    int topMargin = 0;
     int hInterval = 12;
     int vInterval = 10;
     int buttonWidth = 60;
@@ -100,7 +102,7 @@
         if (self.scrollEnabled == NO)
         {
             self.currentFocusButton = targetBtn;
-            [self.delegate didFocusOnEmotionButton:targetBtn];
+            [self.emotionScrollViewDelegate didFocusOnEmotionButton:targetBtn];
         }
     }
 }
@@ -111,7 +113,7 @@
     if (self.scrollEnabled == NO)
     {
         //End previewing
-        [self.delegate didFocusOnEmotionButton:nil];
+        [self.emotionScrollViewDelegate didFocusOnEmotionButton:nil];
     }
     else
     {
@@ -121,7 +123,7 @@
         UIButton *targetBtn = [self getTargetButtonFromTouches:touches];
         if (targetBtn)
         {
-            [self.delegate didSelectEmotionWithName:targetBtn.titleLabel.text];
+            [self.emotionScrollViewDelegate didSelectEmotionWithName:targetBtn.titleLabel.text];
         }
     }
     self.scrollEnabled = YES;
@@ -131,13 +133,13 @@
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longTap) object:nil];
     self.scrollEnabled = YES;
-    [self.delegate didFocusOnEmotionButton:nil];
+    [self.emotionScrollViewDelegate didFocusOnEmotionButton:nil];
 }
 
 - (void)longTap
 {
     self.scrollEnabled = NO;
-    [self.delegate didFocusOnEmotionButton:self.currentFocusButton];
+    [self.emotionScrollViewDelegate didFocusOnEmotionButton:self.currentFocusButton];
 }
 
 - (UIButton *)getTargetButtonFromTouches:(NSSet *)touches
@@ -166,7 +168,10 @@
     {
         if (buttonIndex >= numberInPage*currentPage && buttonIndex <= numberInPage*(currentPage+1))
         {
-            return self.subviews[buttonIndex];
+            id target = self.subviews[buttonIndex];
+            if ([target isKindOfClass:[UIButton class]]) {
+                return target;
+            }
         }
     }
     return nil;
@@ -176,10 +181,9 @@
 
 @interface KMEmotionView () <KMEmotionScrollViewDelegate>
 
-@property (nonatomic, strong) NSString *currentGroup;
 @property (nonatomic, strong) KMEmotionScrollView *contentView;
 @property (nonatomic, strong) UIImageView *imageTipView;
-@property (nonatomic, retain) FWTPopoverView *popoverView;
+@property (nonatomic, retain) FPPopoverController *popoverView;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic) BOOL isLandscape;
 @property (nonatomic) BOOL needLayoutLater;
@@ -201,10 +205,10 @@
 {
     self = [super init];
     if (self) {
-        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+//        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
         
         _contentView = [KMEmotionScrollView new];
-        _contentView.delegate = self;
+        _contentView.emotionScrollViewDelegate = self;
         [self addSubview:_contentView];
         
         _pageControl = [UIPageControl new];
@@ -215,12 +219,6 @@
         [self addSubview:_pageControl];
         
         _imageTipView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
-        
-        _favoriteEmotionArray = [NSMutableArray arrayWithContentsOfURL:favoritePlistURL];
-        if (!_favoriteEmotionArray)
-        {
-            _favoriteEmotionArray = [NSMutableArray new];
-        }
     }
     return self;
 }
@@ -248,7 +246,6 @@
     
     self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.frame)-30, CGRectGetWidth(self.frame), 30);
     self.pageControl.numberOfPages = self.contentView.pageCount;
-    self.pageControl.currentPage = 0;
     if (self.needScrollToPageLater)
     {
         NSNumber *selectedPage = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selectedPage"];
@@ -256,40 +253,31 @@
     }
 }
 
-- (void)setupEmotionsWithGroupName:(NSString *)groupName
+- (void)setupEmotionsWithGroup:(KMEmotionTag *)tag
 {
-    self.currentGroup = groupName;
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    //    NSString *thumbsDirPath = [NSString stringWithFormat:@"%@/Thumbs", emotionsDirPath];
-    
-    NSError *error;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *emotionDirPath = [NSString stringWithFormat:@"%@/%@", sharedEmotionsDirURL.path, groupName];
-    NSArray *emotionArray = [fileManager contentsOfDirectoryAtPath:emotionDirPath error:&error];
-    if (!error)
+    NSDate* tmpStartData = [NSDate date];
+    for (KMEmotionItem *item in tag.itemArray)
     {
-        NSLog(@"%s - %@", __func__, error);
+        UIButton *button = [self createEmotionButtonWithName:item.imageName];
+        [self.contentView addSubview:button];
     }
-    for (NSString *name in emotionArray)
-    {
-        if (![name isEqualToString:CoverImageName])
-        {
-            NSString *path = [NSString stringWithFormat:@"%@/%@", groupName, name];
-            UIButton *button = [self createEmotionButtonWithName:path];
-            [self.contentView addSubview:button];
-        }
-    }
+    double deltaTime = [[NSDate date] timeIntervalSinceDate:tmpStartData];
+    NSLog(@"Read image cost time = %f", deltaTime);
+    tmpStartData = [NSDate date];
+    self.pageControl.currentPage = 0;
     self.needLayoutLater = YES;
     self.needScrollToPageLater = NO;
     [self layoutSubviews];
+    deltaTime = [[NSDate date] timeIntervalSinceDate:tmpStartData];
+    NSLog(@"Layout cost time = %f", deltaTime);
 }
 
 - (void)setupEmotionsForFavorite
 {
-    self.currentGroup = [FavoriteGroupName copy];
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    for (NSString *path in self.favoriteEmotionArray)
+    for (NSString *path in [[KMEmotionManager sharedManager] getFavoriteItemArray])
     {
         UIButton *button = [self createEmotionButtonWithName:path];
         [self.contentView addSubview:button];
@@ -346,46 +334,18 @@
 //    NSData *gifData = [[NSData alloc] initWithContentsOfFile:imagePath];
 //    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
 //    [pasteboard setData:gifData forPasteboardType:@"com.compuserve.gif"];
-//    
+    
 //    [[YLCToastManager sharedInstance] showToastWithStyle:YLCToastTypeConfirm message:@"表情已复制到粘贴板" onView:self autoDismiss:YES];
     
-    [self sendGifContent:imagePath];
     [self addToFavoriteWithName:emotionName];
+    if ([self.delegate respondsToSelector:@selector(didSendEmotionWithImagePath:)]) {
+        [self.delegate didSendEmotionWithImagePath:imagePath];
+    }
 }
      
 - (void)addToFavoriteWithName:(NSString *)name
 {
-    if ([FavoriteGroupName isEqualToString:self.currentGroup])
-    {
-        NSLog(@"%s - %@ already in favorite group", __func__, name);
-        return;
-    }
-    
-    if (![self.favoriteEmotionArray containsObject:name])
-    {
-        [self.favoriteEmotionArray insertObject:name atIndex:0];
-        [self.favoriteEmotionArray writeToFile:favoritePlistURL.path atomically:NO];
-    }
-}
-
-- (void)sendGifContent:(NSString *)imgPath
-{
-    UIImage *img = [UIImage imageWithContentsOfFile:imgPath];
-    
-    WXMediaMessage *message = [WXMediaMessage message];
-    [message setThumbImage:img];
-    
-    WXEmoticonObject *ext = [WXEmoticonObject object];
-    ext.emoticonData = [[NSData alloc] initWithContentsOfFile:imgPath]; ;
-    
-    message.mediaObject = ext;
-    
-    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-    req.bText = NO;
-    req.message = message;
-    req.scene = WXSceneSession;
-    
-    [WXApi sendReq:req];
+    [[KMEmotionManager sharedManager] addFavoriteItem:name];
 }
 
 - (void)didFocusOnEmotionButton:(UIButton *)button
@@ -401,7 +361,25 @@
         return;
     }
     
-    self.popoverView = [[FWTPopoverView alloc] init];
+    NSString *imagePath = [NSString stringWithFormat:@"%@/%@", sharedEmotionsDirURL.path, button.titleLabel.text];
+    //    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+    NSData *gifData = [[NSData alloc] initWithContentsOfFile:imagePath];
+    if (gifData)
+    {
+        self.imageTipView.image = [UIImage animatedImageWithAnimatedGIFData:gifData];
+        [self.imageTipView sizeToFit];
+    }
+    else
+    {
+        NSLog(@"%s - Error: can not load image at path %@", __func__, imagePath);
+    }
+    
+    UIViewController *vc = [[UIViewController alloc] init];
+    [vc.view addSubview:self.imageTipView];
+    
+    self.popoverView = [[FPPopoverController alloc] initWithViewController:vc contentSize:CGSizeMake(120, 108)];
+    self.popoverView.border = NO;
+    self.popoverView.tint = FPPopoverWhiteTint;
     
     CGPoint arrowPoint;
     arrowPoint.x = fmodf(button.frame.origin.x, CGRectGetWidth(self.frame));
@@ -410,36 +388,25 @@
     {
         //show preview view on the right
         arrowPoint.x += button.frame.size.width;
-        [self.popoverView presentFromRect:CGRectMake(arrowPoint.x, arrowPoint.y, 1.0f, 1.0f)
-                                   inView:self
-                  permittedArrowDirection:FWTPopoverArrowDirectionLeft
-                                 animated:NO];
+        self.popoverView.arrowDirection = FPPopoverArrowDirectionLeft;
+//        [self.popoverView presentFromRect:CGRectMake(arrowPoint.x, arrowPoint.y, 1.0f, 1.0f)
+//                                   inView:self
+//                  permittedArrowDirection:FWTPopoverArrowDirectionLeft
+//                                 animated:NO];
     }
     else
     {
         //show preview view on the left
-        [self.popoverView presentFromRect:CGRectMake(arrowPoint.x, arrowPoint.y, 1.0f, 1.0f)
-                                   inView:self
-                  permittedArrowDirection:FWTPopoverArrowDirectionRight
-                                 animated:NO];
+        self.popoverView.arrowDirection = FPPopoverArrowDirectionRight;
+        
+//        [self.popoverView presentFromRect:CGRectMake(arrowPoint.x, arrowPoint.y, 1.0f, 1.0f)
+//                                   inView:self
+//                  permittedArrowDirection:FWTPopoverArrowDirectionRight
+//                                 animated:NO];
     }
+    [self.popoverView presentPopoverFromView:button inView:self];
     
-    NSString *imagePath = [NSString stringWithFormat:@"%@/%@", sharedEmotionsDirURL.path, button.titleLabel.text];
-    //    UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-    NSData *gifData = [[NSData alloc] initWithContentsOfFile:imagePath];
-    if (gifData)
-    {
-        self.imageTipView.image = [UIImage animatedImageWithAnimatedGIFData:gifData];
-        [self.imageTipView sizeToFit];
-        [self.popoverView layoutSubviews];
-        CGRect displayArea = UIEdgeInsetsInsetRect(self.popoverView.contentView.bounds, UIEdgeInsetsMake(10, 10, 10, 10));
-        self.imageTipView.frame = [self calculateCenterFrameWithSize:self.imageTipView.frame.size inFrame:displayArea];
-        [self.popoverView.contentView addSubview:self.imageTipView];
-    }
-    else
-    {
-        NSLog(@"%s - Error: can not load image at path %@", __func__, imagePath);
-    }
+    self.imageTipView.frame = [self calculateCenterFrameWithSize:self.imageTipView.frame.size inFrame:vc.view.bounds];
 }
 
 - (CGRect)calculateCenterFrameWithSize:(CGSize)size inFrame:(CGRect)frame
@@ -463,19 +430,19 @@
     return result;
 }
 
-- (void)addConstraintForPageControl
-{
-    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:30.0];
-    
-    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-    
-    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
-    
-    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0];
-    
-    [self.pageControl addConstraint:heightConstraint];
-    [self addConstraints:@[bottomConstraint, leftConstraint, rightConstraint]];
-}
+//- (void)addConstraintForPageControl
+//{
+//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:30.0];
+//    
+//    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
+//    
+//    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
+//    
+//    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0];
+//    
+//    [self.pageControl addConstraint:heightConstraint];
+//    [self addConstraints:@[bottomConstraint, leftConstraint, rightConstraint]];
+//}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {

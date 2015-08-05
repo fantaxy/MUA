@@ -13,9 +13,10 @@
 @property (nonatomic, strong) NSString *imageName;
 @property (nonatomic) BOOL isDownloaded;
 @property (nonatomic, strong) NSString *series;
-@property (nonatomic, strong) NSMutableArray *tagArray;
+@property (nonatomic, strong) NSSet *tagSet;
+@property (nonatomic) int clickCount;
 
-- (NSString *)tagArrayToString;
+- (NSString *)tagSetToString;
 - (void)updatetoDb;
 
 @end

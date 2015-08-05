@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "KMEmotionGridView.h"
 
+@class KMEmotionTag;
+
 @interface KMDownloadedEmotionViewController : UIViewController <KMEmotionGridViewDelegate>
 
-@property (nonatomic, strong) NSDictionary *emotionInfo;
+@property (nonatomic, strong) KMEmotionTag *emotionTag;
 
 @end

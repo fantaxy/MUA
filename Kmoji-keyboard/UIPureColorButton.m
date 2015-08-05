@@ -24,6 +24,7 @@
     {
         _bgColor = bgColor;
         _hgColor = hgColor;
+        _sgColor = hgColor;
         [self setBackgroundColor:bgColor];
     }
     return self;
@@ -34,6 +35,20 @@
     [super setHighlighted:highlighted];
     
     if (highlighted)
+    {
+        self.backgroundColor = _hgColor;
+    }
+    else
+    {
+        self.backgroundColor = _bgColor;
+    }
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    
+    if (selected)
     {
         self.backgroundColor = _hgColor;
     }

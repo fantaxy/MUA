@@ -7,7 +7,7 @@
 //
 
 #import "KMEmotionTag.h"
-#import "KMEmotionDataBase.h"
+//#import "KMEmotionKeyboardDataBase.h"
 #import "KMEmotionManager.h"
 
 @implementation KMEmotionTag
@@ -59,14 +59,9 @@
     return _desc;
 }
 
-- (BOOL)isDownloaded
-{
-    return [[KMEmotionManager sharedManager] isDownloadedTag:self];
-}
-
-- (void)updatetoDb
-{
-    [[KMEmotionDataBase sharedInstance] updateEmotionTag:self];
-}
+//- (void)updatetoDb
+//{
+//    [[KMEmotionKeyboardDataBase sharedInstance] updateEmotionTag:self];
+//}
 
 @end

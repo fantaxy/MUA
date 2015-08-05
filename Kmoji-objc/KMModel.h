@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KMModel : NSObject
+@interface KMModel : NSObject<NSCoding>
+
+- (void)encodeWithCoder:(NSCoder *)encoder;
+- (id)initWithCoder:(NSCoder *)decoder;
 
 @end

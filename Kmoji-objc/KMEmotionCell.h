@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface KMEmotionCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *coverImage;
+@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UILabel *emotionName;
 @property (weak, nonatomic) IBOutlet UILabel *shortDecription;
 @property (weak, nonatomic) IBOutlet UIButton *downloadButton;
-@property (weak, nonatomic) IBOutlet UIImageView *checkmark;
+@property (weak, nonatomic) IBOutlet UILabel *checkmark;
 
 @end

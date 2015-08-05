@@ -8,8 +8,9 @@
 
 #import "HYActivityView.h"
 
-#define BUTTON_VIEW_SIDE 70.f
-#define BUTTON_VIEW_FONT_SIZE 13.f
+#define BUTTON_VIEW_SIDE 83.f
+#define BUTTON_VIEW_FONT_SIZE 14.f
+#define BUTTON_TITLE_COLOR UIColorWithRGB(114, 114, 114)
 
 #pragma mark - ButtonView
 
@@ -50,6 +51,7 @@
     self.textLabel.backgroundColor = [UIColor clearColor];
     self.textLabel.font = [UIFont systemFontOfSize:BUTTON_VIEW_FONT_SIZE];
     self.textLabel.textAlignment = NSTextAlignmentCenter;
+    self.textLabel.textColor = BUTTON_TITLE_COLOR;
     
     self.imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.imageButton setImage:self.image forState:UIControlStateNormal];
@@ -66,7 +68,7 @@
     NSDictionary *views = @{@"textLabel": self.textLabel, @"imageButton": self.imageButton};
     NSArray *constraints = nil;
     
-    //view的宽高为70
+    //view的宽高
     constraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:BUTTON_VIEW_SIDE];
     [self addConstraint:constraint];
     constraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:BUTTON_VIEW_SIDE];
@@ -76,12 +78,12 @@
     constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[textLabel]|" options:0 metrics:nil views:views];
     [self addConstraints:constraints];
     
-    //imageView距离view左右各10, imageView的宽为50
-    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[imageButton(50)]-10-|" options:0 metrics:nil views:views];
+    //imageView距离view左右各10, imageView的宽为63
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[imageButton(63)]-10-|" options:0 metrics:nil views:views];
     [self addConstraints:constraints];
     
-    //竖直方向imageView和textLabel在一条直线上, 并且挨着, imageView的高为50
-    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imageButton(50)][textLabel]|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:views];
+    //竖直方向imageView和textLabel在一条直线上, 并且挨着, imageView的高为63
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imageButton(63)]-9-[textLabel]|" options:NSLayoutFormatAlignAllCenterX metrics:nil views:views];
     [self addConstraints:constraints];
     
 }
@@ -180,7 +182,7 @@
     self.buttonSpace = (self.referView.bounds.size.width - BUTTON_VIEW_SIDE * number) / (number + 1);
     
     if (self.buttonSpace < 0) {
-        [self calculateButtonSpaceWithNumberOfButtonPerLine:4];
+        [self calculateButtonSpaceWithNumberOfButtonPerLine:3];
         
     } else {
         self.workingNumberOfButtonPerLine = number;
@@ -194,7 +196,7 @@
     self.buttonArray = [NSMutableArray array];
     self.buttonConstraintsArray = [NSMutableArray array];
     self.lines = 0;
-    self.numberOfButtonPerLine = 4;
+    self.numberOfButtonPerLine = 3;
     self.useGesturer = YES;
     
     self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3f];

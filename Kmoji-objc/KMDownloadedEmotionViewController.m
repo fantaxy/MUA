@@ -12,14 +12,19 @@
 #import "HYActivityView.h"
 #import "WXApi.h"
 #import "UIImage+animatedGIF.h"
+#import "KMEmotionTag.h"
+#import "KMURLHelper.h"
+#import "OpenShare+Weixin.h"
+#import "OpenShare+QQ.h"
+
+#import "UIImageView+AFNetworking.h"
 
 @interface KMDownloadedEmotionViewController ()
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
+@property (strong, nonatomic) UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet KMEmotionGridView *emotionGridView;
-@property (strong, nonatomic) UIButton *sendButton;
 @property (nonatomic, strong) HYActivityView *activityView;
 @property (nonatomic, strong) NSString *selectedEmotion;
 
@@ -42,12 +47,8 @@
 {
 //    CGRect frame = CGRectMake(HorizontalMargin, CGRectGetMaxY(self.topView.frame) + 12, CGRectGetWidth(self.view.frame) - HorizontalMargin*2, 0);
 //    self.emotionGridView.frame = frame;
-    [self.emotionGridView layoutEmotionButtons];
-    
-    CGPoint center = self.sendButton.center;
-    center.x = CGRectGetWidth(self.topView.frame) - (CGRectGetWidth(self.topView.frame) - CGRectGetWidth(self.coverImageView.frame))/4;
-    center.y = CGRectGetHeight(self.topView.frame)/2;
-    self.sendButton.center = center;
+    [self.emotionGridView layoutEmotionTiles];
+    [self adjustCoverImageViewFrame];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,39 +58,57 @@
 
 - (void)setupUI
 {
-    self.coverImageView.layer.cornerRadius = 8.0f;
+    self.coverImageView = [UIImageView new];
+    self.coverImageView.layer.cornerRadius = 6.0f;
+    self.coverImageView.clipsToBounds = YES;
+    [self.topView addSubview:self.coverImageView];
     self.emotionGridView.delegate = self;
-    self.sendButton = [UIButton new];
-    [self.sendButton setImage:[UIImage imageNamed:@"icon_send"] forState:UIControlStateNormal];
-    [self.sendButton setImage:[UIImage imageNamed:@"icon_send_highlighted"] forState:UIControlStateHighlighted];
-    [self.sendButton sizeToFit];
-    [self.sendButton addTarget:self action:@selector(showShareView:) forControlEvents:UIControlEventTouchUpInside];
-    [self.topView addSubview:self.sendButton];
     
-    if (self.emotionInfo)
+    if (self.emotionTag)
     {
-        NSString *folder = self.emotionInfo[@"folder"];
-        NSString *name = self.emotionInfo[@"name"];
+        NSString *name = self.emotionTag.name;
         self.navigationItem.title = name;
-        NSString *coverImgPath = [NSString stringWithFormat:@"%@/%@/%@", sharedEmotionsDirURL.path, folder, CoverImageName];
-        UIImage *coverImg = [UIImage imageWithContentsOfFile:coverImgPath];
-        [self.coverImageView setImage:coverImg];
         self.scrollView.contentSize = self.scrollView.bounds.size;
         
         [self.emotionGridView setDisplayType:GridViewType_Downloaded];
-        [self.emotionGridView setUpEmotionsWithGroupName:folder];
+        [self.emotionGridView setUpEmotionsWithArray:self.emotionTag.itemArray];
     }
     [self.emotionGridView selectItemAtIndex:0];
+}
+
+- (void)adjustCoverImageViewFrame
+{
+    CGFloat width = self.coverImageView.frame.size.width;
+    CGFloat height = self.coverImageView.frame.size.height;
+    CGFloat maxWidth = self.topView.frame.size.width;
+    CGFloat maxHeight = self.topView.frame.size.height - 10;
+    CGFloat imageScale = width/height;
+    CGFloat scale = maxWidth/maxHeight;
+    CGFloat adjustedWidth, adjustedHeight;
+    if (imageScale > scale) {
+        adjustedWidth = maxWidth;
+        adjustedHeight = maxWidth / imageScale;
+    }
+    else {
+        adjustedHeight = maxHeight;
+        adjustedWidth = maxHeight * imageScale;
+    }
+    self.coverImageView.frame = CGRectMake((CGRectGetWidth(self.topView.frame)-adjustedWidth)/2, (CGRectGetHeight(self.topView.frame)-adjustedHeight)/2, adjustedWidth, adjustedHeight);
 }
 
 - (void)updateTopView
 {
     if (self.selectedEmotion && ![@"" isEqualToString:self.selectedEmotion])
     {
-        NSString *imagePath = [NSString stringWithFormat:@"%@/%@", sharedEmotionsDirURL.path, self.selectedEmotion];
-        NSData *gifData = [[NSData alloc] initWithContentsOfFile:imagePath];
-        UIImage *image = [UIImage animatedImageWithAnimatedGIFData:gifData];
-        [self.coverImageView setImage:image];
+        [[KMEmotionManager sharedManager] getImageWithName:self.selectedEmotion completionBlock:^(NSString *imagePath, NSError *error) {
+            if (!error) {
+                NSData *gifData = [[NSData alloc] initWithContentsOfFile:imagePath];
+                UIImage *image = [UIImage animatedImageWithAnimatedGIFData:gifData];
+                [self.coverImageView setImage:image];
+                [self.coverImageView sizeToFit];
+                [self adjustCoverImageViewFrame];
+            }
+        }];
     }
 }
 
@@ -97,9 +116,14 @@
 
 - (void)didSelectEmotion:(NSString *)name
 {
-    NSLog(@"%s - %@", __func__, name);
+//    NSLog(@"%s - %@", __func__, name);
     self.selectedEmotion = name;
     [self updateTopView];
+}
+
+- (void)sendSelectedEmotion
+{
+    [self showShareView:nil];
 }
 
 - (IBAction)showShareView:(id)sender
@@ -112,20 +136,20 @@
         //横屏会变成一行6个, 竖屏无法一行同时显示6个, 会自动使用默认一行4个的设置.
         self.activityView.numberOfButtonPerLine = 6;
         
-        ButtonView *bv = [[ButtonView alloc]initWithText:@"微信" image:[UIImage imageNamed:@"share_platform_wechat"] handler:^(ButtonView *buttonView){
+        ButtonView *bv = [[ButtonView alloc] initWithText:@"微信" image:[UIImage imageNamed:@"weixin"] handler:^(ButtonView *buttonView){
             [self sendGifToWechat];
         }];
         [self.activityView addButtonView:bv];
         
-        bv = [[ButtonView alloc]initWithText:@"微信朋友圈" image:[UIImage imageNamed:@"share_platform_wechattimeline"] handler:^(ButtonView *buttonView){
+        bv = [[ButtonView alloc] initWithText:@"朋友圈" image:[UIImage imageNamed:@"weixintimeline"] handler:^(ButtonView *buttonView){
             [self sendGifToWechatTimeline];
         }];
         [self.activityView addButtonView:bv];
         
-        //        bv = [[ButtonView alloc]initWithText:@"QQ" image:[UIImage imageNamed:@"share_platform_qqfriends"] handler:^(ButtonView *buttonView){
-        //            NSLog(@"点击QQ");
-        //        }];
-        //        [self.activityView addButtonView:bv];
+        bv = [[ButtonView alloc]initWithText:@"QQ" image:[UIImage imageNamed:@"qq"] handler:^(ButtonView *buttonView){
+            [self sendGifToQQ];
+        }];
+        [self.activityView addButtonView:bv];
         
     }
     
@@ -138,20 +162,17 @@
     NSString *imagePath = [NSString stringWithFormat:@"%@/%@", sharedEmotionsDirURL.path, self.selectedEmotion];
     UIImage *img = [UIImage imageWithContentsOfFile:imagePath];
     
-    WXMediaMessage *message = [WXMediaMessage message];
-    [message setThumbImage:img];
+    OSMessage *msg=[[OSMessage alloc]init];
     
-    WXEmoticonObject *emObj = [WXEmoticonObject object];
-    emObj.emoticonData = [[NSData alloc] initWithContentsOfFile:imagePath]; ;
+    msg.image = [[NSData alloc] initWithContentsOfFile:imagePath];
+    //压缩下 微信对缩略图大小有限制
+    msg.thumbnail = UIImageJPEGRepresentation(img, 0);
     
-    message.mediaObject = emObj;
-    
-    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-    req.bText = NO;
-    req.message = message;
-    req.scene = WXSceneSession;
-    
-    [WXApi sendReq:req];
+    [OpenShare shareToWeixinSession:msg Success:^(OSMessage *message) {
+        NSLog(@"微信分享到会话成功：\n%@",message);
+    } Fail:^(OSMessage *message, NSError *error) {
+        NSLog(@"微信分享到会话失败：\n%@\n%@",error,message);
+    }];
 }
 
 - (void)sendGifToWechatTimeline
@@ -160,20 +181,36 @@
     NSString *imagePath = [NSString stringWithFormat:@"%@/%@", sharedEmotionsDirURL.path, self.selectedEmotion];
     UIImage *img = [UIImage imageWithContentsOfFile:imagePath];
     
-    WXMediaMessage *message = [WXMediaMessage message];
-    [message setThumbImage:img];
+    OSMessage *msg=[[OSMessage alloc]init];
     
-    WXImageObject *imgObj = [WXImageObject object];
-    imgObj.imageData = [[NSData alloc] initWithContentsOfFile:imagePath]; ;
+    msg.image = [[NSData alloc] initWithContentsOfFile:imagePath];
+    //压缩下 微信对缩略图大小有限制
+    msg.thumbnail = UIImageJPEGRepresentation(img, 0);
     
-    message.mediaObject = imgObj;
+    [OpenShare shareToWeixinTimeline:msg Success:^(OSMessage *message) {
+        NSLog(@"微信分享到朋友圈成功：\n%@",message);
+    } Fail:^(OSMessage *message, NSError *error) {
+        NSLog(@"微信分享到朋友圈失败：\n%@\n%@",error,message);
+    }];
     
-    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-    req.bText = NO;
-    req.message = message;
-    req.scene = WXSceneTimeline;
+}
+- (void)sendGifToQQ
+{
+    NSLog(@"%s - %@", __func__, self.selectedEmotion);
+    NSString *imagePath = [NSString stringWithFormat:@"%@/%@", sharedEmotionsDirURL.path, self.selectedEmotion];
+    UIImage *img = [UIImage imageWithContentsOfFile:imagePath];
     
-    [WXApi sendReq:req];
+    OSMessage *msg=[[OSMessage alloc]init];
+    msg.title = @"MUA表情";
+    msg.image = [[NSData alloc] initWithContentsOfFile:imagePath];
+    msg.thumbnail = UIImageJPEGRepresentation(img, 0);
+    msg.desc = @"分享快乐";
+    
+    [OpenShare shareToQQFriends:msg Success:^(OSMessage *message) {
+        NSLog(@"QQ分享到会话成功：\n%@",message);
+    } Fail:^(OSMessage *message, NSError *error) {
+        NSLog(@"QQ分享到会话失败：\n%@\n%@",error,message);
+    }];
 }
 
 /*

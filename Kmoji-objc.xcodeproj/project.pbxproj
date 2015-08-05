@@ -15,48 +15,51 @@
 		7624074619D067A600647987 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624074519D067A600647987 /* AppDelegate.m */; };
 		7624074C19D067A700647987 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7624074A19D067A700647987 /* Main.storyboard */; };
 		7624075119D067A700647987 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7624074F19D067A700647987 /* LaunchScreen.xib */; };
-		7624075D19D067A700647987 /* Kmoji_objcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624075C19D067A700647987 /* Kmoji_objcTests.m */; };
-		7624077019D067DC00647987 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624076F19D067DC00647987 /* KeyboardViewController.m */; };
 		7624077319D067DC00647987 /* MUA表情输入法.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7624076A19D067DC00647987 /* MUA表情输入法.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		763186791A2CBD8700A0875B /* HYActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 763186781A2CBD8700A0875B /* HYActivityView.m */; };
 		7639A70519DFE1960017EFFE /* YLCToastManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7639A70419DFE1960017EFFE /* YLCToastManager.m */; };
 		765F116E19F800720046422A /* KMEmotionDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 765F116D19F800720046422A /* KMEmotionDownloadViewController.m */; };
 		766D451B19E38FB600269EAC /* KMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766D451A19E38FB600269EAC /* KMTableViewController.m */; };
-		766D451E19E39BC400269EAC /* KMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766D451D19E39BC400269EAC /* KMMainViewController.m */; };
 		766D455219E573A400269EAC /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 766D455119E573A400269EAC /* UIImage+animatedGIF.m */; };
 		766D455519E5784A00269EAC /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 766D455119E573A400269EAC /* UIImage+animatedGIF.m */; };
 		7680017119FB9751006073B3 /* KMEmotionGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7680017019FB9751006073B3 /* KMEmotionGridView.m */; };
 		7697FE4119F552A000CCB885 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7697FE3C19F54ADC00CCB885 /* libWeChatSDK.a */; };
 		7697FE4219F552C500CCB885 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7697FE3C19F54ADC00CCB885 /* libWeChatSDK.a */; };
 		769C71C01A407D170025D421 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76DB43761A04BF890063B1D4 /* images.xcassets */; };
-		76A1AF7A19D453F600112DC8 /* emotions in Resources */ = {isa = PBXBuildFile; fileRef = 76A1AF7919D453F600112DC8 /* emotions */; };
 		76A6390E1A1255EE00A6D1FC /* KMEmotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A6390D1A1255EE00A6D1FC /* KMEmotionManager.m */; };
 		76A6EBFD19E825D1007E2463 /* GroupSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A6EBFA19E825D1007E2463 /* GroupSelectView.m */; };
 		76A6EBFE19E825D1007E2463 /* KMEmotionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A6EBFC19E825D1007E2463 /* KMEmotionView.m */; };
 		76A6EC5C19EAC1FE007E2463 /* KMEmotionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 76A6EC5B19EAC1FE007E2463 /* KMEmotionCell.m */; };
 		76DB437C1A04C2640063B1D4 /* UIPureColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DB437B1A04C2640063B1D4 /* UIPureColorButton.m */; };
 		76DB437D1A04CA530063B1D4 /* UIPureColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 76DB437B1A04C2640063B1D4 /* UIPureColorButton.m */; };
-		76EB88D519FBDD06008CCEF1 /* libFWTPopoverView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EB88D419FBDD06008CCEF1 /* libFWTPopoverView.a */; };
-		76EB88EB19FE94A0008CCEF1 /* libFWTPopoverView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EB88D419FBDD06008CCEF1 /* libFWTPopoverView.a */; };
-		76F9E59619D84F4D00B2FCEC /* emotions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76F9E59519D84F4D00B2FCEC /* emotions.plist */; };
+		81954AF740102FEDC46DE637 /* libPods-Kmoji-keyboard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FC5C343DA27B16A06425D7 /* libPods-Kmoji-keyboard.a */; };
+		9328E8EE1B637CC800155BF1 /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93300B401B636E5500A3EC7D /* FPPopoverController.m */; };
+		9328E8EF1B637CE300155BF1 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93300B421B636E5500A3EC7D /* FPPopoverView.m */; };
+		9328E8F01B637CE300155BF1 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93300B441B636E5500A3EC7D /* FPTouchView.m */; };
+		93300B451B636E5500A3EC7D /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93300B401B636E5500A3EC7D /* FPPopoverController.m */; };
+		93300B461B636E5500A3EC7D /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93300B421B636E5500A3EC7D /* FPPopoverView.m */; };
+		93300B471B636E5500A3EC7D /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93300B441B636E5500A3EC7D /* FPTouchView.m */; };
+		9369267F1AB46FFE00CEB9E1 /* mua.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 9369267E1AB46FFE00CEB9E1 /* mua.sqlite3 */; };
+		936B59501A9C4DFE001C0967 /* KMEmotionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 936B594F1A9C4DFE001C0967 /* KMEmotionSet.m */; };
+		936B59531A9C50C9001C0967 /* KMEmotionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 936B59521A9C50C9001C0967 /* KMEmotionItem.m */; };
+		936DDB661AE7E21D000FAA36 /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7624076F19D067DC00647987 /* KeyboardViewController.m */; };
+		937A5FF11B475B3900515166 /* KMEmotionTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 937A5FF01B475B3900515166 /* KMEmotionTag.m */; };
+		93BDE1ED1B47A052006B32C4 /* KMEmotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BDE1EC1B47A052006B32C4 /* KMEmotionManager.m */; };
+		93D140331AADF2E100060860 /* KMEmotionKeyboardDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D1402E1AADF2E100060860 /* KMEmotionKeyboardDataBase.m */; };
+		93D140341AADF2E100060860 /* KMEmotionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D140301AADF2E100060860 /* KMEmotionItem.m */; };
+		93D140351AADF2E100060860 /* KMEmotionSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D140321AADF2E100060860 /* KMEmotionSet.m */; };
+		93D140361AADF6AB00060860 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93FF84F71AA2F4980055D17F /* libsqlite3.dylib */; };
+		93D3FB761B6DBC090070745E /* KMTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D3FB751B6DBC090070745E /* KMTopBarView.m */; };
+		93EBB8401B3E9BDD00492DB1 /* KMAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EBB83F1B3E9BDD00492DB1 /* KMAPIClient.m */; };
+		93EBB8481B3EF56200492DB1 /* KMEmotionTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EBB8471B3EF56200492DB1 /* KMEmotionTag.m */; };
+		93EBB84B1B3FE32900492DB1 /* KMURLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EBB84A1B3FE32900492DB1 /* KMURLHelper.m */; };
+		93FF84F81AA2F4980055D17F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 93FF84F71AA2F4980055D17F /* libsqlite3.dylib */; };
+		93FF84FD1AA2F9280055D17F /* KMEmotionDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FF84FC1AA2F9280055D17F /* KMEmotionDataBase.m */; };
+		F2565908CAA8B651F7E64BE7 /* libPods-Kmoji-objc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E294C258D18D7EA47BBE212A /* libPods-Kmoji-objc.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7624075719D067A700647987 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7624073519D067A600647987 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7624073C19D067A600647987;
-			remoteInfo = "Kmoji-objc";
-		};
-		7624077119D067DC00647987 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7624073519D067A600647987 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7624076919D067DC00647987;
-			remoteInfo = "Kmoji-keyboard";
-		};
-		7624077419D067DC00647987 /* PBXContainerItemProxy */ = {
+		939C129E1B2C3F2900FB0DFA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7624073519D067A600647987 /* Project object */;
 			proxyType = 1;
@@ -80,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		69F14B330E01B9E1B3611F5C /* Pods-Kmoji-keyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kmoji-keyboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kmoji-keyboard/Pods-Kmoji-keyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		760CAC6E1A32B4F200C43405 /* KMDownloadedEmotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMDownloadedEmotionViewController.h; sourceTree = "<group>"; };
 		760CAC6F1A32B4F200C43405 /* KMDownloadedEmotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMDownloadedEmotionViewController.m; sourceTree = "<group>"; };
 		7611929319F2BCAD00FE1679 /* KMMyEmotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMMyEmotionViewController.h; sourceTree = "<group>"; };
@@ -87,16 +91,13 @@
 		7619BD171A21D746007646D8 /* KMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMSettingViewController.h; sourceTree = "<group>"; };
 		7619BD181A21D746007646D8 /* KMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMSettingViewController.m; sourceTree = "<group>"; };
 		7619BD1A1A2A20FF007646D8 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
-		7624073D19D067A600647987 /* MUA表情.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MUA表情.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7624073D19D067A600647987 /* MUA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MUA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7624074119D067A600647987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7624074219D067A600647987 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7624074419D067A600647987 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7624074519D067A600647987 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7624074B19D067A700647987 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7624075019D067A700647987 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		7624075619D067A700647987 /* Kmoji-objcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kmoji-objcTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7624075B19D067A700647987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7624075C19D067A700647987 /* Kmoji_objcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kmoji_objcTests.m; sourceTree = "<group>"; };
 		7624076A19D067DC00647987 /* MUA表情输入法.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MUA表情输入法.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7624076D19D067DC00647987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7624076E19D067DC00647987 /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
@@ -111,8 +112,6 @@
 		765F116D19F800720046422A /* KMEmotionDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMEmotionDownloadViewController.m; sourceTree = "<group>"; };
 		766D451919E38FB600269EAC /* KMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMTableViewController.h; sourceTree = "<group>"; };
 		766D451A19E38FB600269EAC /* KMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMTableViewController.m; sourceTree = "<group>"; };
-		766D451C19E39BC400269EAC /* KMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMMainViewController.h; sourceTree = "<group>"; };
-		766D451D19E39BC400269EAC /* KMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMMainViewController.m; sourceTree = "<group>"; };
 		766D455019E573A400269EAC /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+animatedGIF.h"; path = "vendor/UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		766D455119E573A400269EAC /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+animatedGIF.m"; path = "vendor/UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		7680016F19FB9751006073B3 /* KMEmotionGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionGridView.h; sourceTree = "<group>"; };
@@ -120,7 +119,6 @@
 		7697FE3C19F54ADC00CCB885 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = vendor/WeChatSDK_64/libWeChatSDK.a; sourceTree = "<group>"; };
 		7697FE3D19F54ADC00CCB885 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = vendor/WeChatSDK_64/WXApi.h; sourceTree = "<group>"; };
 		7697FE3E19F54ADC00CCB885 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = vendor/WeChatSDK_64/WXApiObject.h; sourceTree = "<group>"; };
-		76A1AF7919D453F600112DC8 /* emotions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = emotions; sourceTree = "<group>"; };
 		76A6390C1A1255EE00A6D1FC /* KMEmotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionManager.h; sourceTree = "<group>"; };
 		76A6390D1A1255EE00A6D1FC /* KMEmotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMEmotionManager.m; sourceTree = "<group>"; };
 		76A6EBF919E825D1007E2463 /* GroupSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupSelectView.h; sourceTree = "<group>"; };
@@ -134,12 +132,48 @@
 		76DB437A1A04C2640063B1D4 /* UIPureColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPureColorButton.h; sourceTree = "<group>"; };
 		76DB437B1A04C2640063B1D4 /* UIPureColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPureColorButton.m; sourceTree = "<group>"; };
 		76EB88D419FBDD06008CCEF1 /* libFWTPopoverView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFWTPopoverView.a; path = vendor/libFWTPopoverView.a; sourceTree = "<group>"; };
-		76EB88E719FE9346008CCEF1 /* FWTPopoverAnimationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWTPopoverAnimationHelper.h; path = vendor/FWTPopoverView/FWTPopoverAnimationHelper.h; sourceTree = "<group>"; };
-		76EB88E819FE9346008CCEF1 /* FWTPopoverArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWTPopoverArrow.h; path = vendor/FWTPopoverView/FWTPopoverArrow.h; sourceTree = "<group>"; };
-		76EB88E919FE9346008CCEF1 /* FWTPopoverBackgroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWTPopoverBackgroundHelper.h; path = vendor/FWTPopoverView/FWTPopoverBackgroundHelper.h; sourceTree = "<group>"; };
-		76EB88EA19FE9346008CCEF1 /* FWTPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FWTPopoverView.h; path = vendor/FWTPopoverView/FWTPopoverView.h; sourceTree = "<group>"; };
-		76F9E59519D84F4D00B2FCEC /* emotions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emotions.plist; sourceTree = "<group>"; };
 		76FD997419F951E20020895E /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfig.h; sourceTree = "<group>"; };
+		930F5D801A94763D000F8E76 /* MUA表情.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "MUA表情.entitlements"; sourceTree = "<group>"; };
+		930F5D811A94764F000F8E76 /* MUA表情输入法.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "MUA表情输入法.entitlements"; sourceTree = "<group>"; };
+		93300B3E1B636E5500A3EC7D /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		93300B3F1B636E5500A3EC7D /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		93300B401B636E5500A3EC7D /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		93300B411B636E5500A3EC7D /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		93300B421B636E5500A3EC7D /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		93300B431B636E5500A3EC7D /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		93300B441B636E5500A3EC7D /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		9369267E1AB46FFE00CEB9E1 /* mua.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = mua.sqlite3; sourceTree = "<group>"; };
+		936B594E1A9C4DFE001C0967 /* KMEmotionSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionSet.h; sourceTree = "<group>"; };
+		936B594F1A9C4DFE001C0967 /* KMEmotionSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMEmotionSet.m; sourceTree = "<group>"; };
+		936B59511A9C50C9001C0967 /* KMEmotionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KMEmotionItem.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		936B59521A9C50C9001C0967 /* KMEmotionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KMEmotionItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		937A5FEF1B475B3900515166 /* KMEmotionTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionTag.h; sourceTree = "<group>"; };
+		937A5FF01B475B3900515166 /* KMEmotionTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMEmotionTag.m; sourceTree = "<group>"; };
+		939C12A01B2C3F8100FB0DFA /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		93BDE1EB1B47A052006B32C4 /* KMEmotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionManager.h; sourceTree = "<group>"; };
+		93BDE1EC1B47A052006B32C4 /* KMEmotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMEmotionManager.m; sourceTree = "<group>"; };
+		93D1402D1AADF2E100060860 /* KMEmotionKeyboardDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionKeyboardDataBase.h; sourceTree = "<group>"; };
+		93D1402E1AADF2E100060860 /* KMEmotionKeyboardDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KMEmotionKeyboardDataBase.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		93D1402F1AADF2E100060860 /* KMEmotionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionItem.h; sourceTree = "<group>"; };
+		93D140301AADF2E100060860 /* KMEmotionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KMEmotionItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		93D140311AADF2E100060860 /* KMEmotionSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionSet.h; sourceTree = "<group>"; };
+		93D140321AADF2E100060860 /* KMEmotionSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMEmotionSet.m; sourceTree = "<group>"; };
+		93D3FB741B6DBC090070745E /* KMTopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMTopBarView.h; sourceTree = "<group>"; };
+		93D3FB751B6DBC090070745E /* KMTopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMTopBarView.m; sourceTree = "<group>"; };
+		93EBB83E1B3E9BDD00492DB1 /* KMAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMAPIClient.h; sourceTree = "<group>"; };
+		93EBB83F1B3E9BDD00492DB1 /* KMAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMAPIClient.m; sourceTree = "<group>"; };
+		93EBB8461B3EF56200492DB1 /* KMEmotionTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionTag.h; sourceTree = "<group>"; };
+		93EBB8471B3EF56200492DB1 /* KMEmotionTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMEmotionTag.m; sourceTree = "<group>"; };
+		93EBB8491B3FE32900492DB1 /* KMURLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMURLHelper.h; sourceTree = "<group>"; };
+		93EBB84A1B3FE32900492DB1 /* KMURLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMURLHelper.m; sourceTree = "<group>"; };
+		93FF84F71AA2F4980055D17F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		93FF84FB1AA2F9280055D17F /* KMEmotionDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMEmotionDataBase.h; sourceTree = "<group>"; };
+		93FF84FC1AA2F9280055D17F /* KMEmotionDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMEmotionDataBase.m; sourceTree = "<group>"; };
+		99FC5C343DA27B16A06425D7 /* libPods-Kmoji-keyboard.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kmoji-keyboard.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54DAC394C545D4B9B6DA27D /* Pods-Kmoji-objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kmoji-objc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kmoji-objc/Pods-Kmoji-objc.release.xcconfig"; sourceTree = "<group>"; };
+		B63F82D8757D5A690A0E7213 /* Pods-Kmoji-keyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kmoji-keyboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kmoji-keyboard/Pods-Kmoji-keyboard.release.xcconfig"; sourceTree = "<group>"; };
+		DD5B04877A15EE591D5B984F /* Pods-Kmoji-objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kmoji-objc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kmoji-objc/Pods-Kmoji-objc.debug.xcconfig"; sourceTree = "<group>"; };
+		E294C258D18D7EA47BBE212A /* libPods-Kmoji-objc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kmoji-objc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,15 +181,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76EB88D519FBDD06008CCEF1 /* libFWTPopoverView.a in Frameworks */,
+				93FF84F81AA2F4980055D17F /* libsqlite3.dylib in Frameworks */,
 				7697FE4219F552C500CCB885 /* libWeChatSDK.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7624075319D067A700647987 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				F2565908CAA8B651F7E64BE7 /* libPods-Kmoji-objc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,32 +191,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76EB88EB19FE94A0008CCEF1 /* libFWTPopoverView.a in Frameworks */,
+				93D140361AADF6AB00060860 /* libsqlite3.dylib in Frameworks */,
 				7697FE4119F552A000CCB885 /* libWeChatSDK.a in Frameworks */,
+				81954AF740102FEDC46DE637 /* libPods-Kmoji-keyboard.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B9B422311329638460A021C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				939C12A01B2C3F8100FB0DFA /* libPods.a */,
+				99FC5C343DA27B16A06425D7 /* libPods-Kmoji-keyboard.a */,
+				E294C258D18D7EA47BBE212A /* libPods-Kmoji-objc.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7624073419D067A600647987 = {
 			isa = PBXGroup;
 			children = (
+				93FF84F71AA2F4980055D17F /* libsqlite3.dylib */,
 				7624073F19D067A600647987 /* Kmoji-objc */,
 				7624076B19D067DC00647987 /* Kmoji-keyboard */,
-				7624075919D067A700647987 /* Kmoji-objcTests */,
 				766D454F19E5739400269EAC /* vendor */,
 				76A6EBF819E6C5F2007E2463 /* utils */,
 				76DB43751A0494950063B1D4 /* kmoj-precompile.pch */,
 				7624073E19D067A600647987 /* Products */,
+				4B9B422311329638460A021C /* Frameworks */,
+				A45EF41CC37F6D3D6C905007 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		7624073E19D067A600647987 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7624073D19D067A600647987 /* MUA表情.app */,
-				7624075619D067A700647987 /* Kmoji-objcTests.xctest */,
+				7624073D19D067A600647987 /* MUA.app */,
 				7624076A19D067DC00647987 /* MUA表情输入法.appex */,
 			);
 			name = Products;
@@ -197,9 +237,9 @@
 		7624073F19D067A600647987 /* Kmoji-objc */ = {
 			isa = PBXGroup;
 			children = (
+				9369267E1AB46FFE00CEB9E1 /* mua.sqlite3 */,
+				930F5D801A94763D000F8E76 /* MUA表情.entitlements */,
 				7619BD1A1A2A20FF007646D8 /* images.xcassets */,
-				76F9E59519D84F4D00B2FCEC /* emotions.plist */,
-				76A1AF7919D453F600112DC8 /* emotions */,
 				7624077B19D0680600647987 /* Kmoji-objc.entitlements */,
 				7624074419D067A600647987 /* AppDelegate.h */,
 				7624074519D067A600647987 /* AppDelegate.m */,
@@ -221,34 +261,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7624075919D067A700647987 /* Kmoji-objcTests */ = {
-			isa = PBXGroup;
-			children = (
-				7624075C19D067A700647987 /* Kmoji_objcTests.m */,
-				7624075A19D067A700647987 /* Supporting Files */,
-			);
-			path = "Kmoji-objcTests";
-			sourceTree = "<group>";
-		};
-		7624075A19D067A700647987 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7624075B19D067A700647987 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		7624076B19D067DC00647987 /* Kmoji-keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				93D1402C1AADF2D100060860 /* Model */,
+				93BDE1EE1B47A05D006B32C4 /* View */,
+				93BDE1EF1B47A064006B32C4 /* Controller */,
+				930F5D811A94764F000F8E76 /* MUA表情输入法.entitlements */,
 				76DB43761A04BF890063B1D4 /* images.xcassets */,
-				76A6EBF919E825D1007E2463 /* GroupSelectView.h */,
-				76A6EBFA19E825D1007E2463 /* GroupSelectView.m */,
-				76A6EBFB19E825D1007E2463 /* KMEmotionView.h */,
-				76A6EBFC19E825D1007E2463 /* KMEmotionView.m */,
 				7624077A19D067EA00647987 /* Kmoji-keyboard.entitlements */,
-				7624076E19D067DC00647987 /* KeyboardViewController.h */,
-				7624076F19D067DC00647987 /* KeyboardViewController.m */,
 				7624076C19D067DC00647987 /* Supporting Files */,
 			);
 			path = "Kmoji-keyboard";
@@ -265,24 +286,10 @@
 		765F116B19F800260046422A /* KMClass */ = {
 			isa = PBXGroup;
 			children = (
-				766D451919E38FB600269EAC /* KMTableViewController.h */,
-				766D451A19E38FB600269EAC /* KMTableViewController.m */,
-				766D451C19E39BC400269EAC /* KMMainViewController.h */,
-				766D451D19E39BC400269EAC /* KMMainViewController.m */,
-				76A6EC5A19EAC1FE007E2463 /* KMEmotionCell.h */,
-				76A6EC5B19EAC1FE007E2463 /* KMEmotionCell.m */,
-				765F116C19F800720046422A /* KMEmotionDownloadViewController.h */,
-				765F116D19F800720046422A /* KMEmotionDownloadViewController.m */,
-				7680016F19FB9751006073B3 /* KMEmotionGridView.h */,
-				7680017019FB9751006073B3 /* KMEmotionGridView.m */,
-				7611929319F2BCAD00FE1679 /* KMMyEmotionViewController.h */,
-				7611929419F2BCAD00FE1679 /* KMMyEmotionViewController.m */,
-				76A6390C1A1255EE00A6D1FC /* KMEmotionManager.h */,
-				76A6390D1A1255EE00A6D1FC /* KMEmotionManager.m */,
-				7619BD171A21D746007646D8 /* KMSettingViewController.h */,
-				7619BD181A21D746007646D8 /* KMSettingViewController.m */,
-				760CAC6E1A32B4F200C43405 /* KMDownloadedEmotionViewController.h */,
-				760CAC6F1A32B4F200C43405 /* KMDownloadedEmotionViewController.m */,
+				93EBB83D1B3E7BF700492DB1 /* Engine */,
+				936B594D1A9C3652001C0967 /* Model */,
+				93EBB8411B3EF42900492DB1 /* View */,
+				93EBB8421B3EF44400492DB1 /* Controller */,
 			);
 			name = KMClass;
 			sourceTree = "<group>";
@@ -292,10 +299,6 @@
 			children = (
 				763186771A2CBD8700A0875B /* HYActivityView.h */,
 				763186781A2CBD8700A0875B /* HYActivityView.m */,
-				76EB88E719FE9346008CCEF1 /* FWTPopoverAnimationHelper.h */,
-				76EB88E819FE9346008CCEF1 /* FWTPopoverArrow.h */,
-				76EB88E919FE9346008CCEF1 /* FWTPopoverBackgroundHelper.h */,
-				76EB88EA19FE9346008CCEF1 /* FWTPopoverView.h */,
 				76EB88D419FBDD06008CCEF1 /* libFWTPopoverView.a */,
 				7697FE4019F54AE800CCB885 /* Weixin */,
 				766D455019E573A400269EAC /* UIImage+animatedGIF.h */,
@@ -317,6 +320,7 @@
 		76A6EBF819E6C5F2007E2463 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				93300B3D1B636E5500A3EC7D /* popover */,
 				7639A70319DFE1960017EFFE /* YLCToastManager.h */,
 				7639A70419DFE1960017EFFE /* YLCToastManager.m */,
 				76DB437A1A04C2640063B1D4 /* UIPureColorButton.h */,
@@ -326,6 +330,126 @@
 			path = "Kmoji-keyboard";
 			sourceTree = "<group>";
 		};
+		93300B3D1B636E5500A3EC7D /* popover */ = {
+			isa = PBXGroup;
+			children = (
+				93300B3E1B636E5500A3EC7D /* ARCMacros.h */,
+				93300B3F1B636E5500A3EC7D /* FPPopoverController.h */,
+				93300B401B636E5500A3EC7D /* FPPopoverController.m */,
+				93300B411B636E5500A3EC7D /* FPPopoverView.h */,
+				93300B421B636E5500A3EC7D /* FPPopoverView.m */,
+				93300B431B636E5500A3EC7D /* FPTouchView.h */,
+				93300B441B636E5500A3EC7D /* FPTouchView.m */,
+			);
+			path = popover;
+			sourceTree = "<group>";
+		};
+		936B594D1A9C3652001C0967 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				936B594E1A9C4DFE001C0967 /* KMEmotionSet.h */,
+				936B594F1A9C4DFE001C0967 /* KMEmotionSet.m */,
+				936B59511A9C50C9001C0967 /* KMEmotionItem.h */,
+				936B59521A9C50C9001C0967 /* KMEmotionItem.m */,
+				93FF84FB1AA2F9280055D17F /* KMEmotionDataBase.h */,
+				93FF84FC1AA2F9280055D17F /* KMEmotionDataBase.m */,
+				93EBB8461B3EF56200492DB1 /* KMEmotionTag.h */,
+				93EBB8471B3EF56200492DB1 /* KMEmotionTag.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		93BDE1EE1B47A05D006B32C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				76A6EBF919E825D1007E2463 /* GroupSelectView.h */,
+				76A6EBFA19E825D1007E2463 /* GroupSelectView.m */,
+				76A6EBFB19E825D1007E2463 /* KMEmotionView.h */,
+				76A6EBFC19E825D1007E2463 /* KMEmotionView.m */,
+				93D3FB741B6DBC090070745E /* KMTopBarView.h */,
+				93D3FB751B6DBC090070745E /* KMTopBarView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		93BDE1EF1B47A064006B32C4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				93BDE1EB1B47A052006B32C4 /* KMEmotionManager.h */,
+				93BDE1EC1B47A052006B32C4 /* KMEmotionManager.m */,
+				7624076E19D067DC00647987 /* KeyboardViewController.h */,
+				7624076F19D067DC00647987 /* KeyboardViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		93D1402C1AADF2D100060860 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93D1402D1AADF2E100060860 /* KMEmotionKeyboardDataBase.h */,
+				93D1402E1AADF2E100060860 /* KMEmotionKeyboardDataBase.m */,
+				93D1402F1AADF2E100060860 /* KMEmotionItem.h */,
+				93D140301AADF2E100060860 /* KMEmotionItem.m */,
+				937A5FEF1B475B3900515166 /* KMEmotionTag.h */,
+				937A5FF01B475B3900515166 /* KMEmotionTag.m */,
+				93D140311AADF2E100060860 /* KMEmotionSet.h */,
+				93D140321AADF2E100060860 /* KMEmotionSet.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		93EBB83D1B3E7BF700492DB1 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				93EBB83E1B3E9BDD00492DB1 /* KMAPIClient.h */,
+				93EBB83F1B3E9BDD00492DB1 /* KMAPIClient.m */,
+				76A6390C1A1255EE00A6D1FC /* KMEmotionManager.h */,
+				76A6390D1A1255EE00A6D1FC /* KMEmotionManager.m */,
+				93EBB8491B3FE32900492DB1 /* KMURLHelper.h */,
+				93EBB84A1B3FE32900492DB1 /* KMURLHelper.m */,
+			);
+			name = Engine;
+			sourceTree = "<group>";
+		};
+		93EBB8411B3EF42900492DB1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7680016F19FB9751006073B3 /* KMEmotionGridView.h */,
+				7680017019FB9751006073B3 /* KMEmotionGridView.m */,
+				76A6EC5A19EAC1FE007E2463 /* KMEmotionCell.h */,
+				76A6EC5B19EAC1FE007E2463 /* KMEmotionCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		93EBB8421B3EF44400492DB1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				766D451919E38FB600269EAC /* KMTableViewController.h */,
+				766D451A19E38FB600269EAC /* KMTableViewController.m */,
+				765F116C19F800720046422A /* KMEmotionDownloadViewController.h */,
+				765F116D19F800720046422A /* KMEmotionDownloadViewController.m */,
+				7611929319F2BCAD00FE1679 /* KMMyEmotionViewController.h */,
+				7611929419F2BCAD00FE1679 /* KMMyEmotionViewController.m */,
+				7619BD171A21D746007646D8 /* KMSettingViewController.h */,
+				7619BD181A21D746007646D8 /* KMSettingViewController.m */,
+				760CAC6E1A32B4F200C43405 /* KMDownloadedEmotionViewController.h */,
+				760CAC6F1A32B4F200C43405 /* KMDownloadedEmotionViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A45EF41CC37F6D3D6C905007 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD5B04877A15EE591D5B984F /* Pods-Kmoji-objc.debug.xcconfig */,
+				A54DAC394C545D4B9B6DA27D /* Pods-Kmoji-objc.release.xcconfig */,
+				69F14B330E01B9E1B3611F5C /* Pods-Kmoji-keyboard.debug.xcconfig */,
+				B63F82D8757D5A690A0E7213 /* Pods-Kmoji-keyboard.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -333,39 +457,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7624076019D067A700647987 /* Build configuration list for PBXNativeTarget "Kmoji-objc" */;
 			buildPhases = (
+				42D34AAD8AB82705A41D7835 /* Check Pods Manifest.lock */,
 				7624073919D067A600647987 /* Sources */,
 				7624073A19D067A600647987 /* Frameworks */,
 				7624073B19D067A600647987 /* Resources */,
 				7624077919D067DC00647987 /* Embed App Extensions */,
+				EF7ACC2C5CCD7952F299D306 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7624077219D067DC00647987 /* PBXTargetDependency */,
-				7624077519D067DC00647987 /* PBXTargetDependency */,
+				939C129F1B2C3F2900FB0DFA /* PBXTargetDependency */,
 			);
 			name = "Kmoji-objc";
 			productName = "Kmoji-objc";
-			productReference = 7624073D19D067A600647987 /* MUA表情.app */;
+			productReference = 7624073D19D067A600647987 /* MUA.app */;
 			productType = "com.apple.product-type.application";
-		};
-		7624075519D067A700647987 /* Kmoji-objcTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7624076319D067A700647987 /* Build configuration list for PBXNativeTarget "Kmoji-objcTests" */;
-			buildPhases = (
-				7624075219D067A700647987 /* Sources */,
-				7624075319D067A700647987 /* Frameworks */,
-				7624075419D067A700647987 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7624075819D067A700647987 /* PBXTargetDependency */,
-			);
-			name = "Kmoji-objcTests";
-			productName = "Kmoji-objcTests";
-			productReference = 7624075619D067A700647987 /* Kmoji-objcTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		7624076919D067DC00647987 /* Kmoji-keyboard */ = {
 			isa = PBXNativeTarget;
@@ -402,10 +509,6 @@
 							};
 						};
 					};
-					7624075519D067A700647987 = {
-						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 7624073C19D067A600647987;
-					};
 					7624076919D067DC00647987 = {
 						CreatedOnToolsVersion = 6.0.1;
 						DevelopmentTeam = R8HHE4FB3G;
@@ -432,7 +535,6 @@
 			targets = (
 				7624073C19D067A600647987 /* Kmoji-objc */,
 				7624076919D067DC00647987 /* Kmoji-keyboard */,
-				7624075519D067A700647987 /* Kmoji-objcTests */,
 			);
 		};
 /* End PBXProject section */
@@ -443,17 +545,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7624074C19D067A700647987 /* Main.storyboard in Resources */,
+				9369267F1AB46FFE00CEB9E1 /* mua.sqlite3 in Resources */,
 				7624075119D067A700647987 /* LaunchScreen.xib in Resources */,
-				76F9E59619D84F4D00B2FCEC /* emotions.plist in Resources */,
-				76A1AF7A19D453F600112DC8 /* emotions in Resources */,
 				7619BD1B1A2A20FF007646D8 /* images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7624075419D067A700647987 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,33 +561,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		42D34AAD8AB82705A41D7835 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF7ACC2C5CCD7952F299D306 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kmoji-objc/Pods-Kmoji-objc-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7624073919D067A600647987 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				763186791A2CBD8700A0875B /* HYActivityView.m in Sources */,
+				93EBB8401B3E9BDD00492DB1 /* KMAPIClient.m in Sources */,
 				7680017119FB9751006073B3 /* KMEmotionGridView.m in Sources */,
+				93EBB8481B3EF56200492DB1 /* KMEmotionTag.m in Sources */,
 				76DB437C1A04C2640063B1D4 /* UIPureColorButton.m in Sources */,
 				7611929519F2BCAD00FE1679 /* KMMyEmotionViewController.m in Sources */,
+				93FF84FD1AA2F9280055D17F /* KMEmotionDataBase.m in Sources */,
+				93EBB84B1B3FE32900492DB1 /* KMURLHelper.m in Sources */,
 				766D455219E573A400269EAC /* UIImage+animatedGIF.m in Sources */,
+				93300B461B636E5500A3EC7D /* FPPopoverView.m in Sources */,
 				76A6EC5C19EAC1FE007E2463 /* KMEmotionCell.m in Sources */,
+				936B59501A9C4DFE001C0967 /* KMEmotionSet.m in Sources */,
+				93300B471B636E5500A3EC7D /* FPTouchView.m in Sources */,
 				7619BD191A21D746007646D8 /* KMSettingViewController.m in Sources */,
 				760CAC701A32B4F200C43405 /* KMDownloadedEmotionViewController.m in Sources */,
 				766D451B19E38FB600269EAC /* KMTableViewController.m in Sources */,
 				7624074619D067A600647987 /* AppDelegate.m in Sources */,
 				76A6390E1A1255EE00A6D1FC /* KMEmotionManager.m in Sources */,
-				766D451E19E39BC400269EAC /* KMMainViewController.m in Sources */,
+				936B59531A9C50C9001C0967 /* KMEmotionItem.m in Sources */,
+				93300B451B636E5500A3EC7D /* FPPopoverController.m in Sources */,
 				765F116E19F800720046422A /* KMEmotionDownloadViewController.m in Sources */,
 				7624074319D067A600647987 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7624075219D067A700647987 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7624075D19D067A700647987 /* Kmoji_objcTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,32 +628,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9328E8EF1B637CE300155BF1 /* FPPopoverView.m in Sources */,
+				9328E8F01B637CE300155BF1 /* FPTouchView.m in Sources */,
+				9328E8EE1B637CC800155BF1 /* FPPopoverController.m in Sources */,
 				76DB437D1A04CA530063B1D4 /* UIPureColorButton.m in Sources */,
 				76A6EBFD19E825D1007E2463 /* GroupSelectView.m in Sources */,
+				93D140331AADF2E100060860 /* KMEmotionKeyboardDataBase.m in Sources */,
 				76A6EBFE19E825D1007E2463 /* KMEmotionView.m in Sources */,
+				93D140341AADF2E100060860 /* KMEmotionItem.m in Sources */,
 				766D455519E5784A00269EAC /* UIImage+animatedGIF.m in Sources */,
+				937A5FF11B475B3900515166 /* KMEmotionTag.m in Sources */,
+				93BDE1ED1B47A052006B32C4 /* KMEmotionManager.m in Sources */,
+				93D140351AADF2E100060860 /* KMEmotionSet.m in Sources */,
+				93D3FB761B6DBC090070745E /* KMTopBarView.m in Sources */,
+				936DDB661AE7E21D000FAA36 /* KeyboardViewController.m in Sources */,
 				7639A70519DFE1960017EFFE /* YLCToastManager.m in Sources */,
-				7624077019D067DC00647987 /* KeyboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7624075819D067A700647987 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7624073C19D067A600647987 /* Kmoji-objc */;
-			targetProxy = 7624075719D067A700647987 /* PBXContainerItemProxy */;
-		};
-		7624077219D067DC00647987 /* PBXTargetDependency */ = {
+		939C129F1B2C3F2900FB0DFA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7624076919D067DC00647987 /* Kmoji-keyboard */;
-			targetProxy = 7624077119D067DC00647987 /* PBXContainerItemProxy */;
-		};
-		7624077519D067DC00647987 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7624076919D067DC00647987 /* Kmoji-keyboard */;
-			targetProxy = 7624077419D067DC00647987 /* PBXContainerItemProxy */;
+			targetProxy = 939C129E1B2C3F2900FB0DFA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -560,7 +686,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -602,7 +728,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
@@ -623,6 +749,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -630,10 +757,12 @@
 		};
 		7624076119D067A700647987 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD5B04877A15EE591D5B984F /* Pods-Kmoji-objc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Kmoji-objc/Kmoji-objc.entitlements";
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Kmoji-objc/MUA表情.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Kmoji-objc/Info.plist";
@@ -644,17 +773,19 @@
 					"$(PROJECT_DIR)/vendor/WeChatSDK_64",
 					"$(PROJECT_DIR)/vendor",
 				);
-				PRODUCT_NAME = "MUA表情";
+				PRODUCT_NAME = MUA;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		7624076219D067A700647987 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A54DAC394C545D4B9B6DA27D /* Pods-Kmoji-objc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Kmoji-objc/Kmoji-objc.entitlements";
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Kmoji-objc/MUA表情.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Kmoji-objc/Info.plist";
@@ -665,49 +796,17 @@
 					"$(PROJECT_DIR)/vendor/WeChatSDK_64",
 					"$(PROJECT_DIR)/vendor",
 				);
-				PRODUCT_NAME = "MUA表情";
+				PRODUCT_NAME = MUA;
 				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		7624076419D067A700647987 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Kmoji-objcTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MUA.app/MUA";
-			};
-			name = Debug;
-		};
-		7624076519D067A700647987 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Kmoji-objcTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MUA.app/MUA";
 			};
 			name = Release;
 		};
 		7624077719D067DC00647987 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69F14B330E01B9E1B3611F5C /* Pods-Kmoji-keyboard.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Kmoji-keyboard/Kmoji-keyboard.entitlements";
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Kmoji-keyboard/MUA表情输入法.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -721,6 +820,19 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/vendor/WeChatSDK_64",
 					"$(PROJECT_DIR)/vendor",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/JSONKit\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/OpenShare\"",
+					"-DKEYBOARD_EXTENSION",
 				);
 				PRODUCT_NAME = "MUA表情输入法";
 				PROVISIONING_PROFILE = "";
@@ -730,8 +842,10 @@
 		};
 		7624077819D067DC00647987 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B63F82D8757D5A690A0E7213 /* Pods-Kmoji-keyboard.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Kmoji-keyboard/Kmoji-keyboard.entitlements";
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Kmoji-keyboard/MUA表情输入法.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Kmoji-keyboard/Info.plist";
@@ -741,6 +855,19 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/vendor/WeChatSDK_64",
 					"$(PROJECT_DIR)/vendor",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/JSONKit\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/OpenShare\"",
+					"-DKEYBOARD_EXTENSION",
 				);
 				PRODUCT_NAME = "MUA表情输入法";
 				PROVISIONING_PROFILE = "";
@@ -765,15 +892,6 @@
 			buildConfigurations = (
 				7624076119D067A700647987 /* Debug */,
 				7624076219D067A700647987 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7624076319D067A700647987 /* Build configuration list for PBXNativeTarget "Kmoji-objcTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7624076419D067A700647987 /* Debug */,
-				7624076519D067A700647987 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

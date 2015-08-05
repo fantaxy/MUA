@@ -20,8 +20,7 @@
 - (instancetype)initWithName:(NSString *)name thumbName:(NSString *)thunmName;
 - (NSString *)addTimeString;
 - (void)setAddTimeWithString:(NSString *)timeString;
-- (void)updatetoDb;
-- (BOOL)isDownloaded;
+//- (void)updatetoDb;
 
 
 @end

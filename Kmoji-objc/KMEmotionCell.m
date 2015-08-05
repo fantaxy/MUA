@@ -12,7 +12,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    self.downloadButton.layer.cornerRadius = 5.f;
+    self.downloadButton.layer.cornerRadius = 4.f;
+    self.checkmark.layer.cornerRadius = 4.f;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

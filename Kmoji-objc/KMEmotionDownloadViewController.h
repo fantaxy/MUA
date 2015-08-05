@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class KMEmotionTag;
+
 @interface KMEmotionDownloadViewController : UIViewController
 
-@property (nonatomic, strong) NSDictionary *emotionInfo;
+@property (nonatomic, strong) KMEmotionTag *emotionTag;
 
 @end

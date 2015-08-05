@@ -10,6 +10,10 @@
 #import "GlobalConfig.h"
 #import "KMEmotionGridView.h"
 #import "KMEmotionManager.h"
+#import "KMEmotionTag.h"
+#import "KMURLHelper.h"
+
+#import "UIImageView+AFNetworking.h"
 
 @interface KMEmotionDownloadViewController ()
 
@@ -32,9 +36,9 @@
 
 - (void)viewDidLayoutSubviews
 {
-    CGRect frame = CGRectMake(HorizontalMargin, CGRectGetMaxY(self.downloadBtn.frame) + 12, CGRectGetWidth(self.view.frame) - HorizontalMargin*2, 0);
+    CGRect frame = CGRectMake(HorizontalMargin, CGRectGetMaxY(self.downloadBtn.frame) + 40, CGRectGetWidth(self.view.frame) - HorizontalMargin*2, 0);
     self.emotionGridView.frame = frame;
-    [self.emotionGridView layoutEmotionButtons];
+    [self.emotionGridView layoutEmotionTiles];
     frame = self.emotionGridView.frame;
     CGSize contentSize = self.scrollView.contentSize;
     contentSize.height = CGRectGetMaxY(frame);
@@ -53,20 +57,22 @@
     self.emotionGridView = [KMEmotionGridView new];
     [self.scrollView addSubview:self.emotionGridView];
     
-    if (self.emotionInfo)
+    if (self.emotionTag)
     {
-        NSString *folder = self.emotionInfo[@"folder"];
-        NSString *name = self.emotionInfo[@"name"];
+        NSString *name = self.emotionTag.name;
         self.navigationItem.title = name;
-        NSString *coverImgPath = [NSString stringWithFormat:@"%@/%@/%@", emotionsDirURL.path, folder, CoverImageName];
-        UIImage *coverImg = [UIImage imageWithContentsOfFile:coverImgPath];
         self.groupName.text = name;
-        self.introLabel.text = self.emotionInfo[@"desc"];
-        [self.coverImageView setImage:coverImg];
+        self.introLabel.text = self.emotionTag.desc;
+        [[KMEmotionManager sharedManager] getImageWithName:self.emotionTag.thumbName completionBlock:^(NSString *imagePath, NSError *error) {
+            if (!error) {
+                UIImage *coverImg = [UIImage imageWithContentsOfFile:imagePath];
+                [self.coverImageView setImage:coverImg];
+            }
+        }];
         self.scrollView.contentSize = self.scrollView.bounds.size;
         
         [self.emotionGridView setDisplayType:GridViewType_Normal];
-        [self.emotionGridView setUpEmotionsWithGroupName:folder];
+        [self.emotionGridView setUpEmotionsWithArray:self.emotionTag.itemArray];
     }
     
     [self updateUI];
@@ -74,9 +80,9 @@
 
 - (void)updateUI
 {
-    if ([[KMEmotionManager sharedManager].downloadedEmotionInfo containsObject:self.emotionInfo])
+    if ([self.emotionTag isDownloaded])
     {
-        [self.downloadBtn setTitle:@"已下载,点击查看" forState:UIControlStateNormal];
+        [self.downloadBtn setTitle:@"已下载，点击查看" forState:UIControlStateNormal];
     }
     else
     {
@@ -86,15 +92,15 @@
 
 - (IBAction)didClickeddownloadBtn:(id)sender
 {
-    if ([[KMEmotionManager sharedManager].downloadedEmotionInfo containsObject:self.emotionInfo])
+    if ([self.emotionTag isDownloaded])
     {
         //TODO: Share to friends
         [self.tabBarController setSelectedIndex:1];
-        [[KMEmotionManager sharedManager] setSelectedEmotion:self.emotionInfo];
+        [[KMEmotionManager sharedManager] setSelectedEmotion:self.emotionTag];
     }
     else
     {
-        [[KMEmotionManager sharedManager] downloadEmotion:self.emotionInfo];
+        [[KMEmotionManager sharedManager] downloadEmotionTag:self.emotionTag];
         [self setupUI];
     }
 }

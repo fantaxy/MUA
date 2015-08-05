@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, KMSharingDestination) {
+    KMSharingDestination_Wechat = 77,
+    KMSharingDestination_WechatTimeline,
+    KMSharingDestination_QQ
+};
+
 @interface KMTopBarView : UIView
+
+@property (nonatomic, assign) KMSharingDestination shareTo;
 
 @end

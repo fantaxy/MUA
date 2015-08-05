@@ -9,18 +9,17 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
-@class KMEmotionSet;
+@class KMEmotionTag;
 @class KMEmotionItem;
 
-@interface KMEmotionDataBase : NSObject
+@interface KMEmotionKeyboardDataBase : NSObject
 
 + (instancetype)sharedInstance;
-- (int)addEmotionSet:(KMEmotionSet *)set;
-- (int)addDownloadedEmotionSet:(KMEmotionSet *)set;
-- (int)addEmotionItem:(KMEmotionItem *)item;
-- (NSArray *)getEmotionSetArray;
-- (NSArray *)getDownloadedEmotionSetArray;
+- (NSArray *)getDownloadedEmotionTagArray;
 - (void)updateEmotionItem:(KMEmotionItem *)item;
-- (void)updateEmotionSet:(KMEmotionSet *)set;
+- (int)updateEmotionTag:(KMEmotionTag *)tag;
+
+
+//- (void)updateEmotionSet:(KMEmotionSet *)set;
 
 @end

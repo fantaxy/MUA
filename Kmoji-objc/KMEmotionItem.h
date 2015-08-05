@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KMEmotionItem : NSObject
+@interface KMEmotionItem : NSObject<NSCoding>
+
+@property (nonatomic, strong) NSString *imageName;
+@property (nonatomic) BOOL isDownloaded;
+@property (nonatomic) int clickCount;
+@property (nonatomic, strong) NSString *series;
+@property (nonatomic, strong) NSMutableSet *tagSet;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
+
+- (NSString *)tagSetToString;
+- (NSArray *)stringTotagSet:(NSString *)string;
+- (void)updatetoDb;
+- (void)updatetoSharedDb;
+- (void)removeTag:(NSString *)tag;
 
 @end

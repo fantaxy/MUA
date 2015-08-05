@@ -10,4 +10,8 @@
 
 @interface KMURLHelper : NSObject
 
++ (NSURL *)baseURL;
++ (NSString *)dataPath;
++ (NSURL *)imageURLWithName:(NSString *)name;
+
 @end

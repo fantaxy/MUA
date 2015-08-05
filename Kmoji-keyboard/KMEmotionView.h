@@ -8,11 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class KMEmotionTag;
+
+@protocol KMEmotionViewDelegate <NSObject>
+
+- (void)didSendEmotionWithImagePath:(NSString *)path;
+
+@end
+
 @interface KMEmotionView : UIView
 
-@property (nonatomic, strong) NSMutableArray *favoriteEmotionArray;
+@property (nonatomic, weak) id<KMEmotionViewDelegate> delegate;
 
-- (void)setupEmotionsWithGroupName:(NSString *)groupName;
+- (void)setupEmotionsWithGroup:(KMEmotionTag *)tag;
 - (void)setupEmotionsForFavorite;
 - (void)scrollToPreviousPage;
 

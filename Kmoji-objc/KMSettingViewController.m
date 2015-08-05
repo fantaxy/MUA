@@ -7,6 +7,13 @@
 //
 
 #import "KMSettingViewController.h"
+#import "GlobalConfig.h"
+
+typedef NS_ENUM(NSUInteger, KMSettingSection)
+{
+    KMSettingSection_Instruction,
+    KMSettingSection_Thanks
+};
 
 typedef NS_ENUM(NSUInteger, KMSettingCellTag) {
     KMSettingCell_Install,
@@ -27,18 +34,18 @@ typedef NS_ENUM(NSUInteger, KMSettingCellTag) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationController.navigationBar.barTintColor = BLUE_COLOR;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
     UITableViewCell *installCell = [self createCellWithTitle:@"安装方法" tag:KMSettingCell_Install];
+    [[installCell imageView] setImage:[UIImage imageNamed:@"install"]];
     UITableViewCell *usageCell = [self createCellWithTitle:@"使用方法" tag:KMSettingCell_Usage];
+    [[usageCell imageView] setImage:[UIImage imageNamed:@"usage"]];
     NSArray *instructionSection = @[installCell, usageCell];
     
     UITableViewCell *thanksCell = [self createCellWithTitle:@"鸣谢" tag:KMSettingCell_Thanks];
+    [[thanksCell imageView] setImage:[UIImage imageNamed:@"thanks"]];
     NSArray *thanksSection = @[thanksCell];
     
     self.installAlertView = [[UIAlertView alloc] initWithTitle:@"" message:@"在iOS8系统上，进入设置->通用->键盘->添加新键盘->MUA,再次选择MUA表情键盘并打开允许完全访问。" delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
@@ -46,6 +53,9 @@ typedef NS_ENUM(NSUInteger, KMSettingCellTag) {
     self.thanksAlertView = [[UIAlertView alloc] initWithTitle:@"" message:@"当你看到这段文字时,相信你跟我们一样是聊天表情的爱好者,同时也是我们最信任的朋友,衷心感谢您的使用,如果您对MUA表情有任何意见和建议,欢迎加入我们的微信用户群和我们交流。" delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
     
     _sectionArray = @[instructionSection, thanksSection];
+    
+    [self.tableView setBackgroundColor:GRAY_COLOR_SETTING];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +105,27 @@ typedef NS_ENUM(NSUInteger, KMSettingCellTag) {
             break;
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case KMSettingSection_Instruction:
+            return 0.1;
+        case KMSettingSection_Thanks:
+            return 10;
+    }
+    return 0;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    [view setTintColor:[UIColor clearColor]];
 }
 
 /*

@@ -10,10 +10,17 @@
 #import "GlobalConfig.h"
 #import "KMEmotionCell.h"
 #import "KMEmotionDownloadViewController.h"
+#import "KMDownloadedEmotionViewController.h"
 #import "WXApi.h"
 #import "UIImage+animatedGIF.h"
 #import "UIPureColorButton.h"
 #import "KMEmotionManager.h"
+#import "KMEmotionTag.h"
+#import "KMURLHelper.h"
+
+#import "UIRefreshControl+AFNetworking.h"
+#import "UIAlertView+AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface KMTableViewController () <WXApiDelegate>
 {
@@ -21,6 +28,7 @@
 }
 
 //@property (nonatomic, weak) IBOutlet UIScrollView *bannerScrollView;
+@property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
@@ -28,16 +36,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
+    [self.refreshControl addTarget:self action:@selector(reload:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView.tableHeaderView addSubview:self.refreshControl];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],NSFontAttributeName:[UIFont fontWithName:@"ArialMT" size:18.0]}];
     
     _emotionManager = [KMEmotionManager sharedManager];
-    [WXApi registerApp:@"wx689fb6eef31dc0b2"];
+    self.dataSource = [_emotionManager getEmotionTags];
     [self initializeUI];
+    
+    [self reload:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.tableView reloadData];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.refreshControl endRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,10 +68,10 @@
 - (void)initializeUI
 {
     UITabBar *tabBar = self.tabBarController.tabBar;
-    [tabBar setTintColor:UIColorWithRGB(255, 126, 0)];
+    [tabBar setTintColor:BLUE_COLOR];
     
     UITabBarItem *tabBarItem = [[tabBar items] objectAtIndex:0];
-    UIImage *selectedIcon = [UIImage imageNamed:@"MUA_selected"];
+    UIImage *selectedIcon = [UIImage imageNamed:@"mua_selected"];
     [tabBarItem setSelectedImage:selectedIcon];
     
     tabBarItem = [[tabBar items] objectAtIndex:1];
@@ -61,17 +81,34 @@
     tabBarItem = [[tabBar items] objectAtIndex:2];
     selectedIcon = [UIImage imageNamed:@"setting_selected"];
     [tabBarItem setSelectedImage:selectedIcon];
+    
+    for (UITabBarItem *item in [tabBar items]) {
+        [item setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:TABBAR_TITLE_FONT_SIZE], NSForegroundColorAttributeName:BLACK_COLOR} forState:UIControlStateNormal];
+        [item setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:TABBAR_TITLE_FONT_SIZE], NSForegroundColorAttributeName:BLUE_COLOR} forState:UIControlStateSelected];
+    }
+}
+
+- (void)reload:(id)sender
+{
+    NSURLSessionTask *task = [_emotionManager createRefreshTaskWithCompletionBlock:^(NSError *error) {
+        if (!error) {
+            self.dataSource = [_emotionManager getEmotionTags];
+            [self.tableView reloadData];
+        }
+        else {
+            NSLog(@"%@", error);
+        }
+    }];
+    
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+    [self.refreshControl setRefreshingWithStateOfTask:task];
 }
 
 - (IBAction)onDownloadBtnClicked:(id)sender
 {
     KMEmotionCell *cell = (KMEmotionCell *)[[(UIButton *)sender superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    if (indexPath.row < _emotionManager.emotionsData.count)
-    {
-        NSDictionary *dict = _emotionManager.emotionsData[indexPath.row];
-        [_emotionManager downloadEmotion:dict];
-    }
+    [[KMEmotionManager sharedManager] downloadEmotionTagWithIndex:indexPath.row];
     [self.tableView reloadData];
 }
 
@@ -84,22 +121,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return _emotionManager.emotionsData.count;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     KMEmotionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"emotionCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *dict = _emotionManager.emotionsData[indexPath.row];
-    NSString *folder = dict[@"folder"];
-    NSString *name = dict[@"name"];
-    NSString *coverImgPath = [NSString stringWithFormat:@"%@/%@/%@", emotionsDirURL.path, folder, CoverImageName];
-    UIImage *coverImg = [UIImage imageWithContentsOfFile:coverImgPath];
-    cell.emotionName.text = name;
-    cell.shortDecription.text = dict[@"desc"];
-    [cell.coverImage setImage:coverImg];
-    if ([_emotionManager.downloadedEmotionInfo containsObject:dict])
+    KMEmotionTag *tag = self.dataSource[indexPath.row];
+//    NSString *coverImgPath = [NSString stringWithFormat:@"%@/%@", emotionsDirURL.path, tag.thumbName];
+//    UIImage *coverImg = [UIImage imageWithContentsOfFile:coverImgPath];
+    cell.emotionName.text = tag.name;
+    cell.shortDecription.text = tag.desc;
+    [[KMEmotionManager sharedManager] getImageWithName:tag.thumbName completionBlock:^(NSString *imagePath, NSError *error) {
+        if (!error) {
+            UIImage *coverImg = [UIImage imageWithContentsOfFile:imagePath];
+            [cell.coverImageView setImage:coverImg];
+        }
+    }];
+    if ([[[KMEmotionManager sharedManager] getDownloadedEmotionTags] containsObject:tag])
     {
         [cell.downloadButton setHidden:YES];
         [cell.checkmark setHidden:NO];
@@ -110,8 +150,8 @@
         [cell.checkmark setHidden:YES];
     }
     return cell;
-}
-
+}    
+    
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return HeightForCell;
@@ -119,11 +159,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dict = _emotionManager.emotionsData[indexPath.row];
+    KMEmotionTag *tag = [_emotionManager getEmotionTagWithIndex:indexPath.row];
+    UIViewController *vc = nil;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    KMEmotionDownloadViewController *emotionDetatilView = (KMEmotionDownloadViewController *)[storyboard instantiateViewControllerWithIdentifier:@"downloadPage"];
-    [emotionDetatilView setEmotionInfo:dict];
-    [self.navigationController pushViewController:emotionDetatilView animated:YES];
+    if ([tag isDownloaded]) {
+        KMDownloadedEmotionViewController *emotionDetatilView = (KMDownloadedEmotionViewController *)[storyboard instantiateViewControllerWithIdentifier:@"downloadedEmotion"];
+        [emotionDetatilView setEmotionTag:tag];
+        vc = emotionDetatilView;
+    }
+    else {
+        KMEmotionDownloadViewController *emotionDownloadView = (KMEmotionDownloadViewController *)[storyboard instantiateViewControllerWithIdentifier:@"downloadPage"];
+        [emotionDownloadView setEmotionTag:tag];
+        vc = emotionDownloadView;
+    }
+    [self.navigationController pushViewController:vc animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

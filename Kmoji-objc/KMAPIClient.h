@@ -10,4 +10,6 @@
 
 @interface KMAPIClient : AFHTTPSessionManager
 
++ (instancetype)sharedClient;
+
 @end

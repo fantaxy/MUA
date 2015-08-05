@@ -13,30 +13,39 @@
 #import "WXApi.h"
 #import "UIPureColorButton.h"
 #import "YLCToastManager.h"
+#import "KMEmotionTag.h"
+#import "KMEmotionItem.h"
+#import "KMEmotionKeyboardDataBase.h"
+#import "KMEmotionManager.h"
+#import "KMTopBarView.h"
+#import "OpenShare+Weixin.h"
+#import "OpenShare+QQ.h"
 
 NSURL *containerURL;
 NSURL *sharedDirURL;
-NSURL *sharedPlistURL;
 NSURL *sharedEmotionsDirURL;
 NSURL *emotionsDirURL;
 NSURL *favoritePlistURL;
 
-#define Keyboard_Height 216.0f
+#define Keyboard_Height 251.0f
+#define Top_Bar_Height 53.0f
 #define Bottom_Bar_Height 37.0f
-#define More_Button_Width 60.0f
+#define More_Button_Width 51.0f
 
-@interface KeyboardViewController () <GroupSelectViewDelegate, WXApiDelegate>
+@interface KeyboardViewController () <GroupSelectViewDelegate, KMEmotionViewDelegate>
 {
     BOOL needInformUserLater;
+    NSLayoutConstraint *_heightConstraint;
 }
 
 @property (nonatomic, strong) NSArray *plistData;
-@property (nonatomic, strong) NSArray *groupArray;
+@property (nonatomic, strong) NSArray *emotionTags;
 @property (nonatomic, strong) KMEmotionView *emotionsView;
 @property (nonatomic, strong) UIButton *nextKeyboardButton;
 @property (nonatomic, strong) UIButton *moreButton;
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) GroupSelectView *bottomScrollView;
+@property (nonatomic, strong) KMTopBarView *topBarView;
 @property (nonatomic, strong) UIView *topLineView;
 @property (nonatomic, strong) UIWebView *webView;
 
@@ -51,12 +60,14 @@ NSURL *favoritePlistURL;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [WXApi registerApp:@"wxb692717f834207df"];
+    
+    [OpenShare connectWeixinWithAppId:@"wxb692717f834207df"];
+    [OpenShare connectQQWithAppId:@"1104724845"];
+    
     self.webView = [[UIWebView alloc] init];
     
     containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupID];
     sharedDirURL = [NSURL URLWithString:@"Library/Caches/" relativeToURL:containerURL];
-    sharedPlistURL = [NSURL URLWithString:@"emotions.plist" relativeToURL:sharedDirURL];
     sharedEmotionsDirURL = [NSURL URLWithString:@"emotions/" relativeToURL:sharedDirURL];
     favoritePlistURL = [NSURL URLWithString:@"favorite.plist" relativeToURL:sharedDirURL];
     NSLog(@"Shared Directory: %@", sharedDirURL.path);
@@ -72,7 +83,12 @@ NSURL *favoritePlistURL;
     NSLog(@"%s", __func__);
     [super viewWillAppear:animated];
     
-    NSLayoutConstraint *_heightConstraint =
+    UILabel *dummyView = [UILabel new];
+    [dummyView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:dummyView];
+    
+    [self.view removeConstraint:_heightConstraint];
+    _heightConstraint =
     [NSLayoutConstraint constraintWithItem: self.view
                                  attribute: NSLayoutAttributeHeight
                                  relatedBy: NSLayoutRelationEqual
@@ -81,9 +97,10 @@ NSURL *favoritePlistURL;
                                 multiplier: 0.0
                                   constant: Keyboard_Height];
     [self.view addConstraint: _heightConstraint];
-    
-    NSNumber *bottomoffset = [[NSUserDefaults standardUserDefaults] objectForKey:@"bottomoffset"];
-    [self.bottomScrollView setContentOffset:CGPointMake([bottomoffset floatValue], 0)];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
 }
 
 - (void)viewDidLayoutSubviews
@@ -126,24 +143,10 @@ NSURL *favoritePlistURL;
 - (BOOL)readEmotionData
 {
     NSError *error = nil;
-    [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sharedDirURL.path error:&error];
-    if (!error && [[NSFileManager defaultManager] fileExistsAtPath:sharedPlistURL.path])
+    NSArray *result = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sharedDirURL.path error:&error];
+    if (result && result.count)
     {
-        self.plistData = [NSArray arrayWithContentsOfFile:sharedPlistURL.path];
-        NSLog(@"Data: %@", self.plistData);
-        
-        NSMutableArray *groupArray = [NSMutableArray new];
-        //First group should be the favorite
-        [groupArray addObject:FavoriteGroupName];
-        for (NSDictionary *dict in self.plistData)
-        {
-            NSString *groupName = dict[@"folder"];
-            if (groupName)
-            {
-                [groupArray addObject:groupName];
-            }
-        }
-        self.groupArray = groupArray;
+        self.emotionTags = [[KMEmotionKeyboardDataBase sharedInstance] getDownloadedEmotionTagArray];
         return YES;
     }
     else
@@ -159,13 +162,14 @@ NSURL *favoritePlistURL;
 
 - (void)setupUI
 {
+    [self setupTopBarView];
     [self setupBottomView];
     [self setupEmotionsView];
     [self arrangeUI];
 
     CGFloat viewWidth = [UIScreen mainScreen].applicationFrame.size.width;
     UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, 0.5)];
-    [topLineView setBackgroundColor:UIColorWithRGB(180, 197, 207)];
+    [topLineView setBackgroundColor:UIColorWithRGB(220, 220, 220)];
     [topLineView setAutoresizingMask:UIViewAutoresizingFlexibleWidth];
     [self.view addSubview:topLineView];
     NSData *tempArchive = [NSKeyedArchiver archivedDataWithRootObject:topLineView];
@@ -186,7 +190,7 @@ NSURL *favoritePlistURL;
     }
     else
     {
-        if (self.emotionsView.favoriteEmotionArray.count)
+        if ([[KMEmotionManager sharedManager] getFavoriteItemArray].count)
         {
             [self.bottomScrollView selectGroupAtIndex:0];
         }
@@ -195,13 +199,23 @@ NSURL *favoritePlistURL;
             [self.bottomScrollView selectGroupAtIndex:1];
         }
     }
+    
+    NSNumber *bottomoffset = [[NSUserDefaults standardUserDefaults] objectForKey:@"bottomoffset"];
+    [self.bottomScrollView setContentOffset:CGPointMake([bottomoffset floatValue], 0)];
+}
+
+- (void)setupTopBarView
+{
+    self.topBarView = [KMTopBarView new];
+    self.topBarView.backgroundColor = UIColorWithRGB(253,253,253);
+    [self.view addSubview:self.topBarView];
 }
 
 - (void)setupBottomView
 {
     self.bottomView = [[UIView alloc] init];
-//    [self.bottomView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    self.bottomView.backgroundColor = UIColorWithRGB(243, 248, 250);
+    [self.bottomView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.bottomView.backgroundColor = UIColorWithRGB(253,253,253);
     [self.view addSubview:self.bottomView];
     
     [self setupSwitchButton];
@@ -211,8 +225,9 @@ NSURL *favoritePlistURL;
 
 - (void)setupMoreButton
 {
-    self.moreButton = [[UIPureColorButton alloc] initWithBgColor:UIColorWithRGB(255, 135, 0) highlightedColor:UIColorWithRGB(236, 102, 0)];
-    [self.moreButton setImage:[UIImage imageNamed:@"btn_add"] forState:UIControlStateNormal];
+    self.moreButton = [UIButton new];
+    [self.moreButton setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    [self.moreButton setImage:[UIImage imageNamed:@"add_pressed"] forState:UIControlStateHighlighted];
 //    [self.moreButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.moreButton addTarget:self action:@selector(didSelectMoreButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomView addSubview:self.moreButton];
@@ -221,7 +236,9 @@ NSURL *favoritePlistURL;
 - (void)setupSwitchButton
 {
     self.nextKeyboardButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, Bottom_Bar_Height, Bottom_Bar_Height)];
-    [self.nextKeyboardButton setBackgroundImage:[UIImage imageNamed:@"btn_switch"] forState:UIControlStateNormal];
+    [self.nextKeyboardButton setBackgroundColor:UIColorWithRGBHex(0xf3f3f3)];
+    [self.nextKeyboardButton setImage:[UIImage imageNamed:@"switch"] forState:UIControlStateNormal];
+    [self.nextKeyboardButton setImage:[UIImage imageNamed:@"switch_pressed"] forState:UIControlStateHighlighted];
 //    [self.nextKeyboardButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.nextKeyboardButton addTarget:self action:@selector(advanceToNextInputMode) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomView addSubview:self.nextKeyboardButton];
@@ -231,15 +248,16 @@ NSURL *favoritePlistURL;
 {
     CGFloat width = [[UIScreen mainScreen] applicationFrame].size.width;
     self.bottomScrollView = [GroupSelectView new];
-    self.bottomScrollView.delegate = self;
+    self.bottomScrollView.groupSelectViewDelegate = self;
     self.bottomScrollView.frame = CGRectMake(Bottom_Bar_Height, 0, width-Bottom_Bar_Height-More_Button_Width, Bottom_Bar_Height);
-    [self.bottomScrollView setupWithGroups:self.groupArray];
+    [self.bottomScrollView setupWithGroups:self.emotionTags];
     [self.bottomView addSubview:self.bottomScrollView];
 }
 
 - (void)setupEmotionsView
 {
     self.emotionsView = [KMEmotionView new];
+    self.emotionsView.delegate = self;
     [self.view addSubview:self.emotionsView];
 }
 
@@ -248,37 +266,45 @@ NSURL *favoritePlistURL;
     CGFloat totalWidth = [[UIScreen mainScreen] applicationFrame].size.width;
     CGFloat totalHeight = Keyboard_Height;
     
+    self.topBarView.frame = CGRectMake(0, 0, totalWidth, Top_Bar_Height);
     self.bottomView.frame = CGRectMake(0, totalHeight-Bottom_Bar_Height, totalWidth, Bottom_Bar_Height);
     self.nextKeyboardButton.frame = CGRectMake(0, 0, Bottom_Bar_Height, Bottom_Bar_Height);
-    self.bottomScrollView.frame = CGRectMake(Bottom_Bar_Height, 0, totalWidth-Bottom_Bar_Height-More_Button_Width, Bottom_Bar_Height);
+    self.bottomScrollView.frame = CGRectMake(Bottom_Bar_Height+1, 0, totalWidth-Bottom_Bar_Height-1-More_Button_Width, Bottom_Bar_Height);
     self.moreButton.frame = CGRectMake(totalWidth-More_Button_Width, 0, More_Button_Width, Bottom_Bar_Height);
-    self.emotionsView.frame = CGRectMake(0, 0, totalWidth, totalHeight-Bottom_Bar_Height);
+    self.emotionsView.frame = CGRectMake(0, Top_Bar_Height, totalWidth, totalHeight-Top_Bar_Height-Bottom_Bar_Height);
 }
 
 - (void)didSelectMoreButton:(id)sender
 {
     NSLog(@"%s", __func__);
-    [self goToContainingApp];
+    [self jumpWithURL:@"mua://go"];
 }
 
-- (void)goToContainingApp
+- (void)jumpWithURL:(NSString *)urlString
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"wx689fb6eef31dc0b2://go"]];
-    [self.webView loadRequest:request];
+    UIResponder* responder = self;
+    while ((responder = [responder nextResponder]) != nil)
+    {
+        NSLog(@"responder = %@", responder);
+        if([responder respondsToSelector:@selector(openURL:)] == YES)
+        {
+            [responder performSelector:@selector(openURL:) withObject:[NSURL URLWithString:urlString]];
+        }
+    }
 }
 
-#pragma mark GroupViewDelegate
+#pragma mark - GroupViewDelegate
 
-- (void)didSelectGroupWithName:(NSString *)groupName
+- (void)didSelectGroup:(KMEmotionTag *)tag
 {
-    NSLog(@"%s - %@", __func__, groupName);
-    if ([FavoriteGroupName isEqualToString:groupName])
+    NSLog(@"%s - %@", __func__, tag.name);
+    if ([FavoriteGroupName isEqualToString:tag.name])
     {
         [self.emotionsView setupEmotionsForFavorite];
     }
     else
     {
-        [self.emotionsView setupEmotionsWithGroupName:groupName];
+        [self.emotionsView setupEmotionsWithGroup:tag];
     }
 }
 
@@ -289,71 +315,51 @@ NSURL *favoritePlistURL;
     [ud setObject:[NSNumber numberWithFloat:scrollView.contentOffset.x] forKey:@"bottomoffset"];
 }
 
-//- (void)addConstraintForBottomView
-//{
-//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.bottomView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:37.0];
-//    
-//    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.bottomView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.bottomView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.bottomView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-//    [self.bottomView addConstraint:heightConstraint];
-//    [self.view addConstraints:@[leftConstraint, rightConstraint, bottomConstraint]];
-//}
-//
-//- (void)addConstraintForEmotionsView
-//{
-//    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.emotionsView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.emotionsView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.emotionsView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.emotionsView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0];
-//    
-//    [self.view addConstraints:@[topConstraint, bottomConstraint, leftConstraint, rightConstraint]];
-//}
-//
-//- (void)addConstraintForSwitchButton
-//{
-//    NSLayoutConstraint *widthEqualHeightConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.nextKeyboardButton attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.bottomScrollView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.nextKeyboardButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-//    [self.bottomView addConstraints:@[widthEqualHeightConstraint, heightConstraint, leftConstraint, rightConstraint, bottomConstraint]];
-//}
-//
-//- (void)addConstraintForBottomScrollView
-//{
-//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.bottomScrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.bottomScrollView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.nextKeyboardButton attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.bottomScrollView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.moreButton attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.bottomScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-//    [self.bottomView addConstraints:@[heightConstraint, leftConstraint, rightConstraint, bottomConstraint]];
-//}
-//
-//- (void)addConstraintForMoreButton
-//{
-//    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.moreButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:60.0];
-//    
-//    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.moreButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:self.moreButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.bottomScrollView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:self.moreButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0];
-//    
-//    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.moreButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-//    [self.moreButton addConstraint:widthConstraint];
-//    [self.bottomView addConstraints:@[heightConstraint, leftConstraint, rightConstraint, bottomConstraint]];
-//}
+#pragma mark - KMEmotionViewDelegate
+
+- (void)didSendEmotionWithImagePath:(NSString *)path
+{
+    NSLog(@"%s - %@", __func__, path);
+    [self sendGifContent:path];
+}
+
+
+- (void)sendGifContent:(NSString *)imgPath
+{
+    UIImage *img = [UIImage imageWithContentsOfFile:imgPath];
+    
+    OSMessage *msg=[[OSMessage alloc]init];
+    msg.title = @"MUA表情";
+    msg.image = [[NSData alloc] initWithContentsOfFile:imgPath];
+    msg.thumbnail = UIImageJPEGRepresentation(img, 0);
+    msg.desc = @"分享快乐";
+    
+    switch (self.topBarView.shareTo) {
+        case KMSharingDestination_Wechat:
+//            [OpenShare shareToWeixinSession:msg Success:^(OSMessage *message) {
+//                NSLog(@"微信分享到会话成功：\n%@",message);
+//            } Fail:^(OSMessage *message, NSError *error) {
+//                NSLog(@"微信分享到会话失败：\n%@\n%@",error,message);
+//            }];
+            [self jumpWithURL:[OpenShare genWeixinShareUrl:msg to:0]];
+            break;
+        case KMSharingDestination_QQ:
+//            [OpenShare shareToQQFriends:msg Success:^(OSMessage *message) {
+//                NSLog(@"QQ分享到会话成功：\n%@",message);
+//            } Fail:^(OSMessage *message, NSError *error) {
+//                NSLog(@"QQ分享到会话失败：\n%@\n%@",error,message);
+//            }];
+            [self jumpWithURL:[OpenShare genShareUrl:msg to:0]];
+            break;
+        case KMSharingDestination_WechatTimeline:
+//            [OpenShare shareToWeixinTimeline:msg Success:^(OSMessage *message) {
+//                NSLog(@"微信分享到朋友圈成功：\n%@",message);
+//            } Fail:^(OSMessage *message, NSError *error) {
+//                NSLog(@"微信分享到朋友圈失败：\n%@\n%@",error,message);
+//            }];
+            [self jumpWithURL:[OpenShare genWeixinShareUrl:msg to:1]];
+            break;
+    }
+}
 
 @end

@@ -7,21 +7,20 @@
 //
 
 #import "KMEmotionItem.h"
-#import "KMEmotionDataBase.h"
+#import "KMEmotionKeyboardDataBase.h"
 
 @implementation KMEmotionItem
 
 - (instancetype)init
 {
     if (self = [super init]){
-        _tagArray = [NSMutableArray new];
     }
     return self;
 }
 
-- (NSString *)tagArrayToString
+- (NSString *)tagSetToString
 {
-    return [self.tagArray componentsJoinedByString:@","];
+    return [[self.tagSet allObjects] componentsJoinedByString:@","];
 }
 
 - (NSString *)description
@@ -31,7 +30,7 @@
 
 - (void)updatetoDb
 {
-    [[KMEmotionDataBase sharedInstance] updateEmotionItem:self];
+    [[KMEmotionKeyboardDataBase sharedInstance] updateEmotionItem:self];
 }
 
 @end

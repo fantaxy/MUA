@@ -7,7 +7,7 @@
 //
 
 #import "KMEmotionSet.h"
-#import "KMEmotionDataBase.h"
+#import "KMEmotionKeyboardDataBase.h"
 
 @implementation KMEmotionSet
 
@@ -26,7 +26,7 @@
 
 - (void)updatetoDb
 {
-    [[KMEmotionDataBase sharedInstance] updateEmotionSet:self];
+//    [[KMEmotionKeyboardDataBase sharedInstance] updateEmotionSet:self];
 }
 
 - (BOOL)isEqual:(id)object

@@ -8,15 +8,19 @@
 
 #import "AppDelegate.h"
 #import "GlobalConfig.h"
+#import "AFNetworkActivityIndicatorManager.h"
+#import "WXApi.h"
+#import "OpenShare+Weixin.h"
+#import "OpenShare+QQ.h"
 
 NSURL *containerURL;
 NSURL *sharedDirURL;
-NSURL *sharedPlistURL;
 NSURL *sharedEmotionsDirURL;
 NSURL *emotionsDirURL;
 NSURL *favoritePlistURL;
+NSURL *cacheDataURL;
 
-@interface AppDelegate ()
+@interface AppDelegate () <WXApiDelegate>
 
 @end
 
@@ -27,14 +31,41 @@ NSURL *favoritePlistURL;
     // Override point for customization after application launch.
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
+    NSString *docsPath= NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *emotionPath = [docsPath stringByAppendingPathComponent:@"emotions"];
+    NSString *cacheDataPath = [docsPath stringByAppendingString:@"cacheList"];
     containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupID];
     sharedDirURL = [NSURL URLWithString:@"Library/Caches/" relativeToURL:containerURL];
-    sharedPlistURL = [NSURL URLWithString:@"emotions.plist" relativeToURL:sharedDirURL];
     sharedEmotionsDirURL = [NSURL URLWithString:@"emotions/" relativeToURL:sharedDirURL];
-    emotionsDirURL = [[NSBundle mainBundle] URLForResource:@"emotions" withExtension:nil];
+    emotionsDirURL = [NSURL URLWithString:emotionPath];
+    cacheDataURL = [NSURL URLWithString:cacheDataPath];
     favoritePlistURL = [NSURL URLWithString:@"favorite.plist" relativeToURL:sharedDirURL];
     
+    [OpenShare connectWeixinWithAppId:@"wx689fb6eef31dc0b2"];
+    [OpenShare connectQQWithAppId:@"1104799738"];
+    
     return YES;
+}
+
+- (void)onReq:(BaseReq *)req
+{
+    
+}
+
+- (void)onResp:(BaseResp *)resp
+{
+    
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    //如果OpenShare能处理这个回调，就调用block中的方法，如果不能处理，就交给其他（比如支付宝）。
+    if ([OpenShare handleOpenURL:url]) {
+        return YES;
+    }
+    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

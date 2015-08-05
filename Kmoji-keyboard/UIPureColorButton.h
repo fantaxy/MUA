@@ -15,5 +15,6 @@ IB_DESIGNABLE
 
 @property (nonatomic) IBInspectable UIColor *bgColor;
 @property (nonatomic) IBInspectable UIColor *hgColor;
+@property (nonatomic) IBInspectable UIColor *sgColor;
 
 @end

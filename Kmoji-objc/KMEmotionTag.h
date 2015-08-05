@@ -8,6 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface KMEmotionTag : NSObject
+@interface KMEmotionTag : NSObject <NSCoding>
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *thumbName;
+@property (nonatomic, strong) NSString *desc;
+@property (nonatomic, strong) NSDate *addTime;
+@property (nonatomic, strong) NSArray *itemArray;
+@property (nonatomic) int order;
+
+- (instancetype)initWithName:(NSString *)name thumbName:(NSString *)thunmName;
+- (NSString *)addTimeString;
+- (void)setAddTimeWithString:(NSString *)timeString;
+- (void)updatetoDb;
+- (void)updatetoSharedDB;
+- (BOOL)isDownloaded;
+
 
 @end
