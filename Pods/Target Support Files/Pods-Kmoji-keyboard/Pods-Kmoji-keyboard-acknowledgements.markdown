@@ -1,6 +1,10 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## FIR.im
+
+©2015 FIR.im · BugHD · Made with love :).
+
 ## OpenShare
 
                     GNU GENERAL PUBLIC LICENSE

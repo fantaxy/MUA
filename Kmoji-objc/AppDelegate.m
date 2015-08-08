@@ -13,6 +13,8 @@
 #import "OpenShare+Weixin.h"
 #import "OpenShare+QQ.h"
 
+#import <FIR/FIR.h>
+
 NSURL *containerURL;
 NSURL *sharedDirURL;
 NSURL *sharedEmotionsDirURL;

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "381CB77EBD25222E4BB32159"
+               BlueprintIdentifier = "383E25E03347C3DE5EE1358A"
                BuildableName = "libPods-Kmoji-objc.a"
                BlueprintName = "Pods-Kmoji-objc"
                ReferencedContainer = "container:Pods.xcodeproj">

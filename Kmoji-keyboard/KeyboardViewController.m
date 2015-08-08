@@ -21,6 +21,8 @@
 #import "OpenShare+Weixin.h"
 #import "OpenShare+QQ.h"
 
+#import <FIR/FIR.h>
+
 NSURL *containerURL;
 NSURL *sharedDirURL;
 NSURL *sharedEmotionsDirURL;
@@ -47,7 +49,6 @@ NSURL *favoritePlistURL;
 @property (nonatomic, strong) GroupSelectView *bottomScrollView;
 @property (nonatomic, strong) KMTopBarView *topBarView;
 @property (nonatomic, strong) UIView *topLineView;
-@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
@@ -63,8 +64,7 @@ NSURL *favoritePlistURL;
     
     [OpenShare connectWeixinWithAppId:@"wxb692717f834207df"];
     [OpenShare connectQQWithAppId:@"1104724845"];
-    
-    self.webView = [[UIWebView alloc] init];
+    [FIR handleCrashWithKey:@"1b7695f33e48b173bbe04c1a1a2c4689"];
     
     containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupID];
     sharedDirURL = [NSURL URLWithString:@"Library/Caches/" relativeToURL:containerURL];

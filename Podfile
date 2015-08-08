@@ -4,6 +4,7 @@ link_with 'Kmoji-objc', 'Kmoji-keyboard'
 
 def shared_pods
     pod 'OpenShare', '~> 0.0'
+    pod 'FIR.im', '~> 1.3.0'
 end
 
 

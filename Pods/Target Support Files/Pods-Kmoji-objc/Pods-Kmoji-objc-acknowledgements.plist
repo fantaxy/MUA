@@ -41,6 +41,14 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>&#169;2015 FIR.im &#183; BugHD &#183; Made with love :).</string>
+			<key>Title</key>
+			<string>FIR.im</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>                    GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
