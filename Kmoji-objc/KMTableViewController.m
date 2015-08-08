@@ -37,8 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self performSelector:@selector(crash) withObject:nil];
-    
     self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, 100.0f)];
     [self.refreshControl addTarget:self action:@selector(reload:) forControlEvents:UIControlEventValueChanged];
     [self.tableView.tableHeaderView addSubview:self.refreshControl];
