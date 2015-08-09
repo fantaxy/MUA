@@ -179,12 +179,12 @@
     {
         //收藏页
         NSLog(@"%s - Mark selected %@.", __func__, item.imageName);
-        if (![self.selectedItems containsObject:item.imageName])
+        if (![self.selectedItems containsObject:item])
         {
             UIImageView *maskView = [[UIImageView alloc] initWithFrame:tile.bounds];
             [maskView setImage:[UIImage imageNamed:@"mask_select"]];
             [tile addSubview:maskView];
-            [self.selectedItems addObject:item.imageName];
+            [self.selectedItems addObject:item];
         }
         else
         {
@@ -195,7 +195,7 @@
                     [view removeFromSuperview];
                 }
             }
-            [self.selectedItems removeObject:item.imageName];
+            [self.selectedItems removeObject:item];
         }
         [self updateDeleteButton];
     }

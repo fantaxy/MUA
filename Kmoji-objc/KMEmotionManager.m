@@ -423,21 +423,25 @@ static KMEmotionManager *sharedInstance;
     }
 }
 
-- (void)deleteEmotion:(KMEmotionTag *)tag
+- (void)deleteEmotionTag:(KMEmotionTag *)tag
 {
     NSLog(@"Delete emotions with tag %@", tag);
     if ([[KMEmotionDataBase sharedInstance] deleteDownloadedEmotionTag:tag] == SQLITE_OK)
     {
         [self.downloadedEmotionTags removeObject:tag];
+        NSMutableArray *deletedItems = [NSMutableArray new];
         for (KMEmotionItem *item in tag.itemArray) {
             [item removeTag:tag.name];
+            //如果还属于其它标签则不删除
             if ([item.tagSet count]) {
                 [item updatetoSharedDb];
             }
             else {
                 [self deleteEmotionItem:item];
+                [deletedItems addObject:item];
             }
         }
+        [self deleteFavoriteEmotion:deletedItems];
     }
 }
 
@@ -454,17 +458,19 @@ static KMEmotionManager *sharedInstance;
     [[KMEmotionDataBase sharedInstance] deleteDownloadedEmotionItem:item];
 }
 
-- (NSArray *)deleteFavoriteEmotion:(NSArray *)array
+- (NSArray *)deleteFavoriteEmotion:(NSArray *)itemArray
 {
-    NSLog(@"Delete favorite emotion %@", array);
-    NSMutableArray *favoriteArray = [NSMutableArray arrayWithContentsOfURL:favoritePlistURL];
-    [favoriteArray removeObjectsInArray:array];
+    NSLog(@"Delete favorite emotion %@", itemArray);
+    NSMutableArray *favoriteArray = [[self getFavoriteEmotionArray] mutableCopy];
+    for (KMEmotionItem *item in itemArray) {
+        [favoriteArray removeObject:item.imageName];
+    }
     BOOL success = [favoriteArray writeToFile:favoritePlistURL.path atomically:NO];
     if (!success)
     {
         NSLog(@"Write favorite plist failed.");
     }
-    return [self getFavoriteEmotionArray];
+    return favoriteArray;
 }
 
 - (void)updateAllDownloadedTags

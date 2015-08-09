@@ -59,10 +59,7 @@
 
 - (void)viewDidLayoutSubviews
 {
-    BOOL isLandscape = UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]);
-    CGFloat topOffset = isLandscape?32.0f:64.0f;
-    
-    self.favoriteView.frame = CGRectMake(HorizontalMargin, topOffset+20, self.view.bounds.size.width-HorizontalMargin*2, self.view.bounds.size.height-topOffset-49-10);
+    self.favoriteView.frame = CGRectInset(self.view.bounds, 20, 20);
     [self.favoriteView layoutEmotionTiles];
     CGRect frame = self.favoriteView.frame;
     self.favoriteScrollView.contentSize = CGSizeMake(frame.size.width, CGRectGetMaxY(frame) + 10 + 49);
@@ -185,7 +182,7 @@
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
-        [[KMEmotionManager sharedManager] deleteEmotion:self.emotionTags[indexPath.row]];
+        [[KMEmotionManager sharedManager] deleteEmotionTag:self.emotionTags[indexPath.row]];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
     return @[deleteAction];
@@ -217,7 +214,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [[KMEmotionManager sharedManager] deleteEmotion:self.emotionTags[indexPath.row]];
+        [[KMEmotionManager sharedManager] deleteEmotionTag:self.emotionTags[indexPath.row]];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

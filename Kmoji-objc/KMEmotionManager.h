@@ -20,8 +20,9 @@
 - (NSURLSessionDataTask *)createRefreshTaskWithCompletionBlock:(void (^)(NSError *error))completionBlock;
 - (void)downloadEmotionTag:(KMEmotionTag *)tag;
 - (void)downloadEmotionTagWithIndex:(NSInteger)index;
-- (void)deleteEmotion:(NSDictionary *)dict;
-- (NSArray *)deleteFavoriteEmotion:(NSArray *)array;
+//删除一个标签
+- (void)deleteEmotionTag:(NSDictionary *)dict;
+- (NSArray *)deleteFavoriteEmotion:(NSArray *)itemArray;
 - (void)moveEmotionFromIndex:(int)from toIndex:(int)to;
 - (NSArray *)getFavoriteEmotionArray;
 - (NSUInteger)getEmotionTagsCount;
