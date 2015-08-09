@@ -144,23 +144,17 @@ NSURL *sharedSettingsPlistURL;
 
 - (BOOL)readEmotionData
 {
-    NSError *error = nil;
-    NSArray *result = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sharedDirURL.path error:&error];
-    if (result && result.count)
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfURL:sharedSettingsPlistURL];
+    BOOL success = [dict writeToURL:sharedSettingsPlistURL atomically:YES];
+    if (success)
     {
         self.emotionTags = [[KMEmotionKeyboardDataBase sharedInstance] getDownloadedEmotionTagArray];
-        if (!self.emotionTags.count) {
-            needInformUserLater = YES;
-        }
         return YES;
     }
     else
     {
-        NSLog(@"Fail to access shared resource with error: %@.", error);
-        if (257 == error.code)
-        {
-            needInformUserLater = YES;
-        }
+        NSLog(@"Fail to access shared resource.");
+        needInformUserLater = YES;
         return NO;
     }
 }
