@@ -17,6 +17,11 @@
 @property (nonatomic, assign) KMEmotionTag *selectedEmotion;
 
 + (instancetype)sharedManager;
+
++ (id)getSharedSettingsForKey:(NSString *)key;
++ (void)setSharedSettingsWithValue:(id)value forKey:(NSString *)key;
++ (void)setSharedSettingsWithValueArray:(NSArray *)valueArray forKeyArray:(NSArray *)keyArray;
+
 - (NSURLSessionDataTask *)createRefreshTaskWithCompletionBlock:(void (^)(NSError *error))completionBlock;
 - (void)downloadEmotionTag:(KMEmotionTag *)tag;
 - (void)downloadEmotionTagWithIndex:(NSInteger)index;

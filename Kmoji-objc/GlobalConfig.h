@@ -20,6 +20,7 @@ extern NSURL *sharedEmotionsDirURL;
 extern NSURL *localEmotionsDirURL;
 extern NSURL *emotionsDirURL;
 extern NSURL *favoritePlistURL;
+extern NSURL *sharedSettingsPlistURL;
 extern NSURL *cacheDataURL;
 
 static NSString * const AppGroupID = @"group.fantaxy.mua";

@@ -57,4 +57,35 @@ static KMEmotionManager *sharedInstance;
     }
 }
 
++ (id)getSharedSettingsForKey:(NSString *)key
+{
+    NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfURL:sharedSettingsPlistURL];
+    return [settingsDict objectForKey:key];
+}
+
++ (void)setSharedSettingsWithValue:(id)value forKey:(NSString *)key
+{
+    NSDictionary *settingsDict = [NSMutableDictionary dictionaryWithContentsOfURL:sharedSettingsPlistURL];
+    if (!settingsDict) {
+        settingsDict = [NSMutableDictionary new];
+    }
+    [settingsDict setValue:value forKey:key];
+    [settingsDict writeToURL:sharedSettingsPlistURL atomically:YES];
+}
+
++ (void)setSharedSettingsWithValueArray:(NSArray *)valueArray forKeyArray:(NSArray *)keyArray
+{
+    if (!valueArray.count || valueArray.count!=keyArray.count) {
+        return;
+    }
+    NSDictionary *settingsDict = [NSMutableDictionary dictionaryWithContentsOfURL:sharedSettingsPlistURL];
+    if (!settingsDict) {
+        settingsDict = [NSMutableDictionary new];
+    }
+    [valueArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [settingsDict setValue:obj forKey:keyArray[idx]];
+    }];
+    [settingsDict writeToURL:sharedSettingsPlistURL atomically:YES];
+}
+
 @end

@@ -47,6 +47,12 @@
     return self;
 }
 
+- (void)setEmotionScrollViewDelegate:(id<KMEmotionScrollViewDelegate>)emotionScrollViewDelegate
+{
+    _emotionScrollViewDelegate = emotionScrollViewDelegate;
+    self.delegate = emotionScrollViewDelegate;
+}
+
 - (BOOL)layoutEmotionButtons
 {
     int leftMargin;
@@ -248,7 +254,7 @@
     self.pageControl.numberOfPages = self.contentView.pageCount;
     if (self.needScrollToPageLater)
     {
-        NSNumber *selectedPage = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selectedPage"];
+        NSNumber *selectedPage = (NSNumber *)[KMEmotionManager getSharedSettingsForKey:@"selectedPage"];
         [self scrollToPageAtIndex:[selectedPage unsignedIntegerValue] animater:NO];
     }
 }
@@ -292,7 +298,7 @@
 {
     if (!self.needLayoutLater)
     {
-        NSNumber *selectedPage = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selectedPage"];
+        NSNumber *selectedPage = (NSNumber *)[KMEmotionManager getSharedSettingsForKey:@"selectedPage"];
         [self scrollToPageAtIndex:[selectedPage unsignedIntegerValue] animater:NO];
     }
     else
@@ -444,13 +450,14 @@
 //    [self addConstraints:@[bottomConstraint, leftConstraint, rightConstraint]];
 //}
 
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     // switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = CGRectGetWidth(self.frame);
     NSUInteger page = floor(self.contentView.contentOffset.x / pageWidth - 0.5) + 1;
     self.pageControl.currentPage = page;
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInteger:page] forKey:@"selectedPage"];
+    [KMEmotionManager setSharedSettingsWithValue:@(page) forKey:@"selectedPage"];
 }
 
 @end

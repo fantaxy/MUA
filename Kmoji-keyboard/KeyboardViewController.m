@@ -28,6 +28,7 @@ NSURL *sharedDirURL;
 NSURL *sharedEmotionsDirURL;
 NSURL *emotionsDirURL;
 NSURL *favoritePlistURL;
+NSURL *sharedSettingsPlistURL;
 
 #define Keyboard_Height 251.0f
 #define Top_Bar_Height 53.0f
@@ -70,6 +71,7 @@ NSURL *favoritePlistURL;
     sharedDirURL = [NSURL URLWithString:@"Library/Caches/" relativeToURL:containerURL];
     sharedEmotionsDirURL = [NSURL URLWithString:@"emotions/" relativeToURL:sharedDirURL];
     favoritePlistURL = [NSURL URLWithString:@"favorite.plist" relativeToURL:sharedDirURL];
+    sharedSettingsPlistURL = [NSURL URLWithString:@"sharedSettings.plist" relativeToURL:sharedDirURL];
     NSLog(@"Shared Directory: %@", sharedDirURL.path);
     
     [self readEmotionData];
@@ -108,7 +110,7 @@ NSURL *favoritePlistURL;
     CGRect frame = self.view.frame;
     if (needInformUserLater && CGRectGetWidth(frame) && CGRectGetHeight(frame))
     {
-        [[YLCToastManager sharedInstance] showToastWithStyle:YLCToastTypeConfirm message:@"请确认设置->通用->键盘->MUA表情键盘->允许完全访问功能已打开。" onView:self.emotionsView];
+        [[YLCToastManager sharedInstance] showToastWithStyle:YLCToastTypeConfirm message:@"你还没有添加表情哦，请确认设置->通用->键盘->MUA表情键盘->允许完全访问功能已打开，并点击加号添加表情。" onView:self.view];
         needInformUserLater = NO;
     }
     [self arrangeUI];
@@ -147,6 +149,9 @@ NSURL *favoritePlistURL;
     if (result && result.count)
     {
         self.emotionTags = [[KMEmotionKeyboardDataBase sharedInstance] getDownloadedEmotionTagArray];
+        if (!self.emotionTags.count) {
+            needInformUserLater = YES;
+        }
         return YES;
     }
     else
@@ -177,9 +182,8 @@ NSURL *favoritePlistURL;
     [self.bottomView addSubview:topLineViewCopy];
     
     //If there's no item in favorite, show the second group of emotions.
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSNumber *selectedGroup = (NSNumber *)[ud valueForKey:@"selectedGroup"];
-    NSNumber *selectedPage = (NSNumber *)[ud valueForKey:@"selectedPage"];
+    NSNumber *selectedGroup = (NSNumber *)[KMEmotionManager getSharedSettingsForKey:@"selectedGroup"];
+    NSNumber *selectedPage = (NSNumber *)[KMEmotionManager getSharedSettingsForKey:@"selectedPage"];
     if (selectedGroup)
     {
         [self.bottomScrollView selectPreviousGroup];
@@ -305,6 +309,15 @@ NSURL *favoritePlistURL;
     else
     {
         [self.emotionsView setupEmotionsWithGroup:tag];
+    }
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        NSLog(@"%f", scrollView.contentOffset.x);
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setObject:[NSNumber numberWithFloat:scrollView.contentOffset.x] forKey:@"bottomoffset"];
     }
 }
 

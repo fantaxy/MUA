@@ -21,6 +21,7 @@ NSURL *sharedEmotionsDirURL;
 NSURL *emotionsDirURL;
 NSURL *favoritePlistURL;
 NSURL *cacheDataURL;
+NSURL *sharedSettingsPlistURL;
 
 @interface AppDelegate () <WXApiDelegate>
 
@@ -44,6 +45,7 @@ NSURL *cacheDataURL;
     emotionsDirURL = [NSURL URLWithString:emotionPath];
     cacheDataURL = [NSURL URLWithString:cacheDataPath];
     favoritePlistURL = [NSURL URLWithString:@"favorite.plist" relativeToURL:sharedDirURL];
+    sharedSettingsPlistURL = [NSURL URLWithString:@"sharedSettings.plist" relativeToURL:sharedDirURL];
     
     [OpenShare connectWeixinWithAppId:@"wx689fb6eef31dc0b2"];
     [OpenShare connectQQWithAppId:@"1104799738"];

@@ -12,6 +12,10 @@
 #import "UIPureColorButton.h"
 #import "KMEmotionManager.h"
 
+#define RECENT_BTN_WIDTH (37.f)
+#define BTN_WIDTH (60.f)
+#define BTN_HEIGHT (37.f)
+
 @interface GroupSelectView () <UIGestureRecognizerDelegate>
 {
     UITapGestureRecognizer *tapGestureRecognizer;
@@ -53,27 +57,35 @@
 
 - (void)layoutSubviews
 {
+    if (!self.subviews.count) {
+        return;
+    }
     UIButton *recentBtn = self.subviews[0];
-    recentBtn.frame = CGRectMake(0, 0, 37, 37);
+    recentBtn.frame = CGRectMake(0, 0, RECENT_BTN_WIDTH, RECENT_BTN_WIDTH);
     [recentBtn setImageEdgeInsets:UIEdgeInsetsZero];
     for (int i=1; i<self.subviews.count; i++)
     {
         UIView *view = self.subviews[i];
-        view.frame = CGRectMake((37+1)+(60+1)*(i-1), 0, 60, 37);
+        view.frame = CGRectMake((RECENT_BTN_WIDTH+1)+(BTN_WIDTH+1)*(i-1), 0, BTN_WIDTH, BTN_HEIGHT);
     }
+}
+
+- (void)setGroupSelectViewDelegate:(id<GroupSelectViewDelegate>)groupSelectViewDelegate
+{
+    _groupSelectViewDelegate = groupSelectViewDelegate;
+    self.delegate = groupSelectViewDelegate;
 }
 
 - (void)selectPreviousGroup
 {
-    NSNumber *selectedGroup = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selectedGroup"];
+    NSNumber *selectedGroup = (NSNumber *)[KMEmotionManager getSharedSettingsForKey:@"selectedGroup"];
     [self selectGroupAtIndexCommon:[selectedGroup unsignedIntegerValue]];
 }
 
 - (void)selectGroupAtIndex:(NSUInteger)index
 {
     [self selectGroupAtIndexCommon:index];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInteger:index] forKey:@"selectedGroup"];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithUnsignedInteger:0] forKey:@"selectedPage"];
+    [KMEmotionManager setSharedSettingsWithValueArray:@[@(index),@(0)] forKeyArray:@[@"selectedGroup", @"selectedPage"]];
 }
 
 - (void)selectGroupAtIndexCommon:(NSUInteger)index
@@ -93,15 +105,15 @@
 
 - (void)setupWithGroups:(NSArray *)emotionTags
 {
-    if (!emotionTags || !emotionTags.count)
-    {
-        return;
-    }
+    NSMutableArray *tags = [NSMutableArray new];
     //常用分组
-    NSMutableArray *tags = [NSMutableArray arrayWithArray:emotionTags];
     KMEmotionTag *favTag = [[KMEmotionTag alloc] initWithName:@"favorite" thumbName:@"favorite"];
     favTag.itemArray = [[KMEmotionManager sharedManager] getFavoriteItemArray];
-    [tags insertObject:favTag atIndex:0];
+    [tags addObject:favTag];
+    if (emotionTags && emotionTags.count)
+    {
+        [tags addObjectsFromArray:emotionTags];
+    }
     self.emotionTags = tags;
     NSMutableArray *groupButtonArray = [NSMutableArray new];
     for (KMEmotionTag *eTag in tags)
@@ -114,14 +126,20 @@
     [groupButtonArray[0] setImage:[UIImage imageNamed:@"recent"] forState:UIControlStateNormal];
     [groupButtonArray[0] setImage:[UIImage imageNamed:@"recent_pressed"] forState:UIControlStateHighlighted];
     [groupButtonArray[0] setTitle:@"" forState:UIControlStateNormal];
-    self.contentSize = CGSizeMake((37+1)+(60+1)*emotionTags.count, 37.0f);
+    self.contentSize = CGSizeMake((RECENT_BTN_WIDTH+1)+(BTN_WIDTH+1)*emotionTags.count, BTN_HEIGHT);
 }
 
 - (void)handleTapGesture:(UITapGestureRecognizer *)reconizer
 {
     CGPoint tapPoint = [reconizer locationOfTouch:0 inView:self];
-    int buttonWidth = 60.0;
-    int groupIndex = tapPoint.x/buttonWidth;
+    int buttonWidth = BTN_WIDTH;
+    int groupIndex = 0;
+    if (tapPoint.x > RECENT_BTN_WIDTH) {
+        groupIndex = (tapPoint.x-RECENT_BTN_WIDTH)/buttonWidth + 1;
+    }
+    else {
+        groupIndex = 0;
+    }
     [self selectGroupAtIndex:groupIndex];
 }
 

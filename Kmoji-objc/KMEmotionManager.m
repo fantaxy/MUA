@@ -381,6 +381,9 @@ static KMEmotionManager *sharedInstance;
     if (index < self.tagArray.count) {
         [self downloadEmotionTag:self.tagArray[index]];
     }
+    //选中新下载的分类
+    [KMEmotionManager setSharedSettingsWithValue:@(1) forKey:@"selectedGroup"];
+    [KMEmotionManager setSharedSettingsWithValue:@(0) forKey:@"selectedPage"];
 }
 
 - (void)addEmotion:(NSData *)imageData withTag:(NSString *)tag
@@ -542,27 +545,37 @@ static KMEmotionManager *sharedInstance;
     return [self.downloadedEmotionTags containsObject:tag];
 }
 
-//- (NSUInteger)getEmotionSetsCount
-//{
-//    return self.setArray.count;
-//}
-//
-//- (KMEmotionSet *)getEmotionSetWithIndex:(NSInteger)index
-//{
-//    return [self.setArray objectAtIndex:index];
-//}
-//
-//- (NSArray *)getDownloadedEmotionsets
-//{
-//    if ([self.downloadedEmotionSets count])
-//    {
-//        return self.downloadedEmotionSets;
-//    }
-//    else
-//    {
-//        //        self.downloadedEmotionSets = [[KMEmotionDataBase sharedInstance] getDownloadedEmotionSetArray];
-//        return self.downloadedEmotionSets;
-//    }
-//}
++ (id)getSharedSettingsForKey:(NSString *)key
+{
+    NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfURL:sharedSettingsPlistURL];
+    return [settingsDict objectForKey:key];
+}
+
+#pragma mark - Shared setting
+
++ (void)setSharedSettingsWithValue:(id)value forKey:(NSString *)key
+{
+    NSDictionary *settingsDict = [NSMutableDictionary dictionaryWithContentsOfURL:sharedSettingsPlistURL];
+    if (!settingsDict) {
+        settingsDict = [NSMutableDictionary new];
+    }
+    [settingsDict setValue:value forKey:key];
+    [settingsDict writeToURL:sharedSettingsPlistURL atomically:YES];
+}
+
++ (void)setSharedSettingsWithValueArray:(NSArray *)valueArray forKeyArray:(NSArray *)keyArray
+{
+    if (!valueArray.count || valueArray.count!=keyArray.count) {
+        return;
+    }
+    NSDictionary *settingsDict = [NSMutableDictionary dictionaryWithContentsOfURL:sharedSettingsPlistURL];
+    if (!settingsDict) {
+        settingsDict = [NSMutableDictionary new];
+    }
+    [valueArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [settingsDict setValue:obj forKey:keyArray[idx]];
+    }];
+    [settingsDict writeToURL:sharedSettingsPlistURL atomically:YES];
+}
 
 @end

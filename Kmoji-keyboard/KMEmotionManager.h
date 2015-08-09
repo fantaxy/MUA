@@ -11,6 +11,9 @@
 @interface KMEmotionManager : NSObject
 
 + (instancetype)sharedManager;
++ (id)getSharedSettingsForKey:(NSString *)key;
++ (void)setSharedSettingsWithValue:(id)value forKey:(NSString *)key;
++ (void)setSharedSettingsWithValueArray:(NSArray *)valueArray forKeyArray:(NSArray *)keyArray;
 
 - (NSArray *)getFavoriteItemArray;
 - (void)addFavoriteItem:(NSString *)itemName;
