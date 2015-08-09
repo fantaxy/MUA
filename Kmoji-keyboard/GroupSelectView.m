@@ -43,8 +43,8 @@
         self.backgroundColor = [UIColor clearColor];
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
-//        self.bounces = YES;
-//        self.alwaysBounceHorizontal = YES;
+        self.bounces = YES;
+        self.alwaysBounceHorizontal = YES;
 //        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
         
         tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
